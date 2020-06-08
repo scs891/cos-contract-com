@@ -7,9 +7,9 @@ contract Startup
 
     struct Profile {
         string name;
-        string category;
-        string misson;
-        string desc;
+        string categoryId;
+        string mission;
+        string descriptionAddr;
     }
 
     mapping (string => Profile) startups;
@@ -24,16 +24,16 @@ contract Startup
         _owner = msg.sender;
     }
 
-    function setCoinBase(address addr)
+    function setCoinBase(address payable addr)
         isOwner
         public {
         _coinbase = addr;
     }
 
-    function newStartup(string memory id, string memory name, string memory category, string memory misson, string memory desc) public payable {
+    function newStartup(string memory id, string memory name, string memory categoryId, string memory mission, string memory descriptionAddr) public payable {
         require(msg.value >= 1e17);
         require(_coinbase != address(0));
-        Profile memory p = Profile(name, category, misson, desc);
+        Profile memory p = Profile(name, categoryId, mission, descriptionAddr);
         startups[id] = p;
         _coinbase.transfer(msg.value);
     }
@@ -41,7 +41,7 @@ contract Startup
     function getStartup(string memory id)
         public
         view
-        returns (string memory name, string memory category, string memory misson, string memory desc){
-        return (startups[id].name, startups[id].category, startups[id].misson, startups[id].desc);
+        returns (string memory name, string memory categoryId, string memory mission, string memory descriptionAddr){
+        return (startups[id].name, startups[id].categoryId, startups[id].mission, startups[id].descriptionAddr);
     }
 }
