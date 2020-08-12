@@ -1,3 +1,4 @@
+// bounty 信息上链
 pragma solidity >=0.4.21 <0.7.0;
 
 contract Bounty {
@@ -18,8 +19,8 @@ struct Profile {
   mapping (string => Profile) bounty;
 
   modifier isOnwer() {
-    require(msg.sender === _owner);
-    _
+    require(msg.sender == _owner);
+    _;
   }
 
   constructor() public {
@@ -58,6 +59,6 @@ struct Profile {
       bounty[id].title,
       bounty[id].intro,
       bounty[id].payment,
-    )
+    );
   }
 }
