@@ -12,7 +12,8 @@ struct Profile {
     string startupName;
     string title;
     string intro;
-    Payment[] payments;
+    address[] paymentToken;
+    uint256[] paymentValue;
   }
 
 // payment
@@ -43,11 +44,12 @@ struct Payment {
     string memory startupName, 
     string memory title,
     string memory intro,
-    string memory payments
-  ) {
+    address[] memory paymentToken,
+    uint256[] memory paymentValue
+  ) public payable{
       require(msg.value >= 1e17);
       require(_conbase != address(0));
-      Profile p = Profile(startupName, title, intro, payments);
+      Profile memory p = Profile(startupName, title, intro, paymentToken, paymentValue);
       bounty[id] = p;
       _conbase.transfer(msg.value);
 
@@ -58,13 +60,15 @@ struct Payment {
     string memory startupName, 
     string memory title,
     string memory intro,
-    string memory payment
+    address[] memory paymentToken,
+    uint256[] memory paymentValue
   ) {
     return (
-      bounty[id].name,
+      bounty[id].startupName,
       bounty[id].title,
       bounty[id].intro,
-      bounty[id].payments,
+      bounty[id].paymentToken,
+      bounty[id].paymentValue
     );
   }
 }
