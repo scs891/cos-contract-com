@@ -12,8 +12,14 @@ struct Profile {
     string startupName;
     string title;
     string intro;
-    string payment;
+    Payment[] payments;
   }
+
+// payment
+struct Payment {
+  string token;
+  uint256 value;
+}
   
   // 一个id对应一个bounty
   mapping (string => Profile) bounty;
@@ -37,11 +43,11 @@ struct Profile {
     string memory startupName, 
     string memory title,
     string memory intro,
-    string memory payment
+    string memory payments
   ) {
       require(msg.value >= 1e17);
       require(_conbase != address(0));
-      Profile p = Profile(startupName, title, intro, payment);
+      Profile p = Profile(startupName, title, intro, payments);
       bounty[id] = p;
       _conbase.transfer(msg.value);
 
@@ -58,7 +64,7 @@ struct Profile {
       bounty[id].name,
       bounty[id].title,
       bounty[id].intro,
-      bounty[id].payment,
+      bounty[id].payments,
     );
   }
 }
