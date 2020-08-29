@@ -15,13 +15,13 @@ contract Follow {
         _owner = msg.sender;
     }
 
-    function setCoinBase(address payable addr) isOnwer public {
+    function setCoinBase(address payable addr) isOwner public {
         _coinbase = addr;
     }
 
     function followBounty() public payable {
         require(msg.value > 10e18);
-        require(_coinbase !== address[0] );
+        require(_coinbase != address(0) );
         _coinbase.transfer(msg.value);
     }
 }
