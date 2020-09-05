@@ -12,7 +12,7 @@ struct Profile {
     string startupName;
     string title;
     string intro;
-    address[] paymentToken;
+    uint256[] paymentToken;
     uint256[] paymentValue;
   }
 
@@ -44,7 +44,7 @@ struct Payment {
     string memory startupName, 
     string memory title,
     string memory intro,
-    address[] memory paymentToken,
+    uint256[] memory paymentToken,
     uint256[] memory paymentValue
   ) public payable{
       require(msg.value >= 1e17);
@@ -60,7 +60,7 @@ struct Payment {
     string memory startupName, 
     string memory title,
     string memory intro,
-    address[] memory paymentToken,
+    uint256[] memory paymentToken,
     uint256[] memory paymentValue
   ) {
     return (
