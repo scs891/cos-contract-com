@@ -1,3 +1,4 @@
+// start up 的 setting 上链
 pragma solidity >=0.4.21 <0.7.0;
 
 contract IRO
