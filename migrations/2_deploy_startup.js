@@ -1,11 +1,13 @@
 const Startup = artifacts.require('Startup')
 const IRO = artifacts.require('IRO')
 const Bounty = artifacts.require('Bounty')
-const Follow = artifacts.require('follow')
+// const Follow = artifacts.require('follow')
+const Disco = artifacts.require('disco')
 
 module.exports = function (deployer) {
 	deployer.deploy(Startup)
 	deployer.deploy(IRO)
 	deployer.deploy(Bounty)
-	deployer.deploy(Follow)
+	// deployer.deploy(Follow)
+	deployer.deploy(Disco)
 }
