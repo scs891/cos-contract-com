@@ -167,7 +167,8 @@ contract Disco {
 
     // TODO 结束的时候需要检查募资是否成功或者失败
     if ('成功') {
-      status[id].isSuccess = true
+      status[id].isSuccess = true；
+      // TODO 开启流动性 swap
     } else {
       statue[id].isSuccess = false;
     }
