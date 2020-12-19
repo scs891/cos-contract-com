@@ -3,16 +3,17 @@ pragma solidity >=0.4.21 <0.7.0;
 
 
 contract Disco {
-  addrsss private _owner;
-  unit public time;
+  address private _owner;
+  address payable private _coinbase;
+
 
   // disco
-  struct Disco {
+  struct DiscoInfo {
     address walletAddr;
     address tokenContract;
     string description;
-    string fundRaisingTimeFrom;
-    string fundRaisingTimeTo;
+    uint256 fundRaisingTimeFrom;
+    uint256 fundRaisingTimeTo;
     uint256 investmentReward;
     uint256 rewardDeclineRate;
     uint256 shareToken;
@@ -26,9 +27,9 @@ contract Disco {
     // 投资人地址
     address investor;
     // 投资金额, 可以多次投资
-    uint[] value;
+    uint value;
      // 时间
-    string[] time;
+    uint time;
     // 募资比例获得TOKEN
     uint256 sharedToken;
     // 奖励TOKEN
@@ -46,22 +47,22 @@ contract Disco {
   }
 
   // 记录创建的disco
-  mapping (string => Disco) public discos;
+  mapping (string => DiscoInfo) public discos;
   // 记录投资人
   mapping (string => DiscoInvestor) public investors;
   // 记录投资的状态
   mapping (string => DiscoStatus) public status;
 
   // 创建
-  event createdDisco(discoId, disco);
+  event createdDisco(string discoId);
   // 开启
-  event enabeldDisco(discoId, disco);
+  event enabeldDisco(string discoId);
   // 募资成功的时候
-  event fundraisingSuccessed(discoId, disco);
+  event fundraisingSuccessed(string discoId);
   //募资结束（成功）
-  event fundraisingFinished(discoId, disco);
+  event fundraisingFinished(string discoIdo);
   // 募资失败
-  event fundraisingFailed(discoId, disco);
+  event fundraisingFailed(string discoId);
 
   // 判断是否是本人
   modifier isOwner() {
@@ -78,45 +79,45 @@ contract Disco {
     _coinbase = addr;
   }
 
-  function getCoinBase() returns(address) {
+  function getCoinBase() public view returns(address) {
     return _coinbase;
   }
 
-  function getDate() public returns(unit){
-    time = now;
-    return time;
+  // 合约时间
+  function getDate() public view returns(uint256){
+    return now;
   }
 
    /**
      * 募资转账 TODO
     */
-  function () payable {
-      // require('募资没有结束');
-      uint amount = msg.value;
-      balanceOf[msg.sender] += amount;
-      // amountRaised += amount;
-      // tokenReward.transfer(msg.sender, amount / price);
-      // TODO
-      FundTransfer(msg.sender, amount, true);
-  }
+  // function () payable {
+  //     // require('募资没有结束');
+  //     uint amount = msg.value;
+  //     balanceOf[msg.sender] += amount;
+  //     // amountRaised += amount;
+  //     // tokenReward.transfer(msg.sender, amount / price);
+  //     // TODO
+  //     FundTransfer(msg.sender, amount, true);
+  // }
 
   // 创建Disco
   function newDisco(
     string memory id,
-    address walletAddr;
-    address tokenContract;
-    string description;
-    string fundRaisingTimeFrom;
-    string fundRaisingTimeTo;
-    uint256 investmentReward;
-    uint256 rewardDeclineRate;
-    uint256 shareToken;
-    uint256 minFundRaising;
-    uint256 addLiquidityPool;
-    uint256 totalDepositToken;
-  ) {
-    require(!this.discos[id]);
-    Disco memory d = Disco(
+    address walletAddr,
+    address tokenContract,
+    string memory description,
+    uint256 fundRaisingTimeFrom,
+    uint256 fundRaisingTimeTo,
+    uint256 investmentReward,
+    uint256 rewardDeclineRate,
+    uint256 shareToken,
+    uint256 minFundRaising,
+    uint256 addLiquidityPool,
+    uint256 totalDepositToken
+  ) public {
+    require(_coinbase != address(0));
+    DiscoInfo memory d = DiscoInfo(
       walletAddr,
       tokenContract,
       description,
@@ -127,71 +128,67 @@ contract Disco {
       shareToken,
       minFundRaising,
       addLiquidityPool,
-      totalDepositToken,
-      false,
-      false
+      totalDepositToken
     );
     DiscoStatus memory s = DiscoStatus(
       false,
       false,
-      false,
-    )
+      false
+    );
     discos[id] = d;
     status[id] = s;
     
     // disco 创建成功
-    emit createdDisco(id, discos[id])
+    emit createdDisco(id);
   }
 
     // 开启募资
   function enableDisco(string memory id) public {
-    reuqire(disco[id] &&  discos[id].fundRaisingTimeFrom > getDate() && discos[id].fundRaisingTimeTo < getData());
+    require(discos[id].fundRaisingTimeFrom > now);
+    require(discos[id].fundRaisingTimeTo < now);
     require(!status[id].isEnabled);
     status[id].isEnabled = true;
     // 发送开启募资的事件
-    emit enabeldDisco(id, discos[id]);
+    emit enabeldDisco(id);
   }
 
 
   // 获取 disco
-  function getDisco(string memory id) public view returns(Disco) {
-    return (
-      discos[id];
-    );
-  }
+  // function getDisco(string memory id) public view returns(string DiscoInfo) {
+  //   return discos[id];
+  // }
 
-  // 募资结束
-  function finishedDisco(string memory id) public returns(bool) {
-    require(status[id].isFinished !== true);
-    status[id].isFinished = true;
+  // // 募资结束
+  // function finishedDisco(string memory id) public returns(bool) {
+  //   require(!status[id].isFinished);
+  //   status[id].isFinished = true;
 
-    // TODO 结束的时候需要检查募资是否成功或者失败
-    if ('成功') {
-      status[id].isSuccess = true；
-      // TODO 开启流动性 swap
-    } else {
-      statue[id].isSuccess = false;
-    }
-    emit fundraisingFinished(id);
-  }
+  //   // TODO 结束的时候需要检查募资是否成功或者失败
+  //   if ('成功') {
+  //     status[id].isSuccess = true;
+  //     // TODO 开启流动性 swap
+  //   } else {
+  //     status[id].isSuccess = false;
+  //   }
+  //   emit fundraisingFinished(id);
+  // }
 
   // 发起募资, 记录募资的信息， 可能会多次募资
   function investor(
       string memory id,
-      address address,
+      address investorAddress,
       uint256 value,
-      string time,
+      uint256 time,
       uint256 sharedToken,
-      uint256 rewardedToken,
-
+      uint256 rewardedToken
     ) public {
      DiscoInvestor memory i = DiscoInvestor(
-      address, 
-      [value], 
-      [time]
+      investorAddress, 
+      value, 
+      time,
       sharedToken,
       rewardedToken
-    )
+    );
     investors[id] = i;
   }
 }
