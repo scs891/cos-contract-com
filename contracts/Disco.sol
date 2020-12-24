@@ -137,7 +137,7 @@ contract Disco {
     );
     discos[id] = d;
     status[id] = s;
-    
+
     // disco 创建成功
     emit createdDisco(id);
   }
@@ -183,8 +183,8 @@ contract Disco {
       uint256 rewardedToken
     ) public {
      DiscoInvestor memory i = DiscoInvestor(
-      investorAddress, 
-      value, 
+      investorAddress,
+      value,
       time,
       sharedToken,
       rewardedToken
