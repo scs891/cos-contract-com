@@ -15,6 +15,7 @@ comunion 合约
 - IRO.sol 对应 Setting 的合约
 - Bounty.sol 对应 bounty 的合约
 - Disco.sol 对应 DISCO 的合约
+- UniswapV2Router01.sol
 
 # 文件结构说明
 
@@ -26,3 +27,7 @@ comunion 合约
 - 合约由 truffle 初始化创建
 - 编译： truffle compile
 - 部署： truffle migrate
+
+# Additional
+1. prior to migrate UniswapV2Factory 
+2. UniswapV2Factory: https://github.com/Uniswap/uniswap-v2-core

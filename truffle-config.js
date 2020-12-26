@@ -21,7 +21,7 @@
 const HDWalletProvider = require('truffle-hdwallet-provider')
 const infuraKey = '4790cd7bb24349738a3b05ee0c20746e'
 //
-// const fs = require('fs');
+const fs = require('fs');
 const mnemonic = fs.readFileSync('.secret').toString().trim()
 
 module.exports = {
@@ -44,8 +44,9 @@ module.exports = {
 				)
 			},
 			network_id: '5', // eslint-disable-line camelcase
-			gas: 4465030,
+			gas: 7500000, //4465030
 			gasPrice: 5000000000,
+			timeoutBlocks: 50000000,
 		},
 
 		// Useful for testing. The `development` name is special - truffle uses it by default
@@ -54,11 +55,11 @@ module.exports = {
 		// tab if you use this network and you must also set the `host`, `port` and `network_id`
 		// options below to some value.
 		//
-		// development: {
-		//  host: "127.0.0.1",     // Localhost (default: none)
-		//  port: 8545,            // Standard Ethereum port (default: none)
-		//  network_id: "*",       // Any network (default: none)
-		// },
+		 development: {
+		  host: "127.0.0.1",     // Localhost (default: none)
+		  port: 7545,            // Standard Ethereum port (default: none)
+		  network_id: "*",       // Any network (default: none)
+		 },
 
 		// Another network with more advanced options...
 		// advanced: {
@@ -91,13 +92,13 @@ module.exports = {
 
 	// Set default mocha options here, use special reporters etc.
 	mocha: {
-		// timeout: 100000
+		 timeout: 500000
 	},
 
 	// Configure your compilers
 	compilers: {
 		solc: {
-			// version: "0.5.1",    // Fetch exact version from solc-bin (default: truffle's version)
+			 version: "0.5.16",    // Fetch exact version from solc-bin (default: truffle's version)
 			// docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
 			// settings: {          // See the solidity docs for advice about optimization and evmVersion
 			//  optimizer: {
