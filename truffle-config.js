@@ -21,7 +21,7 @@
 const HDWalletProvider = require('truffle-hdwallet-provider')
 const infuraKey = '4790cd7bb24349738a3b05ee0c20746e'
 //
-// const fs = require('fs');
+const fs = require('fs')
 const mnemonic = fs.readFileSync('.secret').toString().trim()
 
 module.exports = {
@@ -46,6 +46,7 @@ module.exports = {
 			network_id: '5', // eslint-disable-line camelcase
 			gas: 4465030,
 			gasPrice: 5000000000,
+			from: '0xF98A7F9E86DCE7298F3be4778ACd692D649c5228',
 		},
 
 		// Useful for testing. The `development` name is special - truffle uses it by default
@@ -91,7 +92,7 @@ module.exports = {
 
 	// Set default mocha options here, use special reporters etc.
 	mocha: {
-		// timeout: 100000
+		timeout: 200000,
 	},
 
 	// Configure your compilers

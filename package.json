@@ -1,0 +1,31 @@
+{
+  "name": "cos-contract-com",
+  "version": "1.0.0",
+  "description": "the contract of comunion",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "truffle-hdwallet-provider": "^1.0.17"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "compile": "truffle compile",
+    "goerli": "truffle migrate --network goerli"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/comunion-io/cos-contract-com.git"
+  },
+  "keywords": [
+    "comunion",
+    "contract"
+  ],
+  "author": "wangxin , zehui",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/comunion-io/cos-contract-com/issues"
+  },
+  "homepage": "https://github.com/comunion-io/cos-contract-com#readme"
+}
