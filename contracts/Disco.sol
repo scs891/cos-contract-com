@@ -1,7 +1,6 @@
 // Disco 上链
 pragma solidity >=0.4.21 <0.7.0;
 
-
 contract Disco {
   address private _owner;
   address payable private _coinbase;
@@ -10,10 +9,10 @@ contract Disco {
   // disco
   struct DiscoInfo {
     address walletAddr;
-    address tokenContract;
+    address tokenAddr;
     string description;
-    uint256 fundRaisingTimeFrom;
-    uint256 fundRaisingTimeTo;
+    uint256 fundRaisingStartedAt;
+    uint256 fundRaisingEndedAt;
     uint256 investmentReward;
     uint256 rewardDeclineRate;
     uint256 shareToken;
@@ -63,6 +62,8 @@ contract Disco {
   event fundraisingFinished(string discoIdo);
   // 募资失败
   event fundraisingFailed(string discoId);
+  // 投资者向 disco 投钱
+  event investToDisco(string discoId);
 
   // 判断是否是本人
   modifier isOwner() {
@@ -83,7 +84,7 @@ contract Disco {
     return _coinbase;
   }
 
-  // 合约时间
+  //  获取当前时间
   function getDate() public view returns(uint256){
     return now;
   }
@@ -105,10 +106,10 @@ contract Disco {
   function newDisco(
     string memory id,
     address walletAddr,
-    address tokenContract,
+    address tokenAddr,
     string memory description,
-    uint256 fundRaisingTimeFrom,
-    uint256 fundRaisingTimeTo,
+    uint256 fundRaisingStartedAt,
+    uint256 fundRaisingEndedAt,
     uint256 investmentReward,
     uint256 rewardDeclineRate,
     uint256 shareToken,
@@ -119,10 +120,10 @@ contract Disco {
     require(_coinbase != address(0));
     DiscoInfo memory d = DiscoInfo(
       walletAddr,
-      tokenContract,
+      tokenAddr,
       description,
-      fundRaisingTimeFrom,
-      fundRaisingTimeTo,
+      fundRaisingStartedAt,
+      fundRaisingEndedAt,
       investmentReward,
       rewardDeclineRate,
       shareToken,
@@ -144,8 +145,8 @@ contract Disco {
 
     // 开启募资
   function enableDisco(string memory id) public {
-    require(discos[id].fundRaisingTimeFrom > now);
-    require(discos[id].fundRaisingTimeTo < now);
+    require(discos[id].fundRaisingStartedAt > now);
+    require(discos[id].fundRaisingEndedAt < now);
     require(!status[id].isEnabled);
     status[id].isEnabled = true;
     // 发送开启募资的事件
