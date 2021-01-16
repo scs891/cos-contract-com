@@ -76,12 +76,10 @@ contract Disco {
         _owner = msg.sender;
   }
 
-  function setCoinBase(address payable addr) isOwner public {
+  function setCoinBase(address payable addr)
+  isOwner
+  public {
     _coinbase = addr;
-  }
-
-  function getCoinBase() public view returns(address) {
-    return _coinbase;
   }
 
   //  获取当前时间
@@ -102,7 +100,8 @@ contract Disco {
   //     FundTransfer(msg.sender, amount, true);
   // }
 
-  // 创建Disco
+
+   // 创建Disco
   function newDisco(
     string memory id,
     address walletAddr,
@@ -116,7 +115,7 @@ contract Disco {
     uint256 minFundRaising,
     uint256 addLiquidityPool,
     uint256 totalDepositToken
-  ) public {
+  ) public payable {
     require(_coinbase != address(0));
     DiscoInfo memory d = DiscoInfo(
       walletAddr,
@@ -154,7 +153,6 @@ contract Disco {
   }
 
 
-  // 获取 disco
   // function getDisco(string memory id) public view returns(string DiscoInfo) {
   //   return discos[id];
   // }

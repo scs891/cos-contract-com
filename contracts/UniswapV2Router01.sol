@@ -1242,10 +1242,10 @@ contract UniswapV2Router01 is IUniswapV2Router01 {
     /**
      * @dev 根据精确的token交换尽量多的ETH
      * @param amountIn 精确输入数额
-     * @param amountOutMin 最小输出数额
-     * @param path 路径数组
-     * @param to to地址
-     * @param deadline 最后期限
+     * @param amountOutMin 最小输出数额（hard code）
+     * @param path 路径数组（token地址， ether 地址）
+     * @param to to地址 （用户地址）
+     * @param deadline 最后期限（时间限制）
      * @return amounts[]  数额数组
      */
     function swapExactTokensForETH(
