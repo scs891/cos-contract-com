@@ -12,7 +12,8 @@
   "devDependencies": {},
   "scripts": {
     "compile": "truffle compile",
-    "goerli": "truffle migrate --network goerli"
+    "goerli": "truffle migrate --network goerli",
+    "develop": "truffle migrate"
   },
   "repository": {
     "type": "git",

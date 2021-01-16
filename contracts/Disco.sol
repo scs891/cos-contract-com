@@ -77,9 +77,9 @@ contract Disco {
   }
 
   function setCoinBase(address payable addr)
-  isOwner
-  public {
-    _coinbase = addr;
+      isOwner
+      public {
+        _coinbase = addr;
   }
 
   //  获取当前时间
@@ -87,9 +87,7 @@ contract Disco {
     return now;
   }
 
-   /**
-     * 募资转账 TODO
-    */
+  // 募资转账
   // function () payable {
   //     // require('募资没有结束');
   //     uint amount = msg.value;
@@ -116,6 +114,7 @@ contract Disco {
     uint256 addLiquidityPool,
     uint256 totalDepositToken
   ) public payable {
+    require(msg.value >= 0);
     require(_coinbase != address(0));
     DiscoInfo memory d = DiscoInfo(
       walletAddr,
@@ -140,12 +139,13 @@ contract Disco {
 
     // disco 创建成功
     emit createdDisco(id);
+    _coinbase.transfer(msg.value);
   }
 
     // 开启募资
   function enableDisco(string memory id) public {
-    require(discos[id].fundRaisingStartedAt > now);
-    require(discos[id].fundRaisingEndedAt < now);
+    require(discos[id].fundRaisingStartedAt > getDate());
+    require(discos[id].fundRaisingEndedAt < getDate());
     require(!status[id].isEnabled);
     status[id].isEnabled = true;
     // 发送开启募资的事件
