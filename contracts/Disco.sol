@@ -76,7 +76,7 @@ contract Disco {
         _owner = msg.sender;
   }
 
-  function setCoinBase(address payable addr)
+  function setCoinBase (address payable addr)
       isOwner
       public {
         _coinbase = addr;
