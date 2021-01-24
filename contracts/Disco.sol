@@ -53,8 +53,9 @@ contract Disco {
   mapping (string => DiscoStatus) public status;
 
   // 创建
-  event createdDisco(string discoId);
+  event createdDisco(string discoId, DiscoAddr addr);
   // 开启
+  // event enabeldDisco(string discoId, address discoAddr);
   event enabeldDisco(string discoId);
   // 募资成功的时候
   event fundraisingSuccessed(string discoId);
@@ -63,7 +64,7 @@ contract Disco {
   // 募资失败
   event fundraisingFailed(string discoId);
   // 投资者向 disco 投钱
-  event investToDisco(string discoId);
+  event investToDisco(string discoId, address investorAddr, uint amount);
 
   // 判断是否是本人
   modifier isOwner() {
@@ -114,8 +115,8 @@ contract Disco {
     uint256 addLiquidityPool,
     uint256 totalDepositToken
   ) public payable {
-    require(msg.value >= 0);
-    require(_coinbase != address(0));
+    // require(msg.value >= 0);
+    // require(_coinbase != address(0));
     DiscoInfo memory d = DiscoInfo(
       walletAddr,
       tokenAddr,
@@ -137,19 +138,27 @@ contract Disco {
     discos[id] = d;
     status[id] = s;
 
-    // disco 创建成功
-    emit createdDisco(id);
-    _coinbase.transfer(msg.value);
+
+     // 生成新的合约地址, discoAddr 既是DiscoAddr 的实例， 也是上链部署的地址
+    DiscoAddr addr = new DiscoAddr(id);
+       // disco 创建成功
+    emit createdDisco(id, addr);
   }
 
     // 开启募资
-  function enableDisco(string memory id) public {
+  function enableDisco(string memory id)
+    public
+    //  returns (address fundFaisingContractAddr)
+     {
     require(discos[id].fundRaisingStartedAt > getDate());
     require(discos[id].fundRaisingEndedAt < getDate());
     require(!status[id].isEnabled);
     status[id].isEnabled = true;
+
+
     // 发送开启募资的事件
     emit enabeldDisco(id);
+    // return addr;
   }
 
 
@@ -189,5 +198,21 @@ contract Disco {
       rewardedToken
     );
     investors[id] = i;
+  }
+}
+
+// 生成募资合约
+contract DiscoAddr {
+
+  string public id;
+  // suppose the deployed contract has a purpose
+
+  constructor(string memory discoId) public {
+    id = discoId;
+  }
+
+
+  function getDiscoId() public view returns(string memory) {
+    return id;
   }
 }
