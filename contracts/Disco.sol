@@ -145,20 +145,20 @@ contract Disco {
     emit createdDisco(id, addr);
   }
 
-    // 开启募资
-  function enableDisco(string memory id)
-    public
-    //  returns (address fundFaisingContractAddr)
-     {
+
+  /**
+   * @dev 开启disco
+   * @param {*}
+   * @return {*}
+   */
+  function enableDisco(string memory id) public {
     require(discos[id].fundRaisingStartedAt > getDate());
     require(discos[id].fundRaisingEndedAt < getDate());
     require(!status[id].isEnabled);
+
     status[id].isEnabled = true;
-
-
     // 发送开启募资的事件
     emit enabeldDisco(id);
-    // return addr;
   }
 
 
