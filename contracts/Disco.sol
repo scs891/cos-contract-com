@@ -29,10 +29,10 @@ contract Disco {
     uint value;
      // 时间
     uint time;
-    // 募资比例获得TOKEN
-    uint256 sharedToken;
-    // 奖励TOKEN
-    uint256 rewardedToken;
+    // // 募资比例获得TOKEN
+    // uint256 sharedToken;
+    // // 奖励TOKEN
+    // uint256 rewardedToken;
   }
 
   // disco的状态
@@ -45,12 +45,18 @@ contract Disco {
     bool isEnabled;
   }
 
+  struct DiscoInvestAddr {
+    DiscoAddr discoAddr;
+  }
+
   // 记录创建的disco
   mapping (string => DiscoInfo) public discos;
   // 记录投资人
   mapping (string => DiscoInvestor) public investors;
   // 记录投资的状态
   mapping (string => DiscoStatus) public status;
+  // 记录 disco 的募资地址
+  mapping (string => DiscoInvestAddr) public discoAddress;
 
   // 创建
   event createdDisco(string discoId, DiscoAddr addr);
@@ -88,19 +94,7 @@ contract Disco {
     return now;
   }
 
-  // 募资转账
-  // function () payable {
-  //     // require('募资没有结束');
-  //     uint amount = msg.value;
-  //     balanceOf[msg.sender] += amount;
-  //     // amountRaised += amount;
-  //     // tokenReward.transfer(msg.sender, amount / price);
-  //     // TODO
-  //     FundTransfer(msg.sender, amount, true);
-  // }
-
-
-   // 创建Disco
+  // 创建Disco
   function newDisco(
     string memory id,
     address walletAddr,
@@ -115,8 +109,6 @@ contract Disco {
     uint256 addLiquidityPool,
     uint256 totalDepositToken
   ) public payable {
-    // require(msg.value >= 0);
-    // require(_coinbase != address(0));
     DiscoInfo memory d = DiscoInfo(
       walletAddr,
       tokenAddr,
@@ -139,65 +131,64 @@ contract Disco {
     status[id] = s;
 
 
-     // 生成新的合约地址, discoAddr 既是DiscoAddr 的实例， 也是上链部署的地址
+    // 生成新的合约地址, discoAddr 既是DiscoAddr 的实例， 也是上链部署的地址
     DiscoAddr addr = new DiscoAddr(id);
+    // disco id 与 disco 合约地址的映射
+    // DiscoInvestAddr memory discoInvestAddr = DiscoInvestAddr(addr);
+    // discoAddress[id] = discoInvestAddr;
        // disco 创建成功
     emit createdDisco(id, addr);
   }
 
-    // 开启募资
-  function enableDisco(string memory id)
-    public
-    //  returns (address fundFaisingContractAddr)
-     {
+
+  /**
+   * @dev 开启disco
+   */
+  function enableDisco(string memory id) public {
     require(discos[id].fundRaisingStartedAt > getDate());
     require(discos[id].fundRaisingEndedAt < getDate());
     require(!status[id].isEnabled);
+
     status[id].isEnabled = true;
-
-
     // 发送开启募资的事件
     emit enabeldDisco(id);
-    // return addr;
   }
 
 
-  // function getDisco(string memory id) public view returns(string DiscoInfo) {
-  //   return discos[id];
-  // }
 
-  // // 募资结束
-  // function finishedDisco(string memory id) public returns(bool) {
-  //   require(!status[id].isFinished);
-  //   status[id].isFinished = true;
+  /**
+   * @dev 后端调用， 触发disco的结束， 由合约来判断disco的募资是否成功
+   */
+  function finishedDisco(string memory id) public {
+    require(!status[id].isFinished);
+    status[id].isFinished = true;
 
-  //   // TODO 结束的时候需要检查募资是否成功或者失败
-  //   if ('成功') {
-  //     status[id].isSuccess = true;
-  //     // TODO 开启流动性 swap
-  //   } else {
-  //     status[id].isSuccess = false;
-  //   }
-  //   emit fundraisingFinished(id);
-  // }
+    // TODO 结束的时候需要检查募资是否成功或者失败
+    status[id].isSuccess = true;
+    // if ('成功') {
+    //   status[id].isSuccess = true;
+    //   // TODO 开启流动性 swap
+    // } else {
+    //   status[id].isSuccess = false;
+    // }
+    emit fundraisingFinished(id);
+  }
 
   // 发起募资, 记录募资的信息， 可能会多次募资
   function investor(
-      string memory id,
-      address investorAddress,
-      uint256 value,
-      uint256 time,
-      uint256 sharedToken,
-      uint256 rewardedToken
-    ) public {
-     DiscoInvestor memory i = DiscoInvestor(
+    string memory id,
+    address payable investorAddress,
+    uint256 time) public payable{
+     require(_coinbase != address(0));
+     DiscoInvestor memory d = DiscoInvestor(
       investorAddress,
-      value,
-      time,
-      sharedToken,
-      rewardedToken
+      msg.value,
+      time
     );
-    investors[id] = i;
+    investors[id] = d;
+    investorAddress.transfer(msg.value);
+
+    emit investToDisco(id, investorAddress, msg.value);
   }
 }
 
