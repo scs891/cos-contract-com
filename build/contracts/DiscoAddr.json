@@ -44,24 +44,24 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"string\",\"name\":\"discoId\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"constant\":true,\"inputs\":[],\"name\":\"getDiscoId\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"id\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/F/cos-contract-com/contracts/Disco.sol\":\"DiscoAddr\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/F/cos-contract-com/contracts/Disco.sol\":{\"keccak256\":\"0x104f7b86a73c36d504f189cc7d9febfe1056767fa856734b9fdffdcfc8345b41\",\"urls\":[\"bzz-raw://3b0e7082ca294c609bb529f206fefbe9c4136c73a90ad0163bdd4e05dc66deb8\",\"dweb:/ipfs/QmdWFaQhsbWaQH3rC8sGDyvLG1eo4E3DJCpVq2Crr5yspD\"]}},\"version\":1}",
-  "bytecode": "0x608060405234801561001057600080fd5b506040516104753803806104758339818101604052602081101561003357600080fd5b810190808051604051939291908464010000000082111561005357600080fd5b8382019150602082018581111561006957600080fd5b825186600182028301116401000000008211171561008657600080fd5b8083526020830192505050908051906020019080838360005b838110156100ba57808201518184015260208101905061009f565b50505050905090810190601f1680156100e75780820380516001836020036101000a031916815260200191505b50604052505050806000908051906020019061010492919061010b565b50506101b0565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061014c57805160ff191683800117855561017a565b8280016001018555821561017a579182015b8281111561017957825182559160200191906001019061015e565b5b509050610187919061018b565b5090565b6101ad91905b808211156101a9576000816000905550600101610191565b5090565b90565b6102b6806101bf6000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c8063af640d0f1461003b578063fb1e6a62146100be575b600080fd5b610043610141565b6040518080602001828103825283818151815260200191508051906020019080838360005b83811015610083578082015181840152602081019050610068565b50505050905090810190601f1680156100b05780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b6100c66101df565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156101065780820151818401526020810190506100eb565b50505050905090810190601f1680156101335780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b60008054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156101d75780601f106101ac576101008083540402835291602001916101d7565b820191906000526020600020905b8154815290600101906020018083116101ba57829003601f168201915b505050505081565b606060008054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156102775780601f1061024c57610100808354040283529160200191610277565b820191906000526020600020905b81548152906001019060200180831161025a57829003601f168201915b505050505090509056fea265627a7a72315820500d0aba540b30a077f0c0384eebbcf402b56ecb6a7625a47425ea8aa60dfa8964736f6c63430005100032",
-  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100365760003560e01c8063af640d0f1461003b578063fb1e6a62146100be575b600080fd5b610043610141565b6040518080602001828103825283818151815260200191508051906020019080838360005b83811015610083578082015181840152602081019050610068565b50505050905090810190601f1680156100b05780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b6100c66101df565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156101065780820151818401526020810190506100eb565b50505050905090810190601f1680156101335780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b60008054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156101d75780601f106101ac576101008083540402835291602001916101d7565b820191906000526020600020905b8154815290600101906020018083116101ba57829003601f168201915b505050505081565b606060008054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156102775780601f1061024c57610100808354040283529160200191610277565b820191906000526020600020905b81548152906001019060200180831161025a57829003601f168201915b505050505090509056fea265627a7a72315820500d0aba540b30a077f0c0384eebbcf402b56ecb6a7625a47425ea8aa60dfa8964736f6c63430005100032",
-  "sourceMap": "4924:256:1:-;;;5023:67;8:9:-1;5:2;;;30:1;27;20:12;5:2;5023:67:1;;;;;;;;;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;5023:67:1;;;;;;;;;;;;;19:11:-1;14:3;11:20;8:2;;;44:1;41;34:12;8:2;71:11;66:3;62:21;55:28;;123:4;118:3;114:14;159:9;141:16;138:31;135:2;;;182:1;179;172:12;135:2;219:3;213:10;330:9;325:1;311:12;307:20;289:16;285:43;282:58;261:11;247:12;244:29;233:115;230:2;;;361:1;358;351:12;230:2;384:12;379:3;372:25;420:4;415:3;411:14;404:21;;0:432;;5023:67:1;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;5023:67:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;5077:7;5072:2;:12;;;;;;;;;;;;:::i;:::-;;5023:67;4924:256;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;",
-  "deployedSourceMap": "4924:256:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;4924:256:1;;;;;;;;;;;;;;;;;;;;;;;;4950:16;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;4950:16:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;5098:79;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;5098:79:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;4950:16;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;5098:79::-;5140:13;5169:2;5162:9;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;5098:79;:::o",
-  "source": "// Disco 上链\r\npragma solidity >=0.4.21 <0.7.0;\r\n\r\ncontract Disco {\r\n  address private _owner;\r\n  address payable private _coinbase;\r\n\r\n\r\n  // disco\r\n  struct DiscoInfo {\r\n    address walletAddr;\r\n    address tokenAddr;\r\n    string description;\r\n    uint256 fundRaisingStartedAt;\r\n    uint256 fundRaisingEndedAt;\r\n    uint256 investmentReward;\r\n    uint256 rewardDeclineRate;\r\n    uint256 shareToken;\r\n    uint256 minFundRaising;\r\n    uint256 addLiquidityPool;\r\n    uint256 totalDepositToken;\r\n  }\r\n\r\n  // disco 投资人信息\r\n  struct DiscoInvestor {\r\n    // 投资人地址\r\n    address investor;\r\n    // 投资金额, 可以多次投资\r\n    uint value;\r\n     // 时间\r\n    uint time;\r\n    // // 募资比例获得TOKEN\r\n    // uint256 sharedToken;\r\n    // // 奖励TOKEN\r\n    // uint256 rewardedToken;\r\n  }\r\n\r\n  // disco的状态\r\n  struct DiscoStatus {\r\n    // 募资是否结束\r\n    bool isFinished;\r\n    // 募资是否成功\r\n    bool isSuccess;\r\n    // 募资是否开启；\r\n    bool isEnabled;\r\n  }\r\n\r\n  struct DiscoInvestAddr {\r\n    DiscoAddr discoAddr;\r\n  }\r\n\r\n  // 记录创建的disco\r\n  mapping (string => DiscoInfo) public discos;\r\n  // 记录投资人\r\n  mapping (string => DiscoInvestor) public investors;\r\n  // 记录投资的状态\r\n  mapping (string => DiscoStatus) public status;\r\n  // 记录 disco 的募资地址\r\n  mapping (string => DiscoInvestAddr) public discoAddress;\r\n\r\n  // 创建\r\n  event createdDisco(string discoId, DiscoAddr addr);\r\n  // 开启\r\n  // event enabeldDisco(string discoId, address discoAddr);\r\n  event enabeldDisco(string discoId);\r\n  // 募资成功的时候\r\n  event fundraisingSuccessed(string discoId);\r\n  //募资结束（成功）\r\n  event fundraisingFinished(string discoIdo);\r\n  // 募资失败\r\n  event fundraisingFailed(string discoId);\r\n  // 投资者向 disco 投钱\r\n  event investToDisco(string discoId, address investorAddr, uint amount);\r\n\r\n  // 判断是否是本人\r\n  modifier isOwner() {\r\n    require(msg.sender == _owner);\r\n    _;\r\n  }\r\n\r\n  constructor()\r\n    public {\r\n        _owner = msg.sender;\r\n  }\r\n\r\n  function setCoinBase (address payable addr)\r\n      isOwner\r\n      public {\r\n        _coinbase = addr;\r\n  }\r\n\r\n  //  获取当前时间\r\n  function getDate() public view returns(uint256){\r\n    return now;\r\n  }\r\n\r\n  // 创建Disco\r\n  function newDisco(\r\n    string memory id,\r\n    address walletAddr,\r\n    address tokenAddr,\r\n    string memory description,\r\n    uint256 fundRaisingStartedAt,\r\n    uint256 fundRaisingEndedAt,\r\n    uint256 investmentReward,\r\n    uint256 rewardDeclineRate,\r\n    uint256 shareToken,\r\n    uint256 minFundRaising,\r\n    uint256 addLiquidityPool,\r\n    uint256 totalDepositToken\r\n  ) public payable {\r\n    DiscoInfo memory d = DiscoInfo(\r\n      walletAddr,\r\n      tokenAddr,\r\n      description,\r\n      fundRaisingStartedAt,\r\n      fundRaisingEndedAt,\r\n      investmentReward,\r\n      rewardDeclineRate,\r\n      shareToken,\r\n      minFundRaising,\r\n      addLiquidityPool,\r\n      totalDepositToken\r\n    );\r\n    DiscoStatus memory s = DiscoStatus(\r\n      false,\r\n      false,\r\n      false\r\n    );\r\n    discos[id] = d;\r\n    status[id] = s;\r\n\r\n\r\n    // 生成新的合约地址, discoAddr 既是DiscoAddr 的实例， 也是上链部署的地址\r\n    DiscoAddr addr = new DiscoAddr(id);\r\n    // disco id 与 disco 合约地址的映射\r\n    // DiscoInvestAddr memory discoInvestAddr = DiscoInvestAddr(addr);\r\n    // discoAddress[id] = discoInvestAddr;\r\n       // disco 创建成功\r\n    emit createdDisco(id, addr);\r\n  }\r\n\r\n\r\n  /**\r\n   * @dev 开启disco\r\n   */\r\n  function enableDisco(string memory id) public {\r\n    require(discos[id].fundRaisingStartedAt > getDate());\r\n    require(discos[id].fundRaisingEndedAt < getDate());\r\n    require(!status[id].isEnabled);\r\n\r\n    status[id].isEnabled = true;\r\n    // 发送开启募资的事件\r\n    emit enabeldDisco(id);\r\n  }\r\n\r\n\r\n\r\n  /**\r\n   * @dev 后端调用， 触发disco的结束， 由合约来判断disco的募资是否成功\r\n   */\r\n  function finishedDisco(string memory id) public {\r\n    require(!status[id].isFinished);\r\n    status[id].isFinished = true;\r\n\r\n    // TODO 结束的时候需要检查募资是否成功或者失败\r\n    status[id].isSuccess = true;\r\n    // if ('成功') {\r\n    //   status[id].isSuccess = true;\r\n    //   // TODO 开启流动性 swap\r\n    // } else {\r\n    //   status[id].isSuccess = false;\r\n    // }\r\n    emit fundraisingFinished(id);\r\n  }\r\n\r\n  // 发起募资, 记录募资的信息， 可能会多次募资\r\n  function investor(\r\n    string memory id,\r\n    address payable investorAddress,\r\n    uint256 time) public payable{\r\n     require(_coinbase != address(0));\r\n     DiscoInvestor memory d = DiscoInvestor(\r\n      investorAddress,\r\n      msg.value,\r\n      time\r\n    );\r\n    investors[id] = d;\r\n    investorAddress.transfer(msg.value);\r\n\r\n    emit investToDisco(id, investorAddress, msg.value);\r\n  }\r\n}\r\n\r\n// 生成募资合约\r\ncontract DiscoAddr {\r\n\r\n  string public id;\r\n  // suppose the deployed contract has a purpose\r\n\r\n  constructor(string memory discoId) public {\r\n    id = discoId;\r\n  }\r\n\r\n\r\n  function getDiscoId() public view returns(string memory) {\r\n    return id;\r\n  }\r\n}\r\n",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"string\",\"name\":\"discoId\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"constant\":true,\"inputs\":[],\"name\":\"getDiscoId\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"id\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/F/cos-contract-com/contracts/Disco.sol\":\"DiscoAddr\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/F/cos-contract-com/contracts/Disco.sol\":{\"keccak256\":\"0xc07aecf31bf6231d8014f3f060d98255fb6affed7a4658e6a486b4f97e99252f\",\"urls\":[\"bzz-raw://93196cef264553f726c88278027edd52c2bc054667ba9203ad1abc1745c10812\",\"dweb:/ipfs/QmWQotUvA5XKCZzXoFZkXt8Ct1iWsY8P8M7GRg84tVNA9X\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b506040516104753803806104758339818101604052602081101561003357600080fd5b810190808051604051939291908464010000000082111561005357600080fd5b8382019150602082018581111561006957600080fd5b825186600182028301116401000000008211171561008657600080fd5b8083526020830192505050908051906020019080838360005b838110156100ba57808201518184015260208101905061009f565b50505050905090810190601f1680156100e75780820380516001836020036101000a031916815260200191505b50604052505050806000908051906020019061010492919061010b565b50506101b0565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061014c57805160ff191683800117855561017a565b8280016001018555821561017a579182015b8281111561017957825182559160200191906001019061015e565b5b509050610187919061018b565b5090565b6101ad91905b808211156101a9576000816000905550600101610191565b5090565b90565b6102b6806101bf6000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c8063af640d0f1461003b578063fb1e6a62146100be575b600080fd5b610043610141565b6040518080602001828103825283818151815260200191508051906020019080838360005b83811015610083578082015181840152602081019050610068565b50505050905090810190601f1680156100b05780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b6100c66101df565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156101065780820151818401526020810190506100eb565b50505050905090810190601f1680156101335780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b60008054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156101d75780601f106101ac576101008083540402835291602001916101d7565b820191906000526020600020905b8154815290600101906020018083116101ba57829003601f168201915b505050505081565b606060008054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156102775780601f1061024c57610100808354040283529160200191610277565b820191906000526020600020905b81548152906001019060200180831161025a57829003601f168201915b505050505090509056fea265627a7a72315820f77c42dd10aed2dd7831c013b2aecd168c1cca6f3b19954bfde8718d2b97869364736f6c63430005100032",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100365760003560e01c8063af640d0f1461003b578063fb1e6a62146100be575b600080fd5b610043610141565b6040518080602001828103825283818151815260200191508051906020019080838360005b83811015610083578082015181840152602081019050610068565b50505050905090810190601f1680156100b05780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b6100c66101df565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156101065780820151818401526020810190506100eb565b50505050905090810190601f1680156101335780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b60008054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156101d75780601f106101ac576101008083540402835291602001916101d7565b820191906000526020600020905b8154815290600101906020018083116101ba57829003601f168201915b505050505081565b606060008054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156102775780601f1061024c57610100808354040283529160200191610277565b820191906000526020600020905b81548152906001019060200180831161025a57829003601f168201915b505050505090509056fea265627a7a72315820f77c42dd10aed2dd7831c013b2aecd168c1cca6f3b19954bfde8718d2b97869364736f6c63430005100032",
+  "sourceMap": "4933:256:1:-;;;5032:67;8:9:-1;5:2;;;30:1;27;20:12;5:2;5032:67:1;;;;;;;;;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;5032:67:1;;;;;;;;;;;;;19:11:-1;14:3;11:20;8:2;;;44:1;41;34:12;8:2;71:11;66:3;62:21;55:28;;123:4;118:3;114:14;159:9;141:16;138:31;135:2;;;182:1;179;172:12;135:2;219:3;213:10;330:9;325:1;311:12;307:20;289:16;285:43;282:58;261:11;247:12;244:29;233:115;230:2;;;361:1;358;351:12;230:2;384:12;379:3;372:25;420:4;415:3;411:14;404:21;;0:432;;5032:67:1;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;5032:67:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;5086:7;5081:2;:12;;;;;;;;;;;;:::i;:::-;;5032:67;4933:256;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;",
+  "deployedSourceMap": "4933:256:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;4933:256:1;;;;;;;;;;;;;;;;;;;;;;;;4959:16;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;4959:16:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;5107:79;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;5107:79:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;4959:16;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;5107:79::-;5149:13;5178:2;5171:9;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;5107:79;:::o",
+  "source": "// Disco 上链\r\npragma solidity >=0.4.21 <0.7.0;\r\n\r\ncontract Disco {\r\n  address private _owner;\r\n  address payable private _coinbase;\r\n\r\n\r\n  // disco\r\n  struct DiscoInfo {\r\n    address walletAddr;\r\n    address tokenAddr;\r\n    string description;\r\n    uint256 fundRaisingStartedAt;\r\n    uint256 fundRaisingEndedAt;\r\n    uint256 investmentReward;\r\n    uint256 rewardDeclineRate;\r\n    uint256 shareToken;\r\n    uint256 minFundRaising;\r\n    uint256 addLiquidityPool;\r\n    uint256 totalDepositToken;\r\n  }\r\n\r\n  // disco 投资人信息\r\n  struct DiscoInvestor {\r\n    // 投资人地址\r\n    address investor;\r\n    // 投资金额, 可以多次投资\r\n    uint value;\r\n     // 时间\r\n    uint time;\r\n    // // 募资比例获得TOKEN\r\n    // uint256 sharedToken;\r\n    // // 奖励TOKEN\r\n    // uint256 rewardedToken;\r\n  }\r\n\r\n  // disco的状态\r\n  struct DiscoStatus {\r\n    // 募资是否结束\r\n    bool isFinished;\r\n    // 募资是否成功\r\n    bool isSuccess;\r\n    // 募资是否开启；\r\n    bool isEnabled;\r\n  }\r\n\r\n  struct DiscoInvestAddr {\r\n    DiscoAddr discoAddr;\r\n  }\r\n\r\n  // 记录创建的disco\r\n  mapping (string => DiscoInfo) public discos;\r\n  // 记录投资人\r\n  mapping (string => DiscoInvestor) public investors;\r\n  // 记录投资的状态\r\n  mapping (string => DiscoStatus) public status;\r\n  // 记录 disco 的募资地址\r\n  mapping (string => DiscoInvestAddr) public discoAddress;\r\n\r\n  // 创建\r\n  event createdDisco(string discoId, DiscoAddr addr);\r\n  // 开启\r\n  // event enabeldDisco(string discoId, address discoAddr);\r\n  event enabeldDisco(string discoId);\r\n  // 募资成功的时候\r\n  event fundraisingSuccessed(string discoId);\r\n  //募资结束（成功）\r\n  event fundraisingFinished(string discoIdo);\r\n  // 募资失败\r\n  event fundraisingFailed(string discoId);\r\n  // 投资者向 disco 投钱\r\n  event investToDisco(string discoId, address investorAddr, uint amount);\r\n\r\n  // 判断是否是本人\r\n  modifier isOwner() {\r\n    require(msg.sender == _owner);\r\n    _;\r\n  }\r\n\r\n  constructor()\r\n    public {\r\n        _owner = msg.sender;\r\n  }\r\n\r\n  function setCoinBase (address payable addr)\r\n      isOwner\r\n      public {\r\n        _coinbase = addr;\r\n  }\r\n\r\n  //  获取当前时间\r\n  function getDate() public view returns(uint256){\r\n    return now;\r\n  }\r\n\r\n  // 创建Disco\r\n  function newDisco(\r\n    string memory id,\r\n    address walletAddr,\r\n    address tokenAddr,\r\n    string memory description,\r\n    uint256 fundRaisingStartedAt,\r\n    uint256 fundRaisingEndedAt,\r\n    uint256 investmentReward,\r\n    uint256 rewardDeclineRate,\r\n    uint256 shareToken,\r\n    uint256 minFundRaising,\r\n    uint256 addLiquidityPool,\r\n    uint256 totalDepositToken\r\n  ) public payable {\r\n    DiscoInfo memory d = DiscoInfo(\r\n      walletAddr,\r\n      tokenAddr,\r\n      description,\r\n      fundRaisingStartedAt,\r\n      fundRaisingEndedAt,\r\n      investmentReward,\r\n      rewardDeclineRate,\r\n      shareToken,\r\n      minFundRaising,\r\n      addLiquidityPool,\r\n      totalDepositToken\r\n    );\r\n    DiscoStatus memory s = DiscoStatus(\r\n      false,\r\n      false,\r\n      false\r\n    );\r\n    discos[id] = d;\r\n    status[id] = s;\r\n\r\n\r\n    // 生成新的合约地址, discoAddr 既是DiscoAddr 的实例， 也是上链部署的地址\r\n    DiscoAddr addr = new DiscoAddr(id);\r\n    // disco id 与 disco 合约地址的映射\r\n    // DiscoInvestAddr memory discoInvestAddr = DiscoInvestAddr(addr);\r\n    // discoAddress[id] = discoInvestAddr;\r\n       // disco 创建成功\r\n    emit createdDisco(id, addr);\r\n  }\r\n\r\n\r\n  /**\r\n   * @dev 开启disco\r\n   */\r\n  function enableDisco(string memory id) public {\r\n    require(discos[id].fundRaisingStartedAt > getDate());\r\n    require(discos[id].fundRaisingEndedAt < getDate());\r\n    require(!status[id].isEnabled);\r\n\r\n    status[id].isEnabled = true;\r\n    // 发送开启募资的事件\r\n    emit enabeldDisco(id);\r\n  }\r\n\r\n\r\n\r\n  /**\r\n   * @dev 后端调用， 触发disco的结束， 由合约来判断disco的募资是否成功\r\n   */\r\n  function finishedDisco(string memory id) public {\r\n    require(!status[id].isFinished);\r\n    status[id].isFinished = true;\r\n\r\n    // TODO 结束的时候需要检查募资是否成功或者失败\r\n    status[id].isSuccess = true;\r\n    // if ('成功') {\r\n    //   status[id].isSuccess = true;\r\n    //   // TODO 开启流动性 swap\r\n    // } else {\r\n    //   status[id].isSuccess = false;\r\n    // }\r\n    emit fundraisingFinished(id);\r\n  }\r\n\r\n  // 发起募资, 记录募资的信息， 可能会多次募资\r\n  function investor(\r\n    string memory id,\r\n    address payable investorAddress,\r\n    uint256 time) isOwner public  payable{\r\n     require(_coinbase != address(0));\r\n     DiscoInvestor memory d = DiscoInvestor(\r\n      investorAddress,\r\n      msg.value,\r\n      time\r\n    );\r\n    investors[id] = d;\r\n    investorAddress.transfer(msg.value);\r\n\r\n    emit investToDisco(id, investorAddress, msg.value);\r\n  }\r\n}\r\n\r\n// 生成募资合约\r\ncontract DiscoAddr {\r\n\r\n  string public id;\r\n  // suppose the deployed contract has a purpose\r\n\r\n  constructor(string memory discoId) public {\r\n    id = discoId;\r\n  }\r\n\r\n\r\n  function getDiscoId() public view returns(string memory) {\r\n    return id;\r\n  }\r\n}\r\n",
   "sourcePath": "F:/cos-contract-com/contracts/Disco.sol",
   "ast": {
     "absolutePath": "/F/cos-contract-com/contracts/Disco.sol",
     "exportedSymbols": {
       "Disco": [
-        489
+        491
       ],
       "DiscoAddr": [
-        510
+        512
       ]
     },
-    "id": 511,
+    "id": 513,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -81,14 +81,14 @@
       {
         "baseContracts": [],
         "contractDependencies": [
-          510
+          512
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 489,
+        "id": 491,
         "linearizedBaseContracts": [
-          489
+          491
         ],
         "name": "Disco",
         "nodeType": "ContractDefinition",
@@ -98,7 +98,7 @@
             "id": 160,
             "name": "_owner",
             "nodeType": "VariableDeclaration",
-            "scope": 489,
+            "scope": 491,
             "src": "73:22:1",
             "stateVariable": true,
             "storageLocation": "default",
@@ -125,7 +125,7 @@
             "id": 162,
             "name": "_coinbase",
             "nodeType": "VariableDeclaration",
-            "scope": 489,
+            "scope": 491,
             "src": "100:33:1",
             "stateVariable": true,
             "storageLocation": "default",
@@ -442,7 +442,7 @@
             ],
             "name": "DiscoInfo",
             "nodeType": "StructDefinition",
-            "scope": 489,
+            "scope": 491,
             "src": "154:345:1",
             "visibility": "public"
           },
@@ -532,7 +532,7 @@
             ],
             "name": "DiscoInvestor",
             "nodeType": "StructDefinition",
-            "scope": 489,
+            "scope": 491,
             "src": "533:282:1",
             "visibility": "public"
           },
@@ -621,7 +621,7 @@
             ],
             "name": "DiscoStatus",
             "nodeType": "StructDefinition",
-            "scope": 489,
+            "scope": 491,
             "src": "842:173:1",
             "visibility": "public"
           },
@@ -639,7 +639,7 @@
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_contract$_DiscoAddr_$510",
+                  "typeIdentifier": "t_contract$_DiscoAddr_$512",
                   "typeString": "contract DiscoAddr"
                 },
                 "typeName": {
@@ -647,10 +647,10 @@
                   "id": 200,
                   "name": "DiscoAddr",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 510,
+                  "referencedDeclaration": 512,
                   "src": "1051:9:1",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_DiscoAddr_$510",
+                    "typeIdentifier": "t_contract$_DiscoAddr_$512",
                     "typeString": "contract DiscoAddr"
                   }
                 },
@@ -660,7 +660,7 @@
             ],
             "name": "DiscoInvestAddr",
             "nodeType": "StructDefinition",
-            "scope": 489,
+            "scope": 491,
             "src": "1021:55:1",
             "visibility": "public"
           },
@@ -669,7 +669,7 @@
             "id": 206,
             "name": "discos",
             "nodeType": "VariableDeclaration",
-            "scope": 489,
+            "scope": 491,
             "src": "1109:43:1",
             "stateVariable": true,
             "storageLocation": "default",
@@ -716,7 +716,7 @@
             "id": 210,
             "name": "investors",
             "nodeType": "VariableDeclaration",
-            "scope": 489,
+            "scope": 491,
             "src": "1179:50:1",
             "stateVariable": true,
             "storageLocation": "default",
@@ -763,7 +763,7 @@
             "id": 214,
             "name": "status",
             "nodeType": "VariableDeclaration",
-            "scope": 489,
+            "scope": 491,
             "src": "1262:45:1",
             "stateVariable": true,
             "storageLocation": "default",
@@ -810,7 +810,7 @@
             "id": 218,
             "name": "discoAddress",
             "nodeType": "VariableDeclaration",
-            "scope": 489,
+            "scope": 491,
             "src": "1347:55:1",
             "stateVariable": true,
             "storageLocation": "default",
@@ -900,7 +900,7 @@
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_DiscoAddr_$510",
+                    "typeIdentifier": "t_contract$_DiscoAddr_$512",
                     "typeString": "contract DiscoAddr"
                   },
                   "typeName": {
@@ -908,10 +908,10 @@
                     "id": 221,
                     "name": "DiscoAddr",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 510,
+                    "referencedDeclaration": 512,
                     "src": "1457:9:1",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_DiscoAddr_$510",
+                      "typeIdentifier": "t_contract$_DiscoAddr_$512",
                       "typeString": "contract DiscoAddr"
                     }
                   },
@@ -1217,7 +1217,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 3739,
+                            "referencedDeclaration": 3741,
                             "src": "1976:3:1",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -1271,10 +1271,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        3742,
-                        3743
+                        3744,
+                        3745
                       ],
-                      "referencedDeclaration": 3742,
+                      "referencedDeclaration": 3744,
                       "src": "1968:7:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -1356,7 +1356,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 3739,
+                        "referencedDeclaration": 3741,
                         "src": "2063:3:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -1408,7 +1408,7 @@
               "parameters": [],
               "src": "2043:0:1"
             },
-            "scope": 489,
+            "scope": 491,
             "src": "2017:62:1",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -1535,7 +1535,7 @@
               "parameters": [],
               "src": "2158:0:1"
             },
-            "scope": 489,
+            "scope": 491,
             "src": "2085:106:1",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -1554,7 +1554,7 @@
                     "name": "now",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 3741,
+                    "referencedDeclaration": 3743,
                     "src": "2284:3:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
@@ -1614,7 +1614,7 @@
               ],
               "src": "2261:9:1"
             },
-            "scope": 489,
+            "scope": 491,
             "src": "2223:70:1",
             "stateMutability": "view",
             "superFunction": null,
@@ -2180,7 +2180,7 @@
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_DiscoAddr_$510",
+                        "typeIdentifier": "t_contract$_DiscoAddr_$512",
                         "typeString": "contract DiscoAddr"
                       },
                       "typeName": {
@@ -2188,10 +2188,10 @@
                         "id": 351,
                         "name": "DiscoAddr",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 510,
+                        "referencedDeclaration": 512,
                         "src": "3252:9:1",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_DiscoAddr_$510",
+                          "typeIdentifier": "t_contract$_DiscoAddr_$512",
                           "typeString": "contract DiscoAddr"
                         }
                       },
@@ -2232,7 +2232,7 @@
                       "nodeType": "NewExpression",
                       "src": "3269:13:1",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_creation_nonpayable$_t_string_memory_ptr_$returns$_t_contract$_DiscoAddr_$510_$",
+                        "typeIdentifier": "t_function_creation_nonpayable$_t_string_memory_ptr_$returns$_t_contract$_DiscoAddr_$512_$",
                         "typeString": "function (string memory) returns (contract DiscoAddr)"
                       },
                       "typeName": {
@@ -2240,10 +2240,10 @@
                         "id": 353,
                         "name": "DiscoAddr",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 510,
+                        "referencedDeclaration": 512,
                         "src": "3273:9:1",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_DiscoAddr_$510",
+                          "typeIdentifier": "t_contract$_DiscoAddr_$512",
                           "typeString": "contract DiscoAddr"
                         }
                       }
@@ -2258,7 +2258,7 @@
                     "nodeType": "FunctionCall",
                     "src": "3269:17:1",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_DiscoAddr_$510",
+                      "typeIdentifier": "t_contract$_DiscoAddr_$512",
                       "typeString": "contract DiscoAddr"
                     }
                   },
@@ -2291,7 +2291,7 @@
                         "referencedDeclaration": 352,
                         "src": "3510:4:1",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_DiscoAddr_$510",
+                          "typeIdentifier": "t_contract$_DiscoAddr_$512",
                           "typeString": "contract DiscoAddr"
                         }
                       }
@@ -2303,7 +2303,7 @@
                           "typeString": "string memory"
                         },
                         {
-                          "typeIdentifier": "t_contract$_DiscoAddr_$510",
+                          "typeIdentifier": "t_contract$_DiscoAddr_$512",
                           "typeString": "contract DiscoAddr"
                         }
                       ],
@@ -2314,7 +2314,7 @@
                       "referencedDeclaration": 224,
                       "src": "3493:12:1",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_event_nonpayable$_t_string_memory_ptr_$_t_contract$_DiscoAddr_$510_$returns$__$",
+                        "typeIdentifier": "t_function_event_nonpayable$_t_string_memory_ptr_$_t_contract$_DiscoAddr_$512_$returns$__$",
                         "typeString": "function (string memory,contract DiscoAddr)"
                       }
                     },
@@ -2672,7 +2672,7 @@
               "parameters": [],
               "src": "2707:0:1"
             },
-            "scope": 489,
+            "scope": 491,
             "src": "2317:1204:1",
             "stateMutability": "payable",
             "superFunction": null,
@@ -2805,10 +2805,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        3742,
-                        3743
+                        3744,
+                        3745
                       ],
-                      "referencedDeclaration": 3742,
+                      "referencedDeclaration": 3744,
                       "src": "3619:7:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -2954,10 +2954,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        3742,
-                        3743
+                        3744,
+                        3745
                       ],
-                      "referencedDeclaration": 3742,
+                      "referencedDeclaration": 3744,
                       "src": "3678:7:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -3070,10 +3070,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        3742,
-                        3743
+                        3744,
+                        3745
                       ],
-                      "referencedDeclaration": 3742,
+                      "referencedDeclaration": 3744,
                       "src": "3735:7:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -3294,7 +3294,7 @@
               "parameters": [],
               "src": "3612:0:1"
             },
-            "scope": 489,
+            "scope": 491,
             "src": "3566:305:1",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -3394,10 +3394,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        3742,
-                        3743
+                        3744,
+                        3745
                       ],
-                      "referencedDeclaration": 3742,
+                      "referencedDeclaration": 3744,
                       "src": "4046:7:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -3712,7 +3712,7 @@
               "parameters": [],
               "src": "4039:0:1"
             },
-            "scope": 489,
+            "scope": 491,
             "src": "3991:438:1",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -3720,9 +3720,9 @@
           },
           {
             "body": {
-              "id": 487,
+              "id": 489,
               "nodeType": "Block",
-              "src": "4615:279:1",
+              "src": "4624:279:1",
               "statements": [
                 {
                   "expression": {
@@ -3734,19 +3734,19 @@
                           "typeIdentifier": "t_address_payable",
                           "typeString": "address payable"
                         },
-                        "id": 455,
+                        "id": 457,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "leftExpression": {
                           "argumentTypes": null,
-                          "id": 451,
+                          "id": 453,
                           "name": "_coinbase",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 162,
-                          "src": "4631:9:1",
+                          "src": "4640:9:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address_payable",
                             "typeString": "address payable"
@@ -3760,14 +3760,14 @@
                             {
                               "argumentTypes": null,
                               "hexValue": "30",
-                              "id": 453,
+                              "id": 455,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": true,
                               "kind": "number",
                               "lValueRequested": false,
                               "nodeType": "Literal",
-                              "src": "4652:1:1",
+                              "src": "4661:1:1",
                               "subdenomination": null,
                               "typeDescriptions": {
                                 "typeIdentifier": "t_rational_0_by_1",
@@ -3783,20 +3783,20 @@
                                 "typeString": "int_const 0"
                               }
                             ],
-                            "id": 452,
+                            "id": 454,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": true,
                             "lValueRequested": false,
                             "nodeType": "ElementaryTypeNameExpression",
-                            "src": "4644:7:1",
+                            "src": "4653:7:1",
                             "typeDescriptions": {
                               "typeIdentifier": "t_type$_t_address_$",
                               "typeString": "type(address)"
                             },
                             "typeName": "address"
                           },
-                          "id": 454,
+                          "id": 456,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -3804,13 +3804,13 @@
                           "lValueRequested": false,
                           "names": [],
                           "nodeType": "FunctionCall",
-                          "src": "4644:10:1",
+                          "src": "4653:10:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address_payable",
                             "typeString": "address payable"
                           }
                         },
-                        "src": "4631:23:1",
+                        "src": "4640:23:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
@@ -3824,21 +3824,21 @@
                           "typeString": "bool"
                         }
                       ],
-                      "id": 450,
+                      "id": 452,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        3742,
-                        3743
+                        3744,
+                        3745
                       ],
-                      "referencedDeclaration": 3742,
-                      "src": "4623:7:1",
+                      "referencedDeclaration": 3744,
+                      "src": "4632:7:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
                         "typeString": "function (bool) pure"
                       }
                     },
-                    "id": 456,
+                    "id": 458,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -3846,28 +3846,28 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "4623:32:1",
+                    "src": "4632:32:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 457,
+                  "id": 459,
                   "nodeType": "ExpressionStatement",
-                  "src": "4623:32:1"
+                  "src": "4632:32:1"
                 },
                 {
                   "assignments": [
-                    459
+                    461
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 459,
+                      "id": 461,
                       "name": "d",
                       "nodeType": "VariableDeclaration",
-                      "scope": 487,
-                      "src": "4663:22:1",
+                      "scope": 489,
+                      "src": "4672:22:1",
                       "stateVariable": false,
                       "storageLocation": "memory",
                       "typeDescriptions": {
@@ -3876,11 +3876,11 @@
                       },
                       "typeName": {
                         "contractScope": null,
-                        "id": 458,
+                        "id": 460,
                         "name": "DiscoInvestor",
                         "nodeType": "UserDefinedTypeName",
                         "referencedDeclaration": 192,
-                        "src": "4663:13:1",
+                        "src": "4672:13:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_DiscoInvestor_$192_storage_ptr",
                           "typeString": "struct Disco.DiscoInvestor"
@@ -3890,18 +3890,18 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 466,
+                  "id": 468,
                   "initialValue": {
                     "argumentTypes": null,
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 461,
+                        "id": 463,
                         "name": "investorAddress",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 445,
-                        "src": "4710:15:1",
+                        "src": "4719:15:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address_payable",
                           "typeString": "address payable"
@@ -3911,18 +3911,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 462,
+                          "id": 464,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 3739,
-                          "src": "4734:3:1",
+                          "referencedDeclaration": 3741,
+                          "src": "4743:3:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 463,
+                        "id": 465,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -3930,7 +3930,7 @@
                         "memberName": "value",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": null,
-                        "src": "4734:9:1",
+                        "src": "4743:9:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -3938,12 +3938,12 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 464,
+                        "id": 466,
                         "name": "time",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 447,
-                        "src": "4752:4:1",
+                        "src": "4761:4:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -3965,18 +3965,18 @@
                           "typeString": "uint256"
                         }
                       ],
-                      "id": 460,
+                      "id": 462,
                       "name": "DiscoInvestor",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 192,
-                      "src": "4688:13:1",
+                      "src": "4697:13:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_type$_t_struct$_DiscoInvestor_$192_storage_ptr_$",
                         "typeString": "type(struct Disco.DiscoInvestor storage pointer)"
                       }
                     },
-                    "id": 465,
+                    "id": 467,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -3984,19 +3984,19 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "4688:75:1",
+                    "src": "4697:75:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_DiscoInvestor_$192_memory",
                       "typeString": "struct Disco.DiscoInvestor memory"
                     }
                   },
                   "nodeType": "VariableDeclarationStatement",
-                  "src": "4663:100:1"
+                  "src": "4672:100:1"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 471,
+                    "id": 473,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -4005,26 +4005,26 @@
                       "argumentTypes": null,
                       "baseExpression": {
                         "argumentTypes": null,
-                        "id": 467,
+                        "id": 469,
                         "name": "investors",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 210,
-                        "src": "4770:9:1",
+                        "src": "4779:9:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_string_memory_$_t_struct$_DiscoInvestor_$192_storage_$",
                           "typeString": "mapping(string memory => struct Disco.DiscoInvestor storage ref)"
                         }
                       },
-                      "id": 469,
+                      "id": 471,
                       "indexExpression": {
                         "argumentTypes": null,
-                        "id": 468,
+                        "id": 470,
                         "name": "id",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 443,
-                        "src": "4780:2:1",
+                        "src": "4789:2:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
                           "typeString": "string memory"
@@ -4035,7 +4035,7 @@
                       "isPure": false,
                       "lValueRequested": true,
                       "nodeType": "IndexAccess",
-                      "src": "4770:13:1",
+                      "src": "4779:13:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_struct$_DiscoInvestor_$192_storage",
                         "typeString": "struct Disco.DiscoInvestor storage ref"
@@ -4045,26 +4045,26 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 470,
+                      "id": 472,
                       "name": "d",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 459,
-                      "src": "4786:1:1",
+                      "referencedDeclaration": 461,
+                      "src": "4795:1:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_struct$_DiscoInvestor_$192_memory_ptr",
                         "typeString": "struct Disco.DiscoInvestor memory"
                       }
                     },
-                    "src": "4770:17:1",
+                    "src": "4779:17:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_DiscoInvestor_$192_storage",
                       "typeString": "struct Disco.DiscoInvestor storage ref"
                     }
                   },
-                  "id": 472,
+                  "id": 474,
                   "nodeType": "ExpressionStatement",
-                  "src": "4770:17:1"
+                  "src": "4779:17:1"
                 },
                 {
                   "expression": {
@@ -4074,18 +4074,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 476,
+                          "id": 478,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 3739,
-                          "src": "4819:3:1",
+                          "referencedDeclaration": 3741,
+                          "src": "4828:3:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 477,
+                        "id": 479,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -4093,7 +4093,7 @@
                         "memberName": "value",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": null,
-                        "src": "4819:9:1",
+                        "src": "4828:9:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -4109,18 +4109,18 @@
                       ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 473,
+                        "id": 475,
                         "name": "investorAddress",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 445,
-                        "src": "4794:15:1",
+                        "src": "4803:15:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address_payable",
                           "typeString": "address payable"
                         }
                       },
-                      "id": 475,
+                      "id": 477,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -4128,13 +4128,13 @@
                       "memberName": "transfer",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": null,
-                      "src": "4794:24:1",
+                      "src": "4803:24:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_transfer_nonpayable$_t_uint256_$returns$__$",
                         "typeString": "function (uint256)"
                       }
                     },
-                    "id": 478,
+                    "id": 480,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -4142,15 +4142,15 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "4794:35:1",
+                    "src": "4803:35:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 479,
+                  "id": 481,
                   "nodeType": "ExpressionStatement",
-                  "src": "4794:35:1"
+                  "src": "4803:35:1"
                 },
                 {
                   "eventCall": {
@@ -4158,12 +4158,12 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 481,
+                        "id": 483,
                         "name": "id",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 443,
-                        "src": "4857:2:1",
+                        "src": "4866:2:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
                           "typeString": "string memory"
@@ -4171,12 +4171,12 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 482,
+                        "id": 484,
                         "name": "investorAddress",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 445,
-                        "src": "4861:15:1",
+                        "src": "4870:15:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address_payable",
                           "typeString": "address payable"
@@ -4186,18 +4186,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 483,
+                          "id": 485,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 3739,
-                          "src": "4878:3:1",
+                          "referencedDeclaration": 3741,
+                          "src": "4887:3:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 484,
+                        "id": 486,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -4205,7 +4205,7 @@
                         "memberName": "value",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": null,
-                        "src": "4878:9:1",
+                        "src": "4887:9:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -4227,18 +4227,18 @@
                           "typeString": "uint256"
                         }
                       ],
-                      "id": 480,
+                      "id": 482,
                       "name": "investToDisco",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 248,
-                      "src": "4843:13:1",
+                      "src": "4852:13:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_string_memory_ptr_$_t_address_$_t_uint256_$returns$__$",
                         "typeString": "function (string memory,address,uint256)"
                       }
                     },
-                    "id": 485,
+                    "id": 487,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -4246,23 +4246,43 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "4843:45:1",
+                    "src": "4852:45:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 486,
+                  "id": 488,
                   "nodeType": "EmitStatement",
-                  "src": "4838:50:1"
+                  "src": "4847:50:1"
                 }
               ]
             },
             "documentation": null,
-            "id": 488,
+            "id": 490,
             "implemented": true,
             "kind": "function",
-            "modifiers": [],
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 450,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 449,
+                  "name": "isOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 259,
+                  "src": "4601:7:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "4601:7:1"
+              }
+            ],
             "name": "investor",
             "nodeType": "FunctionDefinition",
             "parameters": {
@@ -4274,7 +4294,7 @@
                   "id": 443,
                   "name": "id",
                   "nodeType": "VariableDeclaration",
-                  "scope": 488,
+                  "scope": 490,
                   "src": "4526:16:1",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -4300,7 +4320,7 @@
                   "id": 445,
                   "name": "investorAddress",
                   "nodeType": "VariableDeclaration",
-                  "scope": 488,
+                  "scope": 490,
                   "src": "4549:31:1",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -4327,7 +4347,7 @@
                   "id": 447,
                   "name": "time",
                   "nodeType": "VariableDeclaration",
-                  "scope": 488,
+                  "scope": 490,
                   "src": "4587:12:1",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -4352,20 +4372,20 @@
               "src": "4519:81:1"
             },
             "returnParameters": {
-              "id": 449,
+              "id": 451,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "4615:0:1"
+              "src": "4624:0:1"
             },
-            "scope": 489,
-            "src": "4502:392:1",
+            "scope": 491,
+            "src": "4502:401:1",
             "stateMutability": "payable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 511,
-        "src": "53:4844:1"
+        "scope": 513,
+        "src": "53:4853:1"
       },
       {
         "baseContracts": [],
@@ -4373,20 +4393,20 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 510,
+        "id": 512,
         "linearizedBaseContracts": [
-          510
+          512
         ],
         "name": "DiscoAddr",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 491,
+            "id": 493,
             "name": "id",
             "nodeType": "VariableDeclaration",
-            "scope": 510,
-            "src": "4950:16:1",
+            "scope": 512,
+            "src": "4959:16:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -4394,10 +4414,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 490,
+              "id": 492,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "4950:6:1",
+              "src": "4959:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -4408,26 +4428,26 @@
           },
           {
             "body": {
-              "id": 500,
+              "id": 502,
               "nodeType": "Block",
-              "src": "5065:25:1",
+              "src": "5074:25:1",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 498,
+                    "id": 500,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 496,
+                      "id": 498,
                       "name": "id",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 491,
-                      "src": "5072:2:1",
+                      "referencedDeclaration": 493,
+                      "src": "5081:2:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_storage",
                         "typeString": "string storage ref"
@@ -4437,47 +4457,47 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 497,
+                      "id": 499,
                       "name": "discoId",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 493,
-                      "src": "5077:7:1",
+                      "referencedDeclaration": 495,
+                      "src": "5086:7:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_memory_ptr",
                         "typeString": "string memory"
                       }
                     },
-                    "src": "5072:12:1",
+                    "src": "5081:12:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage",
                       "typeString": "string storage ref"
                     }
                   },
-                  "id": 499,
+                  "id": 501,
                   "nodeType": "ExpressionStatement",
-                  "src": "5072:12:1"
+                  "src": "5081:12:1"
                 }
               ]
             },
             "documentation": null,
-            "id": 501,
+            "id": 503,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [],
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 494,
+              "id": 496,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 493,
+                  "id": 495,
                   "name": "discoId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 501,
-                  "src": "5035:21:1",
+                  "scope": 503,
+                  "src": "5044:21:1",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -4485,10 +4505,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 492,
+                    "id": 494,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "5035:6:1",
+                    "src": "5044:6:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -4498,71 +4518,71 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "5034:23:1"
+              "src": "5043:23:1"
             },
             "returnParameters": {
-              "id": 495,
+              "id": 497,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "5065:0:1"
+              "src": "5074:0:1"
             },
-            "scope": 510,
-            "src": "5023:67:1",
+            "scope": 512,
+            "src": "5032:67:1",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 508,
+              "id": 510,
               "nodeType": "Block",
-              "src": "5155:22:1",
+              "src": "5164:22:1",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 506,
+                    "id": 508,
                     "name": "id",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 491,
-                    "src": "5169:2:1",
+                    "referencedDeclaration": 493,
+                    "src": "5178:2:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage",
                       "typeString": "string storage ref"
                     }
                   },
-                  "functionReturnParameters": 505,
-                  "id": 507,
+                  "functionReturnParameters": 507,
+                  "id": 509,
                   "nodeType": "Return",
-                  "src": "5162:9:1"
+                  "src": "5171:9:1"
                 }
               ]
             },
             "documentation": null,
-            "id": 509,
+            "id": 511,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "getDiscoId",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 502,
+              "id": 504,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "5117:2:1"
+              "src": "5126:2:1"
             },
             "returnParameters": {
-              "id": 505,
+              "id": 507,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 504,
+                  "id": 506,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 509,
-                  "src": "5140:13:1",
+                  "scope": 511,
+                  "src": "5149:13:1",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -4570,10 +4590,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 503,
+                    "id": 505,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "5140:6:1",
+                    "src": "5149:6:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -4583,32 +4603,32 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "5139:15:1"
+              "src": "5148:15:1"
             },
-            "scope": 510,
-            "src": "5098:79:1",
+            "scope": 512,
+            "src": "5107:79:1",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 511,
-        "src": "4924:256:1"
+        "scope": 513,
+        "src": "4933:256:1"
       }
     ],
-    "src": "17:5165:1"
+    "src": "17:5174:1"
   },
   "legacyAST": {
     "absolutePath": "/F/cos-contract-com/contracts/Disco.sol",
     "exportedSymbols": {
       "Disco": [
-        489
+        491
       ],
       "DiscoAddr": [
-        510
+        512
       ]
     },
-    "id": 511,
+    "id": 513,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -4628,14 +4648,14 @@
       {
         "baseContracts": [],
         "contractDependencies": [
-          510
+          512
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 489,
+        "id": 491,
         "linearizedBaseContracts": [
-          489
+          491
         ],
         "name": "Disco",
         "nodeType": "ContractDefinition",
@@ -4645,7 +4665,7 @@
             "id": 160,
             "name": "_owner",
             "nodeType": "VariableDeclaration",
-            "scope": 489,
+            "scope": 491,
             "src": "73:22:1",
             "stateVariable": true,
             "storageLocation": "default",
@@ -4672,7 +4692,7 @@
             "id": 162,
             "name": "_coinbase",
             "nodeType": "VariableDeclaration",
-            "scope": 489,
+            "scope": 491,
             "src": "100:33:1",
             "stateVariable": true,
             "storageLocation": "default",
@@ -4989,7 +5009,7 @@
             ],
             "name": "DiscoInfo",
             "nodeType": "StructDefinition",
-            "scope": 489,
+            "scope": 491,
             "src": "154:345:1",
             "visibility": "public"
           },
@@ -5079,7 +5099,7 @@
             ],
             "name": "DiscoInvestor",
             "nodeType": "StructDefinition",
-            "scope": 489,
+            "scope": 491,
             "src": "533:282:1",
             "visibility": "public"
           },
@@ -5168,7 +5188,7 @@
             ],
             "name": "DiscoStatus",
             "nodeType": "StructDefinition",
-            "scope": 489,
+            "scope": 491,
             "src": "842:173:1",
             "visibility": "public"
           },
@@ -5186,7 +5206,7 @@
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_contract$_DiscoAddr_$510",
+                  "typeIdentifier": "t_contract$_DiscoAddr_$512",
                   "typeString": "contract DiscoAddr"
                 },
                 "typeName": {
@@ -5194,10 +5214,10 @@
                   "id": 200,
                   "name": "DiscoAddr",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 510,
+                  "referencedDeclaration": 512,
                   "src": "1051:9:1",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_DiscoAddr_$510",
+                    "typeIdentifier": "t_contract$_DiscoAddr_$512",
                     "typeString": "contract DiscoAddr"
                   }
                 },
@@ -5207,7 +5227,7 @@
             ],
             "name": "DiscoInvestAddr",
             "nodeType": "StructDefinition",
-            "scope": 489,
+            "scope": 491,
             "src": "1021:55:1",
             "visibility": "public"
           },
@@ -5216,7 +5236,7 @@
             "id": 206,
             "name": "discos",
             "nodeType": "VariableDeclaration",
-            "scope": 489,
+            "scope": 491,
             "src": "1109:43:1",
             "stateVariable": true,
             "storageLocation": "default",
@@ -5263,7 +5283,7 @@
             "id": 210,
             "name": "investors",
             "nodeType": "VariableDeclaration",
-            "scope": 489,
+            "scope": 491,
             "src": "1179:50:1",
             "stateVariable": true,
             "storageLocation": "default",
@@ -5310,7 +5330,7 @@
             "id": 214,
             "name": "status",
             "nodeType": "VariableDeclaration",
-            "scope": 489,
+            "scope": 491,
             "src": "1262:45:1",
             "stateVariable": true,
             "storageLocation": "default",
@@ -5357,7 +5377,7 @@
             "id": 218,
             "name": "discoAddress",
             "nodeType": "VariableDeclaration",
-            "scope": 489,
+            "scope": 491,
             "src": "1347:55:1",
             "stateVariable": true,
             "storageLocation": "default",
@@ -5447,7 +5467,7 @@
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_DiscoAddr_$510",
+                    "typeIdentifier": "t_contract$_DiscoAddr_$512",
                     "typeString": "contract DiscoAddr"
                   },
                   "typeName": {
@@ -5455,10 +5475,10 @@
                     "id": 221,
                     "name": "DiscoAddr",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 510,
+                    "referencedDeclaration": 512,
                     "src": "1457:9:1",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_DiscoAddr_$510",
+                      "typeIdentifier": "t_contract$_DiscoAddr_$512",
                       "typeString": "contract DiscoAddr"
                     }
                   },
@@ -5764,7 +5784,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 3739,
+                            "referencedDeclaration": 3741,
                             "src": "1976:3:1",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -5818,10 +5838,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        3742,
-                        3743
+                        3744,
+                        3745
                       ],
-                      "referencedDeclaration": 3742,
+                      "referencedDeclaration": 3744,
                       "src": "1968:7:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -5903,7 +5923,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 3739,
+                        "referencedDeclaration": 3741,
                         "src": "2063:3:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -5955,7 +5975,7 @@
               "parameters": [],
               "src": "2043:0:1"
             },
-            "scope": 489,
+            "scope": 491,
             "src": "2017:62:1",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -6082,7 +6102,7 @@
               "parameters": [],
               "src": "2158:0:1"
             },
-            "scope": 489,
+            "scope": 491,
             "src": "2085:106:1",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -6101,7 +6121,7 @@
                     "name": "now",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 3741,
+                    "referencedDeclaration": 3743,
                     "src": "2284:3:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
@@ -6161,7 +6181,7 @@
               ],
               "src": "2261:9:1"
             },
-            "scope": 489,
+            "scope": 491,
             "src": "2223:70:1",
             "stateMutability": "view",
             "superFunction": null,
@@ -6727,7 +6747,7 @@
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_DiscoAddr_$510",
+                        "typeIdentifier": "t_contract$_DiscoAddr_$512",
                         "typeString": "contract DiscoAddr"
                       },
                       "typeName": {
@@ -6735,10 +6755,10 @@
                         "id": 351,
                         "name": "DiscoAddr",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 510,
+                        "referencedDeclaration": 512,
                         "src": "3252:9:1",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_DiscoAddr_$510",
+                          "typeIdentifier": "t_contract$_DiscoAddr_$512",
                           "typeString": "contract DiscoAddr"
                         }
                       },
@@ -6779,7 +6799,7 @@
                       "nodeType": "NewExpression",
                       "src": "3269:13:1",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_creation_nonpayable$_t_string_memory_ptr_$returns$_t_contract$_DiscoAddr_$510_$",
+                        "typeIdentifier": "t_function_creation_nonpayable$_t_string_memory_ptr_$returns$_t_contract$_DiscoAddr_$512_$",
                         "typeString": "function (string memory) returns (contract DiscoAddr)"
                       },
                       "typeName": {
@@ -6787,10 +6807,10 @@
                         "id": 353,
                         "name": "DiscoAddr",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 510,
+                        "referencedDeclaration": 512,
                         "src": "3273:9:1",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_DiscoAddr_$510",
+                          "typeIdentifier": "t_contract$_DiscoAddr_$512",
                           "typeString": "contract DiscoAddr"
                         }
                       }
@@ -6805,7 +6825,7 @@
                     "nodeType": "FunctionCall",
                     "src": "3269:17:1",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_DiscoAddr_$510",
+                      "typeIdentifier": "t_contract$_DiscoAddr_$512",
                       "typeString": "contract DiscoAddr"
                     }
                   },
@@ -6838,7 +6858,7 @@
                         "referencedDeclaration": 352,
                         "src": "3510:4:1",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_DiscoAddr_$510",
+                          "typeIdentifier": "t_contract$_DiscoAddr_$512",
                           "typeString": "contract DiscoAddr"
                         }
                       }
@@ -6850,7 +6870,7 @@
                           "typeString": "string memory"
                         },
                         {
-                          "typeIdentifier": "t_contract$_DiscoAddr_$510",
+                          "typeIdentifier": "t_contract$_DiscoAddr_$512",
                           "typeString": "contract DiscoAddr"
                         }
                       ],
@@ -6861,7 +6881,7 @@
                       "referencedDeclaration": 224,
                       "src": "3493:12:1",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_event_nonpayable$_t_string_memory_ptr_$_t_contract$_DiscoAddr_$510_$returns$__$",
+                        "typeIdentifier": "t_function_event_nonpayable$_t_string_memory_ptr_$_t_contract$_DiscoAddr_$512_$returns$__$",
                         "typeString": "function (string memory,contract DiscoAddr)"
                       }
                     },
@@ -7219,7 +7239,7 @@
               "parameters": [],
               "src": "2707:0:1"
             },
-            "scope": 489,
+            "scope": 491,
             "src": "2317:1204:1",
             "stateMutability": "payable",
             "superFunction": null,
@@ -7352,10 +7372,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        3742,
-                        3743
+                        3744,
+                        3745
                       ],
-                      "referencedDeclaration": 3742,
+                      "referencedDeclaration": 3744,
                       "src": "3619:7:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -7501,10 +7521,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        3742,
-                        3743
+                        3744,
+                        3745
                       ],
-                      "referencedDeclaration": 3742,
+                      "referencedDeclaration": 3744,
                       "src": "3678:7:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -7617,10 +7637,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        3742,
-                        3743
+                        3744,
+                        3745
                       ],
-                      "referencedDeclaration": 3742,
+                      "referencedDeclaration": 3744,
                       "src": "3735:7:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -7841,7 +7861,7 @@
               "parameters": [],
               "src": "3612:0:1"
             },
-            "scope": 489,
+            "scope": 491,
             "src": "3566:305:1",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -7941,10 +7961,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        3742,
-                        3743
+                        3744,
+                        3745
                       ],
-                      "referencedDeclaration": 3742,
+                      "referencedDeclaration": 3744,
                       "src": "4046:7:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -8259,7 +8279,7 @@
               "parameters": [],
               "src": "4039:0:1"
             },
-            "scope": 489,
+            "scope": 491,
             "src": "3991:438:1",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -8267,9 +8287,9 @@
           },
           {
             "body": {
-              "id": 487,
+              "id": 489,
               "nodeType": "Block",
-              "src": "4615:279:1",
+              "src": "4624:279:1",
               "statements": [
                 {
                   "expression": {
@@ -8281,19 +8301,19 @@
                           "typeIdentifier": "t_address_payable",
                           "typeString": "address payable"
                         },
-                        "id": 455,
+                        "id": 457,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "leftExpression": {
                           "argumentTypes": null,
-                          "id": 451,
+                          "id": 453,
                           "name": "_coinbase",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 162,
-                          "src": "4631:9:1",
+                          "src": "4640:9:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address_payable",
                             "typeString": "address payable"
@@ -8307,14 +8327,14 @@
                             {
                               "argumentTypes": null,
                               "hexValue": "30",
-                              "id": 453,
+                              "id": 455,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": true,
                               "kind": "number",
                               "lValueRequested": false,
                               "nodeType": "Literal",
-                              "src": "4652:1:1",
+                              "src": "4661:1:1",
                               "subdenomination": null,
                               "typeDescriptions": {
                                 "typeIdentifier": "t_rational_0_by_1",
@@ -8330,20 +8350,20 @@
                                 "typeString": "int_const 0"
                               }
                             ],
-                            "id": 452,
+                            "id": 454,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": true,
                             "lValueRequested": false,
                             "nodeType": "ElementaryTypeNameExpression",
-                            "src": "4644:7:1",
+                            "src": "4653:7:1",
                             "typeDescriptions": {
                               "typeIdentifier": "t_type$_t_address_$",
                               "typeString": "type(address)"
                             },
                             "typeName": "address"
                           },
-                          "id": 454,
+                          "id": 456,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -8351,13 +8371,13 @@
                           "lValueRequested": false,
                           "names": [],
                           "nodeType": "FunctionCall",
-                          "src": "4644:10:1",
+                          "src": "4653:10:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address_payable",
                             "typeString": "address payable"
                           }
                         },
-                        "src": "4631:23:1",
+                        "src": "4640:23:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
@@ -8371,21 +8391,21 @@
                           "typeString": "bool"
                         }
                       ],
-                      "id": 450,
+                      "id": 452,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        3742,
-                        3743
+                        3744,
+                        3745
                       ],
-                      "referencedDeclaration": 3742,
-                      "src": "4623:7:1",
+                      "referencedDeclaration": 3744,
+                      "src": "4632:7:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
                         "typeString": "function (bool) pure"
                       }
                     },
-                    "id": 456,
+                    "id": 458,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -8393,28 +8413,28 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "4623:32:1",
+                    "src": "4632:32:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 457,
+                  "id": 459,
                   "nodeType": "ExpressionStatement",
-                  "src": "4623:32:1"
+                  "src": "4632:32:1"
                 },
                 {
                   "assignments": [
-                    459
+                    461
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 459,
+                      "id": 461,
                       "name": "d",
                       "nodeType": "VariableDeclaration",
-                      "scope": 487,
-                      "src": "4663:22:1",
+                      "scope": 489,
+                      "src": "4672:22:1",
                       "stateVariable": false,
                       "storageLocation": "memory",
                       "typeDescriptions": {
@@ -8423,11 +8443,11 @@
                       },
                       "typeName": {
                         "contractScope": null,
-                        "id": 458,
+                        "id": 460,
                         "name": "DiscoInvestor",
                         "nodeType": "UserDefinedTypeName",
                         "referencedDeclaration": 192,
-                        "src": "4663:13:1",
+                        "src": "4672:13:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_struct$_DiscoInvestor_$192_storage_ptr",
                           "typeString": "struct Disco.DiscoInvestor"
@@ -8437,18 +8457,18 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 466,
+                  "id": 468,
                   "initialValue": {
                     "argumentTypes": null,
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 461,
+                        "id": 463,
                         "name": "investorAddress",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 445,
-                        "src": "4710:15:1",
+                        "src": "4719:15:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address_payable",
                           "typeString": "address payable"
@@ -8458,18 +8478,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 462,
+                          "id": 464,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 3739,
-                          "src": "4734:3:1",
+                          "referencedDeclaration": 3741,
+                          "src": "4743:3:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 463,
+                        "id": 465,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -8477,7 +8497,7 @@
                         "memberName": "value",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": null,
-                        "src": "4734:9:1",
+                        "src": "4743:9:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -8485,12 +8505,12 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 464,
+                        "id": 466,
                         "name": "time",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 447,
-                        "src": "4752:4:1",
+                        "src": "4761:4:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -8512,18 +8532,18 @@
                           "typeString": "uint256"
                         }
                       ],
-                      "id": 460,
+                      "id": 462,
                       "name": "DiscoInvestor",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 192,
-                      "src": "4688:13:1",
+                      "src": "4697:13:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_type$_t_struct$_DiscoInvestor_$192_storage_ptr_$",
                         "typeString": "type(struct Disco.DiscoInvestor storage pointer)"
                       }
                     },
-                    "id": 465,
+                    "id": 467,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -8531,19 +8551,19 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "4688:75:1",
+                    "src": "4697:75:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_DiscoInvestor_$192_memory",
                       "typeString": "struct Disco.DiscoInvestor memory"
                     }
                   },
                   "nodeType": "VariableDeclarationStatement",
-                  "src": "4663:100:1"
+                  "src": "4672:100:1"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 471,
+                    "id": 473,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -8552,26 +8572,26 @@
                       "argumentTypes": null,
                       "baseExpression": {
                         "argumentTypes": null,
-                        "id": 467,
+                        "id": 469,
                         "name": "investors",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 210,
-                        "src": "4770:9:1",
+                        "src": "4779:9:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_string_memory_$_t_struct$_DiscoInvestor_$192_storage_$",
                           "typeString": "mapping(string memory => struct Disco.DiscoInvestor storage ref)"
                         }
                       },
-                      "id": 469,
+                      "id": 471,
                       "indexExpression": {
                         "argumentTypes": null,
-                        "id": 468,
+                        "id": 470,
                         "name": "id",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 443,
-                        "src": "4780:2:1",
+                        "src": "4789:2:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
                           "typeString": "string memory"
@@ -8582,7 +8602,7 @@
                       "isPure": false,
                       "lValueRequested": true,
                       "nodeType": "IndexAccess",
-                      "src": "4770:13:1",
+                      "src": "4779:13:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_struct$_DiscoInvestor_$192_storage",
                         "typeString": "struct Disco.DiscoInvestor storage ref"
@@ -8592,26 +8612,26 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 470,
+                      "id": 472,
                       "name": "d",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 459,
-                      "src": "4786:1:1",
+                      "referencedDeclaration": 461,
+                      "src": "4795:1:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_struct$_DiscoInvestor_$192_memory_ptr",
                         "typeString": "struct Disco.DiscoInvestor memory"
                       }
                     },
-                    "src": "4770:17:1",
+                    "src": "4779:17:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_struct$_DiscoInvestor_$192_storage",
                       "typeString": "struct Disco.DiscoInvestor storage ref"
                     }
                   },
-                  "id": 472,
+                  "id": 474,
                   "nodeType": "ExpressionStatement",
-                  "src": "4770:17:1"
+                  "src": "4779:17:1"
                 },
                 {
                   "expression": {
@@ -8621,18 +8641,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 476,
+                          "id": 478,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 3739,
-                          "src": "4819:3:1",
+                          "referencedDeclaration": 3741,
+                          "src": "4828:3:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 477,
+                        "id": 479,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -8640,7 +8660,7 @@
                         "memberName": "value",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": null,
-                        "src": "4819:9:1",
+                        "src": "4828:9:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -8656,18 +8676,18 @@
                       ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 473,
+                        "id": 475,
                         "name": "investorAddress",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 445,
-                        "src": "4794:15:1",
+                        "src": "4803:15:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address_payable",
                           "typeString": "address payable"
                         }
                       },
-                      "id": 475,
+                      "id": 477,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -8675,13 +8695,13 @@
                       "memberName": "transfer",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": null,
-                      "src": "4794:24:1",
+                      "src": "4803:24:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_transfer_nonpayable$_t_uint256_$returns$__$",
                         "typeString": "function (uint256)"
                       }
                     },
-                    "id": 478,
+                    "id": 480,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -8689,15 +8709,15 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "4794:35:1",
+                    "src": "4803:35:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 479,
+                  "id": 481,
                   "nodeType": "ExpressionStatement",
-                  "src": "4794:35:1"
+                  "src": "4803:35:1"
                 },
                 {
                   "eventCall": {
@@ -8705,12 +8725,12 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 481,
+                        "id": 483,
                         "name": "id",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 443,
-                        "src": "4857:2:1",
+                        "src": "4866:2:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
                           "typeString": "string memory"
@@ -8718,12 +8738,12 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 482,
+                        "id": 484,
                         "name": "investorAddress",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 445,
-                        "src": "4861:15:1",
+                        "src": "4870:15:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address_payable",
                           "typeString": "address payable"
@@ -8733,18 +8753,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 483,
+                          "id": 485,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 3739,
-                          "src": "4878:3:1",
+                          "referencedDeclaration": 3741,
+                          "src": "4887:3:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 484,
+                        "id": 486,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -8752,7 +8772,7 @@
                         "memberName": "value",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": null,
-                        "src": "4878:9:1",
+                        "src": "4887:9:1",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -8774,18 +8794,18 @@
                           "typeString": "uint256"
                         }
                       ],
-                      "id": 480,
+                      "id": 482,
                       "name": "investToDisco",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 248,
-                      "src": "4843:13:1",
+                      "src": "4852:13:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_string_memory_ptr_$_t_address_$_t_uint256_$returns$__$",
                         "typeString": "function (string memory,address,uint256)"
                       }
                     },
-                    "id": 485,
+                    "id": 487,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -8793,23 +8813,43 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "4843:45:1",
+                    "src": "4852:45:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 486,
+                  "id": 488,
                   "nodeType": "EmitStatement",
-                  "src": "4838:50:1"
+                  "src": "4847:50:1"
                 }
               ]
             },
             "documentation": null,
-            "id": 488,
+            "id": 490,
             "implemented": true,
             "kind": "function",
-            "modifiers": [],
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 450,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 449,
+                  "name": "isOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 259,
+                  "src": "4601:7:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "4601:7:1"
+              }
+            ],
             "name": "investor",
             "nodeType": "FunctionDefinition",
             "parameters": {
@@ -8821,7 +8861,7 @@
                   "id": 443,
                   "name": "id",
                   "nodeType": "VariableDeclaration",
-                  "scope": 488,
+                  "scope": 490,
                   "src": "4526:16:1",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -8847,7 +8887,7 @@
                   "id": 445,
                   "name": "investorAddress",
                   "nodeType": "VariableDeclaration",
-                  "scope": 488,
+                  "scope": 490,
                   "src": "4549:31:1",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -8874,7 +8914,7 @@
                   "id": 447,
                   "name": "time",
                   "nodeType": "VariableDeclaration",
-                  "scope": 488,
+                  "scope": 490,
                   "src": "4587:12:1",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -8899,20 +8939,20 @@
               "src": "4519:81:1"
             },
             "returnParameters": {
-              "id": 449,
+              "id": 451,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "4615:0:1"
+              "src": "4624:0:1"
             },
-            "scope": 489,
-            "src": "4502:392:1",
+            "scope": 491,
+            "src": "4502:401:1",
             "stateMutability": "payable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 511,
-        "src": "53:4844:1"
+        "scope": 513,
+        "src": "53:4853:1"
       },
       {
         "baseContracts": [],
@@ -8920,20 +8960,20 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 510,
+        "id": 512,
         "linearizedBaseContracts": [
-          510
+          512
         ],
         "name": "DiscoAddr",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 491,
+            "id": 493,
             "name": "id",
             "nodeType": "VariableDeclaration",
-            "scope": 510,
-            "src": "4950:16:1",
+            "scope": 512,
+            "src": "4959:16:1",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -8941,10 +8981,10 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 490,
+              "id": 492,
               "name": "string",
               "nodeType": "ElementaryTypeName",
-              "src": "4950:6:1",
+              "src": "4959:6:1",
               "typeDescriptions": {
                 "typeIdentifier": "t_string_storage_ptr",
                 "typeString": "string"
@@ -8955,26 +8995,26 @@
           },
           {
             "body": {
-              "id": 500,
+              "id": 502,
               "nodeType": "Block",
-              "src": "5065:25:1",
+              "src": "5074:25:1",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 498,
+                    "id": 500,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 496,
+                      "id": 498,
                       "name": "id",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 491,
-                      "src": "5072:2:1",
+                      "referencedDeclaration": 493,
+                      "src": "5081:2:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_storage",
                         "typeString": "string storage ref"
@@ -8984,47 +9024,47 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "id": 497,
+                      "id": 499,
                       "name": "discoId",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 493,
-                      "src": "5077:7:1",
+                      "referencedDeclaration": 495,
+                      "src": "5086:7:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_memory_ptr",
                         "typeString": "string memory"
                       }
                     },
-                    "src": "5072:12:1",
+                    "src": "5081:12:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage",
                       "typeString": "string storage ref"
                     }
                   },
-                  "id": 499,
+                  "id": 501,
                   "nodeType": "ExpressionStatement",
-                  "src": "5072:12:1"
+                  "src": "5081:12:1"
                 }
               ]
             },
             "documentation": null,
-            "id": 501,
+            "id": 503,
             "implemented": true,
             "kind": "constructor",
             "modifiers": [],
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 494,
+              "id": 496,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 493,
+                  "id": 495,
                   "name": "discoId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 501,
-                  "src": "5035:21:1",
+                  "scope": 503,
+                  "src": "5044:21:1",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -9032,10 +9072,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 492,
+                    "id": 494,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "5035:6:1",
+                    "src": "5044:6:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -9045,71 +9085,71 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "5034:23:1"
+              "src": "5043:23:1"
             },
             "returnParameters": {
-              "id": 495,
+              "id": 497,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "5065:0:1"
+              "src": "5074:0:1"
             },
-            "scope": 510,
-            "src": "5023:67:1",
+            "scope": 512,
+            "src": "5032:67:1",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           },
           {
             "body": {
-              "id": 508,
+              "id": 510,
               "nodeType": "Block",
-              "src": "5155:22:1",
+              "src": "5164:22:1",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 506,
+                    "id": 508,
                     "name": "id",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 491,
-                    "src": "5169:2:1",
+                    "referencedDeclaration": 493,
+                    "src": "5178:2:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage",
                       "typeString": "string storage ref"
                     }
                   },
-                  "functionReturnParameters": 505,
-                  "id": 507,
+                  "functionReturnParameters": 507,
+                  "id": 509,
                   "nodeType": "Return",
-                  "src": "5162:9:1"
+                  "src": "5171:9:1"
                 }
               ]
             },
             "documentation": null,
-            "id": 509,
+            "id": 511,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "getDiscoId",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 502,
+              "id": 504,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "5117:2:1"
+              "src": "5126:2:1"
             },
             "returnParameters": {
-              "id": 505,
+              "id": 507,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 504,
+                  "id": 506,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 509,
-                  "src": "5140:13:1",
+                  "scope": 511,
+                  "src": "5149:13:1",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -9117,10 +9157,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 503,
+                    "id": 505,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "5140:6:1",
+                    "src": "5149:6:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -9130,20 +9170,20 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "5139:15:1"
+              "src": "5148:15:1"
             },
-            "scope": 510,
-            "src": "5098:79:1",
+            "scope": 512,
+            "src": "5107:79:1",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 511,
-        "src": "4924:256:1"
+        "scope": 513,
+        "src": "4933:256:1"
       }
     ],
-    "src": "17:5165:1"
+    "src": "17:5174:1"
   },
   "compiler": {
     "name": "solc",
@@ -9151,7 +9191,7 @@
   },
   "networks": {},
   "schemaVersion": "3.2.3",
-  "updatedAt": "2021-01-27T15:56:55.526Z",
+  "updatedAt": "2021-01-27T16:10:53.615Z",
   "devdoc": {
     "methods": {}
   },

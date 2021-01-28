@@ -178,7 +178,7 @@ contract Disco {
   function investor(
     string memory id,
     address payable investorAddress,
-    uint256 time) public payable{
+    uint256 time) isOwner public payable{
      require(_coinbase != address(0));
      DiscoInvestor memory d = DiscoInvestor(
       investorAddress,
@@ -191,6 +191,7 @@ contract Disco {
     emit investToDisco(id, investorAddress, msg.value);
   }
 }
+
 
 // 生成募资合约
 contract DiscoAddr {
