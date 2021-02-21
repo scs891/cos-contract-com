@@ -145,9 +145,9 @@ contract Disco {
    * @dev 开启disco
    */
   function enableDisco(string memory id) public {
-    require(discos[id].fundRaisingStartedAt > getDate());
-    require(discos[id].fundRaisingEndedAt < getDate());
-    require(!status[id].isEnabled);
+    require(discos[id].fundRaisingStartedAt > getDate(), '当前时间需要大于disco的开始募资时间');
+    require(discos[id].fundRaisingEndedAt < getDate(), '当前时间需要小于disco的结束募资时间');
+    require(!status[id].isEnabled, '当前disco需要未被开启过');
 
     status[id].isEnabled = true;
     // 发送开启募资的事件
@@ -175,20 +175,17 @@ contract Disco {
   }
 
   // 发起募资, 记录募资的信息， 可能会多次募资
-  function investor(
-    string memory id,
-    address payable investorAddress,
-    uint256 time) isOwner public payable{
-     require(_coinbase != address(0));
+  function investor(string memory id, uint256 time) public payable{
+    //  require(_coinbase != address(0));
      DiscoInvestor memory d = DiscoInvestor(
-      investorAddress,
+      _coinbase,
       msg.value,
       time
     );
     investors[id] = d;
-    investorAddress.transfer(msg.value);
+    _coinbase.transfer(msg.value);
 
-    emit investToDisco(id, investorAddress, msg.value);
+    emit investToDisco(id, _coinbase, msg.value);
   }
 }
 
