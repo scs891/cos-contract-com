@@ -13,7 +13,8 @@
   "scripts": {
     "compile": "truffle compile",
     "goerli": "truffle migrate --network goerli",
-    "develop": "truffle migrate"
+    "develop": "truffle migrate",
+    "cpjson": "sh cpjson.sh"
   },
   "repository": {
     "type": "git",
