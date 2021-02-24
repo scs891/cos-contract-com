@@ -19,7 +19,7 @@
  */
 
 const HDWalletProvider = require('truffle-hdwallet-provider')
-const infuraKey = '4790cd7bb24349738a3b05ee0c20746e'
+const infuraKey = '338c4233c1894444b470ffa784eca930'
 //
 const fs = require('fs')
 const mnemonic = fs.readFileSync('.secret').toString().trim()
@@ -105,7 +105,7 @@ module.exports = {
 			//    enabled: false,
 			//    runs: 200
 			//  },
-			//  evmVersion: "byzantium"
+			//  evmVersion: "byzantium"ganache-cli
 			// }
 		},
 	},
