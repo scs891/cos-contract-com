@@ -1,5 +1,6 @@
 // Disco 上链
 pragma solidity >=0.4.21 <0.7.0;
+pragma experimental ABIEncoderV2;
 
 contract Disco {
   address private _owner;
@@ -94,50 +95,52 @@ contract Disco {
     return now;
   }
 
+  struct DiscoForm{
+    string  id;
+    address walletAddr;
+    address tokenAddr;
+    string  description;
+    uint256 fundRaisingStartedAt;
+    uint256 fundRaisingEndedAt;
+    uint256 investmentReward;
+    uint256 rewardDeclineRate;
+    uint256 shareToken;
+    uint256 minFundRaising;
+    uint256 addLiquidityPool;
+    uint256 totalDepositToken;
+  }
+
   // 创建Disco
-  function newDisco(
-    string memory id,
-    address walletAddr,
-    address tokenAddr,
-    string memory description,
-    uint256 fundRaisingStartedAt,
-    uint256 fundRaisingEndedAt,
-    uint256 investmentReward,
-    uint256 rewardDeclineRate,
-    uint256 shareToken,
-    uint256 minFundRaising,
-    uint256 addLiquidityPool,
-    uint256 totalDepositToken
-  ) public payable {
+  function newDisco(DiscoForm memory form) public payable {
     DiscoInfo memory d = DiscoInfo(
-      walletAddr,
-      tokenAddr,
-      description,
-      fundRaisingStartedAt,
-      fundRaisingEndedAt,
-      investmentReward,
-      rewardDeclineRate,
-      shareToken,
-      minFundRaising,
-      addLiquidityPool,
-      totalDepositToken
+      form.walletAddr,
+      form.tokenAddr,
+      form.description,
+      form.fundRaisingStartedAt,
+      form.fundRaisingEndedAt,
+      form.investmentReward,
+      form.rewardDeclineRate,
+      form.shareToken,
+      form.minFundRaising,
+      form.addLiquidityPool,
+      form.totalDepositToken
     );
     DiscoStatus memory s = DiscoStatus(
       false,
       false,
       false
     );
-    discos[id] = d;
-    status[id] = s;
+    discos[form.id] = d;
+    status[form.id] = s;
 
 
     // 生成新的合约地址, discoAddr 既是DiscoAddr 的实例， 也是上链部署的地址
-    DiscoAddr addr = new DiscoAddr(id);
+    DiscoAddr addr = new DiscoAddr(form.id);
     // disco id 与 disco 合约地址的映射
-    // DiscoInvestAddr memory discoInvestAddr = DiscoInvestAddr(addr);
-    // discoAddress[id] = discoInvestAddr;
+    DiscoInvestAddr memory discoInvestAddr = DiscoInvestAddr(addr);
+    discoAddress[form.id] = discoInvestAddr;
        // disco 创建成功
-    emit createdDisco(id, addr);
+    emit createdDisco(form.id, addr);
   }
 
 
@@ -145,8 +148,8 @@ contract Disco {
    * @dev 开启disco
    */
   function enableDisco(string memory id) public {
-    require(discos[id].fundRaisingStartedAt > getDate(), '当前时间需要大于disco的开始募资时间');
-    require(discos[id].fundRaisingEndedAt < getDate(), '当前时间需要小于disco的结束募资时间');
+    require(discos[id].fundRaisingStartedAt < getDate(), '当前时间需要大于disco的开始募资时间');
+    require(discos[id].fundRaisingEndedAt > getDate(), '当前时间需要小于disco的结束募资时间');
     require(!status[id].isEnabled, '当前disco需要未被开启过');
 
     status[id].isEnabled = true;
@@ -176,16 +179,19 @@ contract Disco {
 
   // 发起募资, 记录募资的信息， 可能会多次募资
   function investor(string memory id, uint256 time) public payable{
-    //  require(_coinbase != address(0));
+     require(_coinbase != address(0));
      DiscoInvestor memory d = DiscoInvestor(
-      _coinbase,
+      _owner,
       msg.value,
       time
     );
-    investors[id] = d;
-    _coinbase.transfer(msg.value);
 
-    emit investToDisco(id, _coinbase, msg.value);
+    investors[id] = d;
+
+    DiscoAddr discoAddr = discoAddress[id].discoAddr;
+    address(discoAddr).transfer(msg.value);
+
+    emit investToDisco(id, _owner, msg.value);
   }
 }
 
@@ -195,6 +201,8 @@ contract DiscoAddr {
 
   string public id;
   // suppose the deployed contract has a purpose
+
+  receive () external payable {}
 
   constructor(string memory discoId) public {
     id = discoId;
