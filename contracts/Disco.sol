@@ -175,6 +175,8 @@ contract Disco {
         require(bytes(id).length != 0);
         DiscoAddr discoAddr = discoAddress[id].discoAddr;
         require(bytes(discoAddr.getDiscoId()).length != 0);
+        // solidity > 0.6 address payable pool = payable(address(discoAddr)) ;
+        // as follow is 0.5.x
         address tmp = address(discoAddr);
         address payable pool = address(uint160(tmp));
         for (uint256 i = 0; i < investors[id].length; i++) {
@@ -194,6 +196,8 @@ contract Disco {
             false
         );
         DiscoAddr discoAddr = discoAddress[id].discoAddr;
+        // solidity > 0.6 address payable pool = payable(address(discoAddr)) ;
+        // as follow is 0.5.x
         address tmp = address(discoAddr);
         address payable pool = address(uint160(tmp));
         pool.transfer(msg.value);
