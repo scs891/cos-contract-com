@@ -5,7 +5,6 @@ pragma experimental ABIEncoderV2;
 contract Disco {
     address private _owner;
     address payable private _coinbase;
-    uint256 constant NULL = 0;
 
     // disco
     struct DiscoInfo {
