@@ -5,7 +5,7 @@ pragma experimental ABIEncoderV2;
 contract Disco {
     address private _owner;
     address payable private _coinbase;
-
+    uint256 constant NULL = 0;
 
     // disco
     struct DiscoInfo {
@@ -28,9 +28,11 @@ contract Disco {
         // 投资人地址
         address investor;
         // 投资金额, 可以多次投资
-        uint value;
+        uint256 value;
         // 时间
-        uint time;
+        uint256 time;
+        // dead投资记录
+        bool isDead;
         // // 募资比例获得TOKEN
         // uint256 sharedToken;
         // // 奖励TOKEN
@@ -54,7 +56,7 @@ contract Disco {
     // 记录创建的disco
     mapping(string => DiscoInfo) public discos;
     // 记录投资人
-    mapping(string => DiscoInvestor) public investors;
+    mapping(string => DiscoInvestor[]) public investors;
     // 记录投资的状态
     mapping(string => DiscoStatus) public status;
     // 记录 disco 的募资地址
@@ -68,15 +70,25 @@ contract Disco {
     // 募资成功的时候
     event fundraisingSucceed(string discoId);
     //募资结束（成功）
-    event fundraisingFinished(string discoIdo);
+    event fundraisingFinished(string discoIdo, bool success);
     // 募资失败
     event fundraisingFailed(string discoId);
     // 投资者向 disco 投钱
-    event investToDisco(string discoId, address investorAddr, uint amount);
+    event investToDisco(string discoId, address investorAddr, uint256 amount);
 
     // 判断是否是本人
     modifier isOwner() {
         require(msg.sender == _owner, "Caller is not owner!");
+        _;
+    }
+
+    modifier canInvest(string memory id) {
+        uint256 checkPoint = getDate();
+        DiscoStatus memory status = status[id];
+        DiscoInfo memory discoInfo = discos[id];
+        require(status.isEnabled && !status.isFinished);
+        require(discoInfo.fundRaisingStartedAt < checkPoint, '当前时间需要大于disco的开始募资时间');
+        require(discoInfo.fundRaisingEndedAt > checkPoint, '当前时间需要小于disco的结束募资时间');
         _;
     }
 
@@ -136,37 +148,56 @@ contract Disco {
 
 
     /**
-     * @dev 后端调用， 触发disco的结束， 由合约来判断disco的募资是否成功
-     */
+    * @dev 后端调用， 触发disco的结束， 由合约来判断disco的募资是否成功
+    */
     function finishedDisco(string calldata id) external {
-        require(!status[id].isFinished);
-        status[id].isFinished = true;
+        DiscoStatus memory discoStatus = status[id];
+        require(!discoStatus.isFinished && discoStatus.isEnabled);
+        discoStatus.isFinished = true;
+        uint256 investAmt = 0;
+        for (uint256 i = 0; i < investors[id].length; i++) {
+            DiscoInvestor memory investor = investors[id][i];
+            if (!investor.isDead) {
+                investAmt += investor.value;
+            }
+        }
+        DiscoInfo memory info = discos[id];
+        discoStatus.isSuccess = info.minFundRaising > investAmt;
+        status[id] = discoStatus;
+        emit fundraisingFinished(id, discoStatus.isSuccess);
+    }
 
-        // TODO 结束的时候需要检查募资是否成功或者失败
-        status[id].isSuccess = true;
-        // if ('成功') {
-        //   status[id].isSuccess = true;
-        //   // TODO 开启流动性 swap
-        // } else {
-        //   status[id].isSuccess = false;
-        // }
-        emit fundraisingFinished(id);
+
+    /**
+     * refund-anti-pattern 适合的方案是外部控制执行批量一对一退款。
+     */
+    function refund(string calldata id) external payable {
+        require(bytes(id).length != 0);
+        DiscoAddr discoAddr = discoAddress[id].discoAddr;
+        require(bytes(discoAddr.getDiscoId()).length != 0);
+        address tmp = address(discoAddr);
+        address payable pool = address(uint160(tmp));
+        for (uint256 i = 0; i < investors[id].length; i++) {
+            DiscoInvestor storage investor = investors[id][i];
+            pool.transfer(investor.value);
+            investor.isDead = true;
+        }
     }
 
     // 发起募资, 记录募资的信息， 可能会多次募资
-    function investor(string memory id, uint256 time) public payable {
+    function investor(string memory id, uint256 time) public payable canInvest(id) {
         require(_coinbase != address(0));
         DiscoInvestor memory d = DiscoInvestor(
             _owner,
             msg.value,
-            time
+            time,
+            false
         );
-
-        investors[id] = d;
-
         DiscoAddr discoAddr = discoAddress[id].discoAddr;
-        address(discoAddr).transfer(msg.value);
-
+        address tmp = address(discoAddr);
+        address payable pool = address(uint160(tmp));
+        pool.transfer(msg.value);
+        investors[id].push(d);
         emit investToDisco(id, _owner, msg.value);
     }
 }
@@ -178,7 +209,7 @@ contract DiscoAddr {
     string public id;
     // suppose the deployed contract has a purpose
 
-    receive() external payable {}
+    function receive() external payable {}
 
     constructor(string memory discoId) public {
         id = discoId;
