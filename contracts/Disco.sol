@@ -161,6 +161,7 @@ contract Disco {
             }
         }
         DiscoInfo memory info = discos[id];
+        //if minFundRaising is a bottom of pool.
         discoStatus.isSuccess = info.minFundRaising > investAmt;
         status[id] = discoStatus;
         emit fundraisingFinished(id, discoStatus.isSuccess);
