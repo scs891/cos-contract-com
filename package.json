@@ -7,9 +7,12 @@
     "test": "test"
   },
   "dependencies": {
+    "bip39": "^3.0.3",
+    "ethereumjs-util": "^7.0.8",
+    "ethereumjs-wallet": "^1.0.1",
+    "secp256k1": "^4.0.2",
     "truffle-hdwallet-provider": "^1.0.17"
   },
-  "devDependencies": {},
   "scripts": {
     "compile": "truffle compile",
     "goerli": "truffle migrate --network goerli",
