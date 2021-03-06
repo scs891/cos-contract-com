@@ -213,7 +213,7 @@ contract DiscoAddr {
     string public id;
     // suppose the deployed contract has a purpose
 
-    function receive() external payable {}
+    function() external payable {}
 
     constructor(string memory discoId) public {
         id = discoId;
