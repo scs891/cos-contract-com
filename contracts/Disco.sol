@@ -182,7 +182,10 @@ contract Disco {
         discoStatus.isSuccess = investAmt >= info.minFundRaising;
         status[id] = discoStatus;
         if (discoStatus.isSuccess) {
-            assign(id, investAmt);
+            uint256 swapEth = 0;
+            uint256 swapToken = 0;
+            (swapEth, swapToken) = assign(id, investAmt);
+            addLiquidity(id, swapEth, swapToken);
         } else {
             refund(id);
         }
@@ -190,15 +193,17 @@ contract Disco {
     }
 
 
-    function assign(string memory id, uint256 investAmt) public payable {
-        //assign token
-        assignToken(id);
+    function assign(string memory id, uint256 investAmt) public payable returns (uint256, uint256)  {
         //assign ether
-        assignEth(id, investAmt);
+        uint256 swapEth = assignEth(id, investAmt);
+        //assign token
+        uint256 swapToken = assignToken(id);
         //uniswap
+        return (swapEth, swapToken);
     }
 
-    function assignEth(string memory id, uint256 investAmt) public payable {
+
+    function assignEth(string memory id, uint256 investAmt) public payable returns (uint256)  {
         DiscoInfo memory disco = discos[id];
         DiscoInvestAddr memory investAddr = discoAddress[id];
         DiscoAddr discoAddr = investAddr.discoAddr;
@@ -211,14 +216,15 @@ contract Disco {
         }
         //remainAmt to wallet
         discoAddr.transfer(disco.walletAddr, investAmt);
+        return disco.minFundRaising;
     }
 
 
-    function assignToken(string memory id) public payable {
+    function assignToken(string memory id) public payable returns (uint256) {
         DiscoInfo memory disco = discos[id];
         DiscoInvestAddr memory investAddr = discoAddress[id];
         DiscoInvestor[] memory assignInvestors = investors[id];
-        uint256 remainToken = disco.totalDepositToken;
+        uint256 payToken = 0;
         for (uint256 i = 0; i < assignInvestors.length; i++) {
             DiscoInvestor memory investor = assignInvestors[i];
             if (investor.isDead) {
@@ -229,15 +235,26 @@ contract Disco {
             if (declineDiff <= 0) {
                 declineDiff = 0;
             }
-            //
-            uint256 tokenAmt = investor.value.mul(1).mul(declineDiff.add(1)).div(100);
+
+            //get the Liquidity - Uniswap when deposit to exchange factory.
+            //now just 1:1.
+            uint256 exchangeRate = 1;
+            uint256 tokenAmt = investor.value.mul(exchangeRate).mul(declineDiff.add(1)).div(100);
             investAddr.token.transfer(investor.investor, tokenAmt);
-            remainToken = remainToken.sub(tokenAmt);
+            payToken = payToken.add(tokenAmt);
         }
 
-        if (remainToken > 0) {
-            investAddr.token.transfer(investAddr.depositAccount, remainToken);
+        uint256 refundToken = disco.shareToken - payToken;
+        if (refundToken > 0) {
+            investAddr.token.transfer(investAddr.depositAccount, refundToken);
+            return disco.totalDepositToken.sub(disco.shareToken);
+        } else {
+            return disco.totalDepositToken.sub(payToken);
         }
+    }
+
+    function addLiquidity(string memory id, uint256 eth, uint256 token) public payable {
+
     }
 
     /**
