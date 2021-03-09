@@ -52,8 +52,11 @@ contract Disco {
     }
 
     struct DiscoInvestAddr {
+        // deposit pool.
         DiscoAddr discoAddr;
+        //issue coin
         IERC20 token;
+        //record deposit account when use to refund.
         address payable depositAccount;
     }
 
