@@ -1,4 +1,3 @@
-
 // File: @uniswap/v2-core/contracts/interfaces/IUniswapV2Factory.sol
 pragma solidity ^0.5.6;
 
@@ -15,17 +14,17 @@ interface IUniswapV2Factory {
     function feeToSetter() external view returns (address);
 
     function getPair(address tokenA, address tokenB)
-        external
-        view
-        returns (address pair);
+    external
+    view
+    returns (address pair);
 
     function allPairs(uint256) external view returns (address pair);
 
     function allPairsLength() external view returns (uint256);
 
     function createPair(address tokenA, address tokenB)
-        external
-        returns (address pair);
+    external
+    returns (address pair);
 
     function setFeeTo(address) external;
 
@@ -87,7 +86,7 @@ library TransferHelper {
 
     function safeTransferETH(address to, uint256 value) internal {
         // solium-disable-next-line
-        (bool success, ) = to.call.value(value)(new bytes(0));
+        (bool success,) = to.call.value(value)(new bytes(0));
         require(success, "TransferHelper: ETH_TRANSFER_FAILED");
     }
 }
@@ -113,9 +112,9 @@ interface IUniswapV2Pair {
     function balanceOf(address owner) external view returns (uint256);
 
     function allowance(address owner, address spender)
-        external
-        view
-        returns (uint256);
+    external
+    view
+    returns (uint256);
 
     function approve(address spender, uint256 value) external returns (bool);
 
@@ -169,13 +168,13 @@ interface IUniswapV2Pair {
     function token1() external view returns (address);
 
     function getReserves()
-        external
-        view
-        returns (
-            uint112 reserve0,
-            uint112 reserve1,
-            uint32 blockTimestampLast
-        );
+    external
+    view
+    returns (
+        uint112 reserve0,
+        uint112 reserve1,
+        uint32 blockTimestampLast
+    );
 
     function price0CumulativeLast() external view returns (uint256);
 
@@ -186,8 +185,8 @@ interface IUniswapV2Pair {
     function mint(address to) external returns (uint256 liquidity);
 
     function burn(address to)
-        external
-        returns (uint256 amount0, uint256 amount1);
+    external
+    returns (uint256 amount0, uint256 amount1);
 
     function swap(
         uint256 amount0Out,
@@ -219,6 +218,11 @@ library SafeMath {
     function mul(uint256 x, uint256 y) internal pure returns (uint256 z) {
         require(y == 0 || (z = x * y) / y == x, "ds-math-mul-overflow");
     }
+
+    function div(uint256 a, uint256 b) internal pure returns (uint256) {
+        require(b > 0, "SafeMath: division by zero");
+        return a / b;
+    }
 }
 
 // File: contracts/libraries/UniswapV2Library.sol
@@ -236,16 +240,16 @@ library UniswapV2Library {
      */
     // returns sorted token addresses, used to handle return values from pairs sorted in this order
     function sortTokens(address tokenA, address tokenB)
-        internal
-        pure
-        returns (address token0, address token1)
+    internal
+    pure
+    returns (address token0, address token1)
     {
         //确认tokenA不等于tokenB
         require(tokenA != tokenB, "UniswapV2Library: IDENTICAL_ADDRESSES");
         //排序token地址
         (token0, token1) = tokenA < tokenB
-            ? (tokenA, tokenB)
-            : (tokenB, tokenA);
+        ? (tokenA, tokenB)
+        : (tokenB, tokenA);
         //确认token地址不等于0地址
         require(token0 != address(0), "UniswapV2Library: ZERO_ADDRESS");
     }
@@ -274,8 +278,8 @@ library UniswapV2Library {
                         hex"ff",
                         factory,
                         keccak256(abi.encodePacked(token0, token1)),
-                        // pair合约bytecode的keccak256
-                        //hex"96e8ac4277198ff8b6f785478aa9a39f403cb768dd02cbee326c3e7da348845f"
+                    // pair合约bytecode的keccak256
+                    //hex"96e8ac4277198ff8b6f785478aa9a39f403cb768dd02cbee326c3e7da348845f"
                         hex"8062edb6672844d2d7efbcf1a7ec23daab2b526c3ac13797f3030f7775c74986"
                     )
                 )
@@ -299,16 +303,16 @@ library UniswapV2Library {
         address tokenB
     ) internal view returns (uint256 reserveA, uint256 reserveB) {
         //排序token地址
-        (address token0, ) = sortTokens(tokenA, tokenB);
+        (address token0,) = sortTokens(tokenA, tokenB);
         //通过排序后的token地址和工厂合约地址获取到pair合约地址,并从pair合约中获取储备量0,1
-        (uint256 reserve0, uint256 reserve1, ) = IUniswapV2Pair(
+        (uint256 reserve0, uint256 reserve1,) = IUniswapV2Pair(
             pairFor(factory, tokenA, tokenB)
         )
-            .getReserves();
+        .getReserves();
         //根据输入的token顺序返回储备量
         (reserveA, reserveB) = tokenA == token0
-            ? (reserve0, reserve1)
-            : (reserve1, reserve0);
+        ? (reserve0, reserve1)
+        : (reserve1, reserve0);
     }
 
     /**
@@ -480,12 +484,12 @@ interface IUniswapV2Router01 {
         address to,
         uint256 deadline
     )
-        external
-        returns (
-            uint256 amountA,
-            uint256 amountB,
-            uint256 liquidity
-        );
+    external
+    returns (
+        uint256 amountA,
+        uint256 amountB,
+        uint256 liquidity
+    );
 
     function addLiquidityETH(
         address token,
@@ -495,13 +499,13 @@ interface IUniswapV2Router01 {
         address to,
         uint256 deadline
     )
-        external
-        payable
-        returns (
-            uint256 amountToken,
-            uint256 amountETH,
-            uint256 liquidity
-        );
+    external
+    payable
+    returns (
+        uint256 amountToken,
+        uint256 amountETH,
+        uint256 liquidity
+    );
 
     function removeLiquidity(
         address tokenA,
@@ -614,14 +618,14 @@ interface IUniswapV2Router01 {
     ) external pure returns (uint256 amountIn);
 
     function getAmountsOut(uint256 amountIn, address[] calldata path)
-        external
-        view
-        returns (uint256[] memory amounts);
+    external
+    view
+    returns (uint256[] memory amounts);
 
     function getAmountsIn(uint256 amountOut, address[] calldata path)
-        external
-        view
-        returns (uint256[] memory amounts);
+    external
+    view
+    returns (uint256[] memory amounts);
 }
 
 // File: contracts/interfaces/IERC20.sol
@@ -645,9 +649,9 @@ interface IERC20 {
     function balanceOf(address owner) external view returns (uint256);
 
     function allowance(address owner, address spender)
-        external
-        view
-        returns (uint256);
+    external
+    view
+    returns (uint256);
 
     function approve(address spender, uint256 value) external returns (bool);
 
@@ -692,7 +696,8 @@ contract UniswapV2Router01 is IUniswapV2Router01 {
     //退款方法
     function() external payable {
         //断言调用者为weth合约地址
-        assert(msg.sender == WETH); // only accept ETH via fallback from the WETH contract
+        assert(msg.sender == WETH);
+        // only accept ETH via fallback from the WETH contract
     }
 
     // **** ADD LIQUIDITY ****
@@ -790,13 +795,13 @@ contract UniswapV2Router01 is IUniswapV2Router01 {
         address to,
         uint256 deadline
     )
-        external
-        ensure(deadline)
-        returns (
-            uint256 amountA,
-            uint256 amountB,
-            uint256 liquidity
-        )
+    external
+    ensure(deadline)
+    returns (
+        uint256 amountA,
+        uint256 amountB,
+        uint256 liquidity
+    )
     {
         //获取数量A,数量B
         (amountA, amountB) = _addLiquidity(
@@ -837,14 +842,14 @@ contract UniswapV2Router01 is IUniswapV2Router01 {
         address to,
         uint256 deadline
     )
-        external
-        payable
-        ensure(deadline)
-        returns (
-            uint256 amountToken,
-            uint256 amountETH,
-            uint256 liquidity
-        )
+    external
+    payable
+    ensure(deadline)
+    returns (
+        uint256 amountToken,
+        uint256 amountETH,
+        uint256 liquidity
+    )
     {
         //获取Token数量,ETH数量
         (amountToken, amountETH) = _addLiquidity(
@@ -867,7 +872,8 @@ contract UniswapV2Router01 is IUniswapV2Router01 {
         liquidity = IUniswapV2Pair(pair).mint(to);
         //如果`收到的主币数量`>`ETH数量` 则返还`收到的主币数量`-`ETH数量`
         if (msg.value > amountETH)
-            TransferHelper.safeTransferETH(msg.sender, msg.value - amountETH); // refund dust eth, if any
+            TransferHelper.safeTransferETH(msg.sender, msg.value - amountETH);
+        // refund dust eth, if any
     }
 
     // **** REMOVE LIQUIDITY ****
@@ -895,15 +901,16 @@ contract UniswapV2Router01 is IUniswapV2Router01 {
         //计算TokenA,TokenB的CREATE2地址，而无需进行任何外部调用
         address pair = UniswapV2Library.pairFor(factory, tokenA, tokenB);
         //将流动性数量从用户发送到pair地址(需提前批准)
-        IUniswapV2Pair(pair).transferFrom(msg.sender, pair, liquidity); // send liquidity to pair
+        IUniswapV2Pair(pair).transferFrom(msg.sender, pair, liquidity);
+        // send liquidity to pair
         //pair合约销毁流动性数量,并将数值0,1的token发送到to地址
         (uint256 amount0, uint256 amount1) = IUniswapV2Pair(pair).burn(to);
         //排序tokenA,tokenB
-        (address token0, ) = UniswapV2Library.sortTokens(tokenA, tokenB);
+        (address token0,) = UniswapV2Library.sortTokens(tokenA, tokenB);
         //按排序后的token顺序返回数值AB
         (amountA, amountB) = tokenA == token0
-            ? (amount0, amount1)
-            : (amount1, amount0);
+        ? (amount0, amount1)
+        : (amount1, amount0);
         //确保数值AB大于最小值AB
         require(
             amountA >= amountAMin,
@@ -984,7 +991,7 @@ contract UniswapV2Router01 is IUniswapV2Router01 {
         //计算TokenA,TokenB的CREATE2地址，而无需进行任何外部调用
         address pair = UniswapV2Library.pairFor(factory, tokenA, tokenB);
         //如果全部批准,value值等于最大uint256,否则等于流动性
-        uint256 value = approveMax ? uint256(-1) : liquidity;
+        uint256 value = approveMax ? uint256(- 1) : liquidity;
         //调用pair合约的许可方法(调用账户,当前合约地址,数值,最后期限,v,r,s)
         IUniswapV2Pair(pair).permit(
             msg.sender,
@@ -1037,7 +1044,7 @@ contract UniswapV2Router01 is IUniswapV2Router01 {
         //计算Token,WETH的CREATE2地址，而无需进行任何外部调用
         address pair = UniswapV2Library.pairFor(factory, token, WETH);
         //如果全部批准,value值等于最大uint256,否则等于流动性
-        uint256 value = approveMax ? uint256(-1) : liquidity;
+        uint256 value = approveMax ? uint256(- 1) : liquidity;
         //调用pair合约的许可方法(调用账户,当前合约地址,数值,最后期限,v,r,s)
         IUniswapV2Pair(pair).permit(
             msg.sender,
@@ -1078,20 +1085,20 @@ contract UniswapV2Router01 is IUniswapV2Router01 {
             //(输入地址,输出地址) = (当前地址,下一个地址)
             (address input, address output) = (path[i], path[i + 1]);
             //token0 = 排序(输入地址,输出地址)
-            (address token0, ) = UniswapV2Library.sortTokens(input, output);
+            (address token0,) = UniswapV2Library.sortTokens(input, output);
             //输出数量 = 数额数组下一个数额
             uint256 amountOut = amounts[i + 1];
             //(输出数额0,输出数额1) = 输入地址==token0 ? (0,输出数额) : (输出数额,0)
             (uint256 amount0Out, uint256 amount1Out) = input == token0
-                ? (uint256(0), amountOut)
-                : (amountOut, uint256(0));
+            ? (uint256(0), amountOut)
+            : (amountOut, uint256(0));
             //to地址 = i<路径长度-2 ? (输出地址,路径下下个地址)的pair合约地址 : to地址
             address to = i < path.length - 2
-                ? UniswapV2Library.pairFor(factory, output, path[i + 2])
-                : _to;
+            ? UniswapV2Library.pairFor(factory, output, path[i + 2])
+            : _to;
             //调用(输入地址,输出地址)的pair合约地址的交换方法(输出数额0,输出数额1,to地址,0x00)
             IUniswapV2Pair(UniswapV2Library.pairFor(factory, input, output))
-                .swap(amount0Out, amount1Out, to, new bytes(0));
+            .swap(amount0Out, amount1Out, to, new bytes(0));
         }
     }
 
@@ -1315,7 +1322,8 @@ contract UniswapV2Router01 is IUniswapV2Router01 {
         _swap(amounts, path, to);
         //如果`收到的主币数量`>`数额数组[0]` 则返还`收到的主币数量`-`数额数组[0]`
         if (msg.value > amounts[0])
-            TransferHelper.safeTransferETH(msg.sender, msg.value - amounts[0]); // refund dust eth, if any
+            TransferHelper.safeTransferETH(msg.sender, msg.value - amounts[0]);
+        // refund dust eth, if any
     }
 
     function quote(
@@ -1344,17 +1352,17 @@ contract UniswapV2Router01 is IUniswapV2Router01 {
     }
 
     function getAmountsOut(uint256 amountIn, address[] memory path)
-        public
-        view
-        returns (uint256[] memory amounts)
+    public
+    view
+    returns (uint256[] memory amounts)
     {
         return UniswapV2Library.getAmountsOut(factory, amountIn, path);
     }
 
     function getAmountsIn(uint256 amountOut, address[] memory path)
-        public
-        view
-        returns (uint256[] memory amounts)
+    public
+    view
+    returns (uint256[] memory amounts)
     {
         return UniswapV2Library.getAmountsIn(factory, amountOut, path);
     }

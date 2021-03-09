@@ -2,14 +2,17 @@
 pragma solidity >=0.4.21 <0.7.0;
 pragma experimental ABIEncoderV2;
 
+import "./UniswapV2Router01.sol";
+
 contract Disco {
     address private _owner;
     address payable private _coinbase;
+    using SafeMath for uint256;
 
     // disco
     struct DiscoInfo {
         string id;
-        address walletAddr;
+        address payable walletAddr;
         address tokenAddr;
         string description;
         uint256 fundRaisingStartedAt;
@@ -50,6 +53,8 @@ contract Disco {
 
     struct DiscoInvestAddr {
         DiscoAddr discoAddr;
+        IERC20 token;
+        address payable depositAccount;
     }
 
     // 记录创建的disco
@@ -83,9 +88,9 @@ contract Disco {
 
     modifier canInvest(string memory id) {
         uint256 checkPoint = getDate();
-        DiscoStatus memory status = status[id];
+        DiscoStatus memory discoStatus = status[id];
         DiscoInfo memory discoInfo = discos[id];
-        require(status.isEnabled && !status.isFinished);
+        require(discoStatus.isEnabled && !discoStatus.isFinished);
         require(discoInfo.fundRaisingStartedAt < checkPoint, '当前时间需要大于disco的开始募资时间');
         require(discoInfo.fundRaisingEndedAt > checkPoint, '当前时间需要小于disco的结束募资时间');
         _;
@@ -123,7 +128,7 @@ contract Disco {
         // 生成新的合约地址, discoAddr 既是DiscoAddr 的实例， 也是上链部署的地址
         DiscoAddr addr = new DiscoAddr(d.id);
         // disco id 与 disco 合约地址的映射
-        DiscoInvestAddr memory discoInvestAddr = DiscoInvestAddr(addr);
+        DiscoInvestAddr memory discoInvestAddr = DiscoInvestAddr(addr, IERC20(d.tokenAddr), address(0));
         discoAddress[d.id] = discoInvestAddr;
         // disco 创建成功
         emit createdDisco(d.id, addr);
@@ -135,11 +140,23 @@ contract Disco {
      */
     function enableDisco(string memory id) public {
         uint256 checkPoint = getDate();
-        require(discos[id].fundRaisingStartedAt < checkPoint, '当前时间需要大于disco的开始募资时间');
-        require(discos[id].fundRaisingEndedAt > checkPoint, '当前时间需要小于disco的结束募资时间');
-        require(!status[id].isEnabled, '当前disco需要未被开启过');
+        DiscoInfo memory disco = discos[id];
+        require(disco.fundRaisingStartedAt < checkPoint, '当前时间需要大于disco的开始募资时间');
+        require(disco.fundRaisingEndedAt > checkPoint, '当前时间需要小于disco的结束募资时间');
+        DiscoStatus memory discoStatus = status[id];
+        require(!discoStatus.isEnabled, '当前disco需要未被开启过');
 
-        status[id].isEnabled = true;
+        DiscoInvestAddr memory investAddr = discoAddress[id];
+        DiscoAddr discoAddr = investAddr.discoAddr;
+        discoAddr.getPool().transfer(0.1 * 10 ** 18);
+
+        IERC20 token = investAddr.token;
+        token.transfer(discoAddr.getPool(), disco.totalDepositToken);
+        discoStatus.isEnabled = true;
+        status[id] = discoStatus;
+        investAddr.depositAccount = msg.sender;
+        discoAddress[id] = investAddr;
+
         // 发送开启募资的事件
         emit enabledDisco(id);
     }
@@ -162,28 +179,89 @@ contract Disco {
         }
         DiscoInfo memory info = discos[id];
         //if minFundRaising is a bottom of pool.
-        discoStatus.isSuccess = info.minFundRaising > investAmt;
+        discoStatus.isSuccess = investAmt >= info.minFundRaising;
         status[id] = discoStatus;
+        if (discoStatus.isSuccess) {
+            assign(id, investAmt);
+        } else {
+            refund(id);
+        }
         emit fundraisingFinished(id, discoStatus.isSuccess);
     }
 
 
+    function assign(string memory id, uint256 investAmt) public payable {
+        //assign token
+        assignToken(id);
+        //assign ether
+        assignEth(id, investAmt);
+        //uniswap
+    }
+
+    function assignEth(string memory id, uint256 investAmt) public payable {
+        DiscoInfo memory disco = discos[id];
+        DiscoInvestAddr memory investAddr = discoAddress[id];
+        DiscoAddr discoAddr = investAddr.discoAddr;
+        // 2% platFee
+        uint256 platFee = investAmt.mul(2).div(100);
+        //no chance to send another one except msg.sender. if need, use weth with uniswap.
+        if (platFee > 0) {
+            discoAddr.getPool().transfer(platFee);
+            investAmt -= platFee;
+        }
+        //remainAmt to wallet
+        discoAddr.transfer(disco.walletAddr, investAmt);
+    }
+
+
+    function assignToken(string memory id) public payable {
+        DiscoInfo memory disco = discos[id];
+        DiscoInvestAddr memory investAddr = discoAddress[id];
+        DiscoInvestor[] memory assignInvestors = investors[id];
+        uint256 remainToken = disco.totalDepositToken;
+        for (uint256 i = 0; i < assignInvestors.length; i++) {
+            DiscoInvestor memory investor = assignInvestors[i];
+            if (investor.isDead) {
+                continue;
+            }
+            uint256 diff = disco.fundRaisingStartedAt.sub(investor.time).div(60 * 60 * 24);
+            uint256 declineDiff = disco.rewardDeclineRate.sub(diff);
+            if (declineDiff <= 0) {
+                declineDiff = 0;
+            }
+            //
+            uint256 tokenAmt = investor.value.mul(1).mul(declineDiff.add(1)).div(100);
+            investAddr.token.transfer(investor.investor, tokenAmt);
+            remainToken = remainToken.sub(tokenAmt);
+        }
+
+        if (remainToken > 0) {
+            investAddr.token.transfer(investAddr.depositAccount, remainToken);
+        }
+    }
+
     /**
      * refund-anti-pattern 适合的方案是外部控制执行批量一对一退款。
      */
-    function refund(string calldata id) external payable {
+    function refund(string memory id) public payable {
         require(bytes(id).length != 0);
-        DiscoAddr discoAddr = discoAddress[id].discoAddr;
+        DiscoInvestAddr memory investAddr = discoAddress[id];
+        DiscoAddr discoAddr = investAddr.discoAddr;
         require(bytes(discoAddr.getDiscoId()).length != 0);
+        require(investAddr.depositAccount != address(0));
         // solidity > 0.6 address payable pool = payable(address(discoAddr)) ;
         // as follow is 0.5.x
-        address tmp = address(discoAddr);
-        address payable pool = address(uint160(tmp));
+        // refund ether
         for (uint256 i = 0; i < investors[id].length; i++) {
             DiscoInvestor storage investor = investors[id][i];
-            pool.transfer(investor.value);
+            discoAddr.getPool().transfer(investor.value);
             investor.isDead = true;
         }
+
+        //refund token
+        DiscoInfo memory info = discos[id];
+        IERC20 token = investAddr.token;
+        token.transfer(investAddr.depositAccount, info.totalDepositToken);
     }
 
     // 发起募资, 记录募资的信息， 可能会多次募资
@@ -198,29 +276,37 @@ contract Disco {
         DiscoAddr discoAddr = discoAddress[id].discoAddr;
         // solidity > 0.6 address payable pool = payable(address(discoAddr)) ;
         // as follow is 0.5.x
-        address tmp = address(discoAddr);
-        address payable pool = address(uint160(tmp));
-        pool.transfer(msg.value);
+        discoAddr.getPool().transfer(msg.value);
         investors[id].push(d);
         emit investToDisco(id, _owner, msg.value);
     }
 }
 
-
 // 生成募资合约
+//Fund-Raising Contract
 contract DiscoAddr {
 
     string public id;
+
     // suppose the deployed contract has a purpose
 
-    function receive() external payable {}
+    //0.6.x
+    //receive() external payable {}
+    function() external payable {}
 
     constructor(string memory discoId) public {
         id = discoId;
     }
 
-
     function getDiscoId() public view returns (string memory) {
         return id;
+    }
+
+    function transfer(address payable to, uint256 amount) external {
+        to.transfer(amount);
+    }
+
+    function getPool() external view returns (address payable) {
+        return address(uint160(address(this)));
     }
 }
