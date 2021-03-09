@@ -185,7 +185,6 @@ contract Disco {
             uint256 swapEth = 0;
             uint256 swapToken = 0;
             (swapEth, swapToken) = assign(id, investAmt);
-            addLiquidity(id, swapEth, swapToken);
         } else {
             refund(id);
         }
