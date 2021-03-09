@@ -238,6 +238,7 @@ contract Disco {
                 declineDiff = 0;
             }
 
+            //exchangeRate: "The chicken or the egg, which came first?"  where exchangeRate from???
             //get the Liquidity - Uniswap when deposit to exchange factory.
             //now just 1:1.
             uint256 exchangeRate = 1;
