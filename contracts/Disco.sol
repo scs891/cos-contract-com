@@ -61,11 +61,14 @@ contract Disco {
         address payable depositAccount;
         //初始流动性
         uint256 initLiquidity;
-
-        uint256 exchangeEth;
-
-        uint256 exchangeToken;
+        //reserve eth
+        uint256 swapEth;
+        //reserve token
+        uint256 swapToken;
     }
+
+    //Raise status: start->all begin(init), end->all end(finally).
+    enum RaiseStatus{Start, Raising, Succeed, Failed, End}
 
     // 记录创建的disco
     mapping(string => DiscoInfo) public discos;
@@ -174,19 +177,23 @@ contract Disco {
         status[id] = discoStatus;
         investAddr.depositAccount = msg.sender;
 
-        //addLiquidity
-        uint256 deadline = getDate() + 60;
-        (uint256 amountToken, uint256 amountETH, uint256 liquidity) = uniswap.addLiquidityETH(disco.tokenAddr, disco.totalDepositToken, disco.totalDepositToken, disco.minFundRaising, uniswap.factory(), deadline);
+        //add liquidity.
+        uint256 deadline = getDeadline(60);
+        (uint256 investors,uint256 investAmt) = getInvestAmt(id);
+        //weth actually
+        (uint256 amountToken, uint256 amountETH, uint256 liquidity) = uniswap.addLiquidityETH(disco.tokenAddr, disco.shareToken, disco.shareToken, investAmt, uniswap.factory(), deadline);
         investAddr.initLiquidity = liquidity;
-        investAddr.exchangeToken = amountToken;
-        investAddr.exchangeEth = amountETH;
+        investAddr.swapToken = amountToken;
+        investAddr.swapEth = amountETH;
         discoAddress[id] = investAddr;
 
         // 发送开启募资的事件
         emit enabledDisco(id);
     }
 
-
+    function getDeadline(uint256 pendingSecs) internal pure returns (uint256){
+        return getDate() + pendingSecs;
+    }
 
     /**
     * @dev 后端调用， 触发disco的结束， 由合约来判断disco的募资是否成功
@@ -195,35 +202,40 @@ contract Disco {
         DiscoStatus memory discoStatus = status[id];
         require(!discoStatus.isFinished && discoStatus.isEnabled);
         discoStatus.isFinished = true;
-        uint256 investAmt = 0;
-        for (uint256 i = 0; i < investors[id].length; i++) {
-            DiscoInvestor memory investor = investors[id][i];
-            if (!investor.isDead) {
-                investAmt += investor.value;
-            }
-        }
+        (uint256 investors,uint256 investAmt) = getInvestAmt(id);
         DiscoInfo memory info = discos[id];
         //if minFundRaising is a bottom of pool.
         discoStatus.isSuccess = investAmt >= info.minFundRaising;
         status[id] = discoStatus;
         if (discoStatus.isSuccess) {
-            uint256 swapEth = 0;
-            uint256 swapToken = 0;
-            (swapEth, swapToken) = assign(id, investAmt);
+            (uint256 platFee, uint256 refundToken) = assign(id, investAmt);
         } else {
             refund(id);
         }
         emit fundraisingFinished(id, discoStatus.isSuccess);
     }
 
+    function getInvestAmt(string calldata id) public view returns (uint256, uint256){
+        uint256 investAmt = 0;
+        uint256 investors = 0;
+        for (uint256 i = 0; i < investors[id].length; i++) {
+            DiscoInvestor memory investor = investors[id][i];
+            if (!investor.isDead) {
+                investAmt += investor.value;
+                investors++;
+            }
+        }
+        return (investors, investAmt);
+    }
+
 
     function assign(string memory id, uint256 investAmt) public payable returns (uint256, uint256)  {
         //assign ether
-        uint256 swapEth = assignEth(id, investAmt);
+        uint256 platFee = assignEth(id, investAmt);
         //assign token
-        uint256 swapToken = assignToken(id);
+        uint256 refundToken = assignToken(id);
         //uniswap
-        return (swapEth, swapToken);
+        return (platFee, refundToken);
     }
 
 
@@ -234,13 +246,14 @@ contract Disco {
         // 2% platFee
         uint256 platFee = investAmt.mul(2).div(100);
         //no chance to send another one except msg.sender. if need, use weth with uniswap.
+        uint256 withdrawEth = investAmt - platFee;
         if (platFee > 0) {
             discoAddr.getPool().transfer(platFee);
             investAmt -= platFee;
         }
         //remainAmt to wallet
-        discoAddr.transfer(disco.walletAddr, investAmt);
-        return disco.minFundRaising;
+        discoAddr.transfer(disco.walletAddr, disco.minFundRaising);
+        return platFee;
     }
 
 
@@ -266,17 +279,11 @@ contract Disco {
             payToken = payToken.add(tokenAmt);
         }
 
-        uint256 refundToken = disco.shareToken - payToken;
+        uint256 refundToken = disco.totalDepositToken - payToken;
         if (refundToken > 0) {
             investAddr.token.transfer(investAddr.depositAccount, refundToken);
-            return disco.totalDepositToken.sub(disco.shareToken);
-        } else {
-            return disco.totalDepositToken.sub(payToken);
         }
-    }
-
-    function addLiquidity(string memory id, uint256 eth, uint256 token) public payable {
-
+        return refundToken;
     }
 
     /**
