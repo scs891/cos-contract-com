@@ -8,6 +8,7 @@ contract Disco {
     address private _owner;
     address payable private _coinbase;
     using SafeMath for uint256;
+    IUniswapV2Router01 uniswap;
 
     // disco
     struct DiscoInfo {
@@ -58,6 +59,12 @@ contract Disco {
         IERC20 token;
         //record deposit account when use to refund.
         address payable depositAccount;
+        //初始流动性
+        uint256 initLiquidity;
+
+        uint256 exchangeEth;
+
+        uint256 exchangeToken;
     }
 
     // 记录创建的disco
@@ -110,6 +117,13 @@ contract Disco {
         _coinbase = addr;
     }
 
+    function setSwap(address factoryAdd, address wethAdd)
+    isOwner
+    public {
+        require(factoryAdd != address(0) && wethAdd != address(0));
+        uniswap = new UniswapV2Router01(factoryAdd, wethAdd);
+    }
+
     //  获取当前时间
     function getDate() public view returns (uint256){
         return now;
@@ -131,7 +145,7 @@ contract Disco {
         // 生成新的合约地址, discoAddr 既是DiscoAddr 的实例， 也是上链部署的地址
         DiscoAddr addr = new DiscoAddr(d.id);
         // disco id 与 disco 合约地址的映射
-        DiscoInvestAddr memory discoInvestAddr = DiscoInvestAddr(addr, IERC20(d.tokenAddr), address(0));
+        DiscoInvestAddr memory discoInvestAddr = DiscoInvestAddr(addr, IERC20(d.tokenAddr), address(0), 0, 0, 0);
         discoAddress[d.id] = discoInvestAddr;
         // disco 创建成功
         emit createdDisco(d.id, addr);
@@ -142,6 +156,7 @@ contract Disco {
      * @dev 开启disco
      */
     function enableDisco(string memory id) public {
+        require(address(uniswap) != address(0), 'need init uniswap');
         uint256 checkPoint = getDate();
         DiscoInfo memory disco = discos[id];
         require(disco.fundRaisingStartedAt < checkPoint, '当前时间需要大于disco的开始募资时间');
@@ -158,6 +173,13 @@ contract Disco {
         discoStatus.isEnabled = true;
         status[id] = discoStatus;
         investAddr.depositAccount = msg.sender;
+
+        //addLiquidity
+        uint256 deadline = getDate() + 60;
+        (uint256 amountToken, uint256 amountETH, uint256 liquidity) = uniswap.addLiquidityETH(disco.tokenAddr, disco.totalDepositToken, disco.totalDepositToken, disco.minFundRaising, uniswap.factory(), deadline);
+        investAddr.initLiquidity = liquidity;
+        investAddr.exchangeToken = amountToken;
+        investAddr.exchangeEth = amountETH;
         discoAddress[id] = investAddr;
 
         // 发送开启募资的事件
@@ -238,11 +260,8 @@ contract Disco {
                 declineDiff = 0;
             }
 
-            //exchangeRate: "The chicken or the egg, which came first?"  where exchangeRate from???
             //get the Liquidity - Uniswap when deposit to exchange factory.
-            //now just 1:1.
-            uint256 exchangeRate = 1;
-            uint256 tokenAmt = investor.value.mul(exchangeRate).mul(declineDiff.add(1)).div(100);
+            uint256 tokenAmt = investor.value.mul(investAddr.initLiquidity).mul(declineDiff.add(1)).div(100);
             investAddr.token.transfer(investor.investor, tokenAmt);
             payToken = payToken.add(tokenAmt);
         }
