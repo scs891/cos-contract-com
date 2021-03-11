@@ -293,6 +293,7 @@ contract Disco {
 
     function addLiquidity(string memory id, uint256 eth, uint256 token)
     public payable returns (uint256, uint256, uint256)  {
+        require(uniswap.factory() != address(0) && uniswap.WETH() != address(0), 'Lack of necessary parameters for uniswap.');
         DiscoInfo memory disco = discos[id];
         uint256 deadline = getDeadline(60);
         (uint256 amountToken, uint256 amountETH, uint256 liquidity) = uniswap.addLiquidityETH(disco.tokenAddr, token, token, eth, uniswap.factory(), deadline);
@@ -301,6 +302,7 @@ contract Disco {
 
     function removeLiquidity(string memory id, uint256 eth, uint256 token)
     public payable returns (uint256, uint256)  {
+        require(uniswap.factory() != address(0) && uniswap.WETH() != address(0), 'Lack of necessary parameters for uniswap.');
         DiscoInfo memory disco = discos[id];
         uint256 deadline = getDeadline(60);
         (uint256 amountToken, uint256 amountETH) = uniswap.removeLiquidityETH(disco.tokenAddr, token, token, eth, uniswap.factory(), deadline);
