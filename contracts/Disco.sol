@@ -179,7 +179,7 @@ contract Disco {
 
         //add liquidity.
         uint256 deadline = getDeadline(60);
-        (uint256 investors,uint256 investAmt) = getInvestAmt(id);
+        (,uint256 investAmt) = getInvestAmt(id);
         //weth actually
         (uint256 amountToken, uint256 amountETH, uint256 liquidity) = uniswap.addLiquidityETH(disco.tokenAddr, disco.shareToken, disco.shareToken, investAmt, uniswap.factory(), deadline);
         investAddr.initLiquidity = liquidity;
@@ -191,7 +191,7 @@ contract Disco {
         emit enabledDisco(id);
     }
 
-    function getDeadline(uint256 pendingSecs) internal pure returns (uint256){
+    function getDeadline(uint256 pendingSecs) internal view returns (uint256){
         return getDate() + pendingSecs;
     }
 
@@ -202,30 +202,30 @@ contract Disco {
         DiscoStatus memory discoStatus = status[id];
         require(!discoStatus.isFinished && discoStatus.isEnabled);
         discoStatus.isFinished = true;
-        (uint256 investors,uint256 investAmt) = getInvestAmt(id);
+        (,uint256 investAmt) = getInvestAmt(id);
         DiscoInfo memory info = discos[id];
         //if minFundRaising is a bottom of pool.
         discoStatus.isSuccess = investAmt >= info.minFundRaising;
         status[id] = discoStatus;
         if (discoStatus.isSuccess) {
-            (uint256 platFee, uint256 refundToken) = assign(id, investAmt);
+            assign(id, investAmt);
         } else {
             refund(id);
         }
         emit fundraisingFinished(id, discoStatus.isSuccess);
     }
 
-    function getInvestAmt(string calldata id) public view returns (uint256, uint256){
+    function getInvestAmt(string memory id) public view returns (uint256, uint256){
         uint256 investAmt = 0;
-        uint256 investors = 0;
+        uint256 invCount = 0;
         for (uint256 i = 0; i < investors[id].length; i++) {
             DiscoInvestor memory investor = investors[id][i];
             if (!investor.isDead) {
                 investAmt += investor.value;
-                investors++;
+                invCount++;
             }
         }
-        return (investors, investAmt);
+        return (invCount, investAmt);
     }
 
 
@@ -252,7 +252,7 @@ contract Disco {
             investAmt -= platFee;
         }
         //remainAmt to wallet
-        discoAddr.transfer(disco.walletAddr, disco.minFundRaising);
+        discoAddr.transfer(disco.walletAddr, withdrawEth);
         return platFee;
     }
 
