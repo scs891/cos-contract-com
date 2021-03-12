@@ -104,8 +104,8 @@ contract Disco {
         DiscoStatus memory discoStatus = status[id];
         DiscoInfo memory discoInfo = discos[id];
         require(discoStatus.isEnabled && !discoStatus.isFinished);
-        require(discoInfo.fundRaisingStartedAt < checkPoint, '当前时间需要大于disco的开始募资时间');
-        require(discoInfo.fundRaisingEndedAt > checkPoint, '当前时间需要小于disco的结束募资时间');
+        require(discoInfo.fundRaisingStartedAt < checkPoint, 'now must greater than the disco fund raising start time');
+        require(discoInfo.fundRaisingEndedAt > checkPoint, 'now must less than the disco fund raising end time');
         _;
     }
 
@@ -162,10 +162,10 @@ contract Disco {
         require(address(uniswap) != address(0), 'need init uniswap');
         uint256 checkPoint = getDate();
         DiscoInfo memory disco = discos[id];
-        require(disco.fundRaisingStartedAt < checkPoint, '当前时间需要大于disco的开始募资时间');
-        require(disco.fundRaisingEndedAt > checkPoint, '当前时间需要小于disco的结束募资时间');
+        require(disco.fundRaisingStartedAt < checkPoint, 'now must greater than the disco fund raising start time');
+        require(disco.fundRaisingEndedAt > checkPoint, 'now must less than the disco fund raising end time');
         DiscoStatus memory discoStatus = status[id];
-        require(!discoStatus.isEnabled, '当前disco需要未被开启过');
+        require(!discoStatus.isEnabled, 'the disco must has not been started');
 
         DiscoInvestAddr memory investAddr = discoAddress[id];
         DiscoAddr discoAddr = investAddr.discoAddr;
