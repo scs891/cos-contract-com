@@ -1,8 +1,10 @@
 // Disco 上链
 pragma solidity >=0.4.21 <0.7.0;
-pragma experimental ABIEncoderV2;
 
-import "./UniswapV2Router01.sol";
+import "./libraries/SafeMath.sol";
+import "./interfaces/IUniswapV2Router01.sol";
+import "./interfaces/IErc20.sol";
+pragma experimental ABIEncoderV2;
 
 contract Disco {
     address private _owner;
@@ -120,11 +122,10 @@ contract Disco {
         _coinbase = addr;
     }
 
-    function setSwap(address factoryAdd, address wethAdd)
+    function setSwap(address swapAddr)
     isOwner
     public {
-        require(factoryAdd != address(0) && wethAdd != address(0));
-        uniswap = new UniswapV2Router01(factoryAdd, wethAdd);
+        uniswap = IUniswapV2Router01(swapAddr);
     }
 
     //  获取当前时间
