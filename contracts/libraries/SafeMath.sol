@@ -1,3 +1,5 @@
+pragma solidity ^0.5.6;
+
 library SafeMath {
     function add(uint256 x, uint256 y) internal pure returns (uint256 z) {
         require((z = x + y) >= x, "ds-math-add-overflow");

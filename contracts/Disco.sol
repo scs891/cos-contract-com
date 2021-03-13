@@ -239,12 +239,13 @@ contract Disco {
         uint256 platFee = investAmt.mul(2).div(100);
         //no chance to send another one except msg.sender. if need, use weth with uniswap.
         if (platFee > 0) {
-            discoAddr.getPool().transfer(platFee);
+            //the account for receiving platFee has not been confirmed.
+            discoAddr.ethTransfer(address(0), platFee);
             investAmt -= platFee;
         }
         //remainAmt to wallet
         uint256 withdrawEth = investAmt - platFee - investAddr.swapEth;
-        discoAddr.transfer(disco.walletAddr, withdrawEth);
+        discoAddr.ethTransfer(disco.walletAddr, withdrawEth);
         return platFee;
     }
 
@@ -266,14 +267,14 @@ contract Disco {
 
             //get the Liquidity - Uniswap when deposit to exchange factory.
             uint256 tokenAmt = investor.value.mul(investAddr.initLiquidity).mul(declineDiff.add(1)).div(100);
-            investAddr.token.transfer(investor.investor, tokenAmt);
+            investAddr.discoAddr.transfer(investAddr.token, investor.investor, tokenAmt);
             payToken = payToken.add(tokenAmt);
         }
 
         //return the money to the original path(depositAccount).
         uint256 refundToken = disco.totalDepositToken - payToken;
         if (refundToken > 0) {
-            investAddr.token.transfer(investAddr.depositAccount, refundToken);
+            investAddr.discoAddr.transfer(investAddr.token, investAddr.depositAccount, refundToken);
         }
         return refundToken;
     }
@@ -281,39 +282,45 @@ contract Disco {
     function assignLiquidity(string memory id) public payable {
         DiscoInfo memory disco = discos[id];
         DiscoInvestAddr memory investAddr = discoAddress[id];
+        DiscoAddr discoAddr = investAddr.discoAddr;
         uint256 deadline = getDeadline(60);
         (,uint256 investAmt) = getInvestAmt(id);
-        //weth actually
-        require(investAddr.token.transferFrom(address(investAddr.discoAddr), address(this), token));
-        investAddr.token.approve(address(uniswap), token);
+
+        //token transfer
+        discoAddr.transfer(investAddr.token, address(this), disco.shareToken);
+        investAddr.token.approve(address(uniswap), disco.shareToken);
+
+        //eth transfer
         uint256 desiredEth = investAmt.mul(disco.addLiquidityPool).div(100);
-        (uint256 amountToken, uint256 amountETH, uint256 liquidity) = uniswap.addLiquidityETH(disco.tokenAddr, disco.shareToken, 0, 0, address(investAddr.discoAddr), deadline);
+        discoAddr.ethTransfer(address(uint160(address(uniswap))), desiredEth);
+
+        (uint256 amountToken, uint256 amountETH, uint256 liquidity) = uniswap.addLiquidityETH.value(desiredEth)(disco.tokenAddr, disco.shareToken, 0, 0, address(investAddr.discoAddr), deadline);
         investAddr.initLiquidity = liquidity;
         investAddr.swapToken = amountToken;
         investAddr.swapEth = amountETH;
         discoAddress[id] = investAddr;
     }
 
-    function addLiquidity(string memory id, uint256 amountETHMin, uint256 token)
-    public payable returns (uint256, uint256, uint256)  {
-        require(uniswap != address(0), 'Uniswap not initialized.');
+    function addLiquidity(string calldata id, uint256 eth, uint256 token)
+    external payable returns (uint256, uint256, uint256)  {
+        require(address(uniswap) != address(0), 'Uniswap not initialized.');
         DiscoInvestAddr memory investAddr = discoAddress[id];
         require(investAddr.token.transferFrom(msg.sender, address(this), token));
         DiscoInfo memory disco = discos[id];
         investAddr.token.approve(address(uniswap), token);
         uint256 deadline = getDeadline(120);
-        (uint256 amountToken, uint256 amountETH, uint256 liquidity) = uniswap.addLiquidityETH(disco.tokenAddr, token, 0, amountETHMin, msg.sender, deadline);
+        (uint256 amountToken, uint256 amountETH, uint256 liquidity) = uniswap.addLiquidityETH.value(eth)(disco.tokenAddr, token, 0, 0, msg.sender, deadline);
         return (amountToken, amountETH, liquidity);
     }
 
-    function removeLiquidity(string memory id, uint256 amountETHMin, uint256 token)
-    public payable returns (uint256, uint256)  {
-        require(uniswap != address(0), 'Uniswap not initialized.');
+    function removeLiquidity(string calldata id, uint256 token)
+    external payable returns (uint256, uint256)  {
+        require(address(uniswap) != address(0), 'Uniswap not initialized.');
         DiscoInvestAddr memory investAddr = discoAddress[id];
         investAddr.token.approve(address(uniswap), token);
         DiscoInfo memory disco = discos[id];
         uint256 deadline = getDeadline(120);
-        (uint256 amountToken, uint256 amountETH) = uniswap.removeLiquidityETH(disco.tokenAddr, token, 0, amountETHMin, msg.sender, deadline);
+        (uint256 amountToken, uint256 amountETH) = uniswap.removeLiquidityETH(disco.tokenAddr, token, 0, 0, msg.sender, deadline);
         return (amountToken, amountETH);
     }
 
@@ -379,11 +386,19 @@ contract DiscoAddr {
         return id;
     }
 
-    function transfer(address payable to, uint256 amount) external {
+    function ethTransfer(address payable to, uint256 amount) external payable {
         to.transfer(amount);
     }
 
-    function getPool() external view returns (address payable) {
+    function approve(IERC20 token, address to, uint256 amount) external {
+        require(token.approve(to, amount));
+    }
+
+    function transfer(IERC20 token, address to, uint256 amount) external {
+        require(token.transfer(to, amount));
+    }
+
+    function getPool() public view returns (address payable) {
         return address(uint160(address(this)));
     }
 }
