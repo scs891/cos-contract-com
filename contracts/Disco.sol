@@ -160,7 +160,7 @@ contract Disco {
      * @dev 开启disco
      */
     function enableDisco(string memory id) public {
-        require(address(uniswap) != address(0), 'need init uniswap');
+        // require(address(uniswap) != address(0), 'need init uniswap');
         uint256 checkPoint = getDate();
         DiscoInfo memory disco = discos[id];
         require(disco.fundRaisingStartedAt < checkPoint, 'now must greater than the disco fund raising start time');
