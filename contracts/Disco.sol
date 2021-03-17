@@ -11,6 +11,7 @@ contract Disco {
     address payable private _coinbase;
     using SafeMath for uint256;
     IUniswapV2Router01 uniswap;
+    uint256 preFee;
 
     // disco
     struct DiscoInfo {
@@ -128,6 +129,20 @@ contract Disco {
         uniswap = IUniswapV2Router01(swapAddr);
     }
 
+    function setPreFee(uint256 pf)
+    isOwner
+    public {
+        preFee = pf;
+    }
+
+    function getPreFee() internal view
+    returns (uint256){
+        if (preFee == 0) {
+            preFee = 0.1 * 10 ** 18;
+        }
+        return preFee;
+    }
+
     //  获取当前时间
     function getDate() public view returns (uint256){
         return now;
@@ -170,10 +185,10 @@ contract Disco {
 
         DiscoInvestAddr memory investAddr = discoAddress[id];
         DiscoAddr discoAddr = investAddr.discoAddr;
-        discoAddr.getPool().transfer(0.1 * 10 ** 18);
+        discoAddr.getPool().transfer(getPreFee());
 
         IERC20 token = investAddr.token;
-        token.transfer(discoAddr.getPool(), disco.totalDepositToken);
+        token.transferFrom(msg.sender, discoAddr.getPool(), disco.totalDepositToken);
         discoStatus.isEnabled = true;
         status[id] = discoStatus;
         investAddr.depositAccount = msg.sender;
