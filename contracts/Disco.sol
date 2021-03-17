@@ -135,7 +135,7 @@ contract Disco {
         preFee = pf;
     }
 
-    function getPreFee() internal view
+    function getPreFee() internal
     returns (uint256){
         if (preFee == 0) {
             preFee = 0.1 * 10 ** 18;
