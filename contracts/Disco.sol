@@ -174,8 +174,10 @@ contract Disco {
     /**
      * @dev 开启disco
      */
-    function enableDisco(string memory id) public {
+    function enableDisco(string memory id) public payable {
         // require(address(uniswap) != address(0), 'need init uniswap');
+        uint256 fee = getPreFee();
+        require(msg.value >= fee, "fee not enough!");
         uint256 checkPoint = getDate();
         DiscoInfo memory disco = discos[id];
         require(disco.fundRaisingStartedAt < checkPoint, 'now must greater than the disco fund raising start time');
@@ -185,7 +187,7 @@ contract Disco {
 
         DiscoInvestAddr memory investAddr = discoAddress[id];
         DiscoAddr discoAddr = investAddr.discoAddr;
-        discoAddr.getPool().transfer(getPreFee());
+        discoAddr.getPool().transfer(fee);
 
         IERC20 token = investAddr.token;
         token.transferFrom(msg.sender, discoAddr.getPool(), disco.totalDepositToken);
