@@ -47,6 +47,7 @@ module.exports = {
 			gas: 7500000, //4465030
 			gasPrice: 5000000000,
 			timeoutBlocks: 50000000,
+            networkCheckTimeout:60000
 		},
 
 		// Useful for testing. The `development` name is special - truffle uses it by default
