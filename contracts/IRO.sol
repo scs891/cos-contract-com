@@ -30,7 +30,7 @@ contract IRO
         address[] assignAddresses;
     }
 
-    struct VoteSetting {
+    struct VoterSetting {
         string voteType;
         string voteTokenLimit;
         address[] voteAssignAddrs;
@@ -44,7 +44,7 @@ contract IRO
         string id;
         TokenSetting tokenSetting;
         ProposerSetting proposerSetting;
-        VoteSetting voteSetting;
+        VoterSetting voteSetting;
     }
 
     mapping(string => Setting) IROs;
@@ -62,7 +62,7 @@ contract IRO
         string memory voteMinDurationHours, string memory voteMaxDurationHours)
     public {
         TokenSetting memory tokenSetting = TokenSetting(tokenName, tokenSymbol, tokenAddr, walletAddrs);
-        VoteSetting memory voteSetting = VoteSetting(voteType, voteTokenLimit,
+        VoterSetting memory voteSetting = VoterSetting(voteType, voteTokenLimit,
             voteAssignAddrs, voteMSupportPercent, voteMinApprovalPercent,
             voteMinDurationHours, voteMaxDurationHours);
         IROs[id] = Setting(tokenSetting, voteSetting);
@@ -112,7 +112,7 @@ contract IRO
         IROs[id].tokenSetting.tokenAddr, IROs[id].tokenSetting.walletAddrs);
     }
 
-    function getVoteSetting(string memory id)
+    function getVoterSetting(string memory id)
     public
     view
     returns (string memory voteType, string memory voteTokenLimit, address[] memory voteAssignAddrs,

@@ -4,6 +4,7 @@ pragma solidity >=0.4.21 <0.7.0;
 import "./libraries/SafeMath.sol";
 import "./interfaces/IUniswapV2Router01.sol";
 import "./interfaces/IErc20.sol";
+import "./FundPool.sol";
 pragma experimental ABIEncoderV2;
 
 contract Disco {
@@ -203,6 +204,11 @@ contract Disco {
         return getDate() + pendingSecs;
     }
 
+    function discoToken(string calldata id) external view returns (IERC20){
+        DiscoInvestAddr memory investAddr = discoAddress[id];
+        return investAddr.token;
+    }
+
     /**
     * @dev 后端调用， 触发disco的结束， 由合约来判断disco的募资是否成功
     */
@@ -385,7 +391,7 @@ contract Disco {
 
 // 生成募资合约
 //Fund-Raising Contract
-contract DiscoAddr {
+contract DiscoAddr is FundPool {
 
     string public id;
 

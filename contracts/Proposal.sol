@@ -4,11 +4,15 @@ pragma experimental ABIEncoderV2;
 import "./interfaces/IErc20.sol";
 import "./Base.sol";
 import "./IRO.sol";
+import "./Disco.sol";
+import "./FundPool.sol";
 
 contract Proposal is Base
 {
 
     IRO private _iroBase;
+
+    Disco private _discoBase;
 
     enum ProposalStatus{
         Voting, Pass, Defeated, Invalid
@@ -22,7 +26,10 @@ contract Proposal is Base
         MonthlyPay, OneTimePay
     }
 
-    constructor() Base() public {}
+    constructor(address _iroAddress, address _discoAddress) Base() public {
+        setIROBase(_iroAddress);
+        setDiscoBase(_discoAddress);
+    }
 
     struct ProposalDetail {
         string discoId;
@@ -32,7 +39,7 @@ contract Proposal is Base
         ProposalMode mode;
         string contact;
         string description;
-        Payment[] payments;
+        Payment payment;
         ProposerSetup proposerSetup;
         VoterSetup voteSetup;
     }
@@ -43,7 +50,9 @@ contract Proposal is Base
         uint256 totalMonths;
         string date;     //require text! Good luck for any external caller or user.
         PaymentDetail[] details;
+        IERC20 token;
         uint256 totalAmount;
+        FundPool pool;
     }
 
     struct PaymentDetail {
@@ -52,7 +61,7 @@ contract Proposal is Base
     }
 
     struct ProposerSetup {
-        ProposerDriver driver;
+        IRO.ProposerDriver driver;
     }
 
     struct VoterSetup {
@@ -66,25 +75,34 @@ contract Proposal is Base
 
     event accepted(ProposalDetail proposal);
 
-    function accept(ProposalDetail memory proposal) returns (ProposalDetail memory){
+    function accept(ProposalDetail memory proposal) payable returns (ProposalDetail memory) {
         assert(bytes(proposal.serialId).length != 0, "proposal serialId is empty!");
         assert(bytes(proposal.discoId).length != 0, "proposal discoId is empty!");
 
-        Setting baseSetting = _iroBase.setting(proposal.discoId);
+        IRO.Setting baseSetting = _iroBase.setting(proposal.discoId);
         assert(address(baseSetting) != address(0), "base setting not exists.");
 
-        ProposerSetting proposerSetting = baseSetting.proposerSetting;
+        IRO.ProposerSetting proposerSetting = baseSetting.proposerSetting;
         assert(address(proposerSetting) != address(0), "proposer setting not exists.");
         proposal.proposerSetup = ProposerSetup(proposerSetting.driver);
 
-        VoterSetting voterSetting = baseSetting.voterSetting;
+        IRO.VoterSetting voterSetting = baseSetting.voterSetting;
         assert(address(voterSetting) != address(0), "voter setting not exists.");
         proposal.voteSetup = VoterSetup(voterSetting.ProposerSetup(voteMSupportPercent, voteMinApprovalPercent, voteMinDurationHours, voteMaxDurationHours));
+
+        //lock init proposal token into a pool.
+        IERC20 token = _discoBase.discoToken(proposal.discoId);
+        proposal.payment.token = token;
+        //cal poolId
+        string memory poolId = string(abi.encodePacked(proposal.discoId, "@", proposal.serialId));
+        proposal.payment.pool = FundPool(poolId);
+        token.transferFrom(msg.sender, proposal.payment.pool.getAddress(), proposal.payment.totalAmount);
 
         mapping(string => ProposalDetail) memory discoProposalMapper = discoProposals[proposal.discoId];
         discoProposalMapper[proposal.serialId] = proposal;
         discoProposals[proposal.discoId] = discoProposalMapper;
         emit accepted(proposal);
+
         return proposal;
     }
 
@@ -92,11 +110,18 @@ contract Proposal is Base
         return internalProposal(id, serialId);
     }
 
-    function discoProposalDetail(string calldata id) external view returns (mapping(string => ProposalDetail) memory){
+    function internalDiscoProposalDetail(string calldata id) internal view returns (mapping(string => ProposalDetail) memory){
         assert(bytes(id).length != 0, "disco id is empty!");
         mapping(string => ProposalDetail) memory discoProposalMapper = discoProposals[proposal.discoId];
         // inappropriate when too much.
         return discoProposalMapper[serialId];
+    }
+
+    /**
+     * get proposal count.
+     **/
+    function discoProposalCount(string calldata id) external view returns (uint){
+        return internalDiscoProposalDetail(id).length;
     }
 
     /**
@@ -148,4 +173,8 @@ contract Proposal is Base
         _iroBase = IRO(_iroAddress);
     }
 
+    function setDiscoBase(address _discoAddress) isOwner {
+        assert(_discoAddress != address(0), "disco address is empty.");
+        _discoBase = Disco(_discoAddress);
+    }
 }
