@@ -4,7 +4,7 @@ pragma solidity >=0.4.21 <0.7.0;
 import "./libraries/SafeMath.sol";
 import "./interfaces/IUniswapV2Router01.sol";
 import "./interfaces/IErc20.sol";
-import "./FundPool.sol";
+import "./common/FundPool.sol";
 pragma experimental ABIEncoderV2;
 
 contract Disco {

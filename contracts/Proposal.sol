@@ -2,10 +2,10 @@ pragma solidity >=0.4.21 <0.7.0;
 pragma experimental ABIEncoderV2;
 
 import "./interfaces/IErc20.sol";
-import "./Base.sol";
 import "./IRO.sol";
 import "./Disco.sol";
-import "./FundPool.sol";
+import "./common/Base.sol";
+import "./common/FundPool.sol";
 
 contract Proposal is Base
 {
