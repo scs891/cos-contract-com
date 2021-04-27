@@ -89,10 +89,7 @@ contract Proposal is Base
     }
 
     function proposalDetail(string calldata id, string calldata serialId) external view returns (ProposalDetail memory){
-        assert(bytes(id).length != 0, "disco id is empty!");
-        assert(bytes(serialId).length != 0, "proposal serialId is empty!");
-        mapping(string => ProposalDetail) memory discoProposalMapper = discoProposals[proposal.discoId];
-        return discoProposalMapper[serialId];
+        return internalProposal(id, serialId);
     }
 
     function discoProposalDetail(string calldata id) external view returns (mapping(string => ProposalDetail) memory){
@@ -106,16 +103,32 @@ contract Proposal is Base
     * decide proposal status.
     **/
     function decide(string calldata id, string calldata serialId, ProposalStatus status){
-        assert(bytes(id).length != 0, "disco id is empty!");
-        assert(bytes(serialId).length != 0, "proposal serialId is empty!");
-        mapping(string => ProposalDetail) memory discoProposalMapper = discoProposals[proposal.discoId];
-        mapping(string => ProposalDetail) memory discoProposalMapper = discoProposals[proposal.discoId];
-        ProposalDetail memory proposal = discoProposalMapper[serialId];
+        ProposalDetail memory proposal = internalProposal(id, serialId);
         assert(address(proposal) != address(0), "proposal missing.");
         if (status != proposal.status) {
             proposal.status = status;
             discoProposalMapper[serialId] = proposal;
         }
+        // notify to listener for status.
+        emit accepted(proposal);
+    }
+
+    /**
+    * get proposal status.
+    **/
+    function proposalStatus(string calldata id, string calldata serialId, ProposalStatus status) returns (ProposalStatus memory){
+        ProposalDetail memory proposal = internalProposal(id, serialId);
+        assert(address(proposal) != address(0), "proposal missing.");
+        return proposal.status;
+    }
+
+    function internalProposal(string calldata id, string calldata serialId) internal view returns (ProposalDetail memory){
+        assert(bytes(id).length != 0, "disco id is empty!");
+        assert(bytes(serialId).length != 0, "proposal serialId is empty!");
+        mapping(string => ProposalDetail) memory discoProposalMapper = discoProposals[proposal.discoId];
+        mapping(string => ProposalDetail) memory discoProposalMapper = discoProposals[proposal.discoId];
+        ProposalDetail memory proposal = discoProposalMapper[serialId];
+        return proposal;
     }
 
     //owner manage.
