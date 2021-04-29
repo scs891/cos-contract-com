@@ -401,7 +401,7 @@ contract DiscoAddr is FundPool {
     //receive() external payable {}
     function() external payable {}
 
-    constructor(string memory discoId) public {
+    constructor(string memory discoId) FundPool(discoId) public {
         id = discoId;
     }
 
