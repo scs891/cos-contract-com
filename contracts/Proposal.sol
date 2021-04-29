@@ -73,6 +73,7 @@ contract Proposal is Base
     }
 
     mapping(string => mapping(string => ProposalDetail)) private discoProposals;
+    //unsupported copy struct memory xxx[] to xxx, so create mapping to save the payment details.
     mapping(string => PaymentDetail[]) proposalPaymentDetails;
     mapping(string => uint256) private countDiscoProposals;
 
