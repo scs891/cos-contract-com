@@ -91,9 +91,9 @@ contract Proposal is Base
 
     event accepted(ProposalDetail indexed proposal, PaymentDetail[] indexed paymentDetails);
 
-    event changeProposalStatus(string indexed id, ProposalStatus indexed status);
+    event statusChanged(string indexed id, ProposalStatus indexed original, ProposalStatus indexed target);
 
-    event voteAction(Vote indexed v);
+    event voted(Vote indexed v);
 
     function accept(ProposalDetail memory proposal, PaymentDetail[] memory paymentDetails) public payable returns (ProposalDetail memory) {
         require(bytes(proposal.serialId).length != 0, "proposal serialId is empty!");
@@ -168,15 +168,16 @@ contract Proposal is Base
     /**
     * decide proposal status.
     **/
-    function decide(string calldata id, string calldata serialId, ProposalStatus status) external {
+    function decide(string calldata id, string calldata serialId, ProposalStatus target) external {
         ProposalDetail memory proposal = internalProposal(id, serialId);
         require(bytes(proposal.discoId).length != 0, "proposal missing.");
-        if (status != proposal.status) {
-            proposal.status = status;
+        if (target != proposal.status) {
+            ProposalStatus original = proposal.status;
+            proposal.status = target;
             mapping(string => ProposalDetail) storage discoProposalMapper = discoProposals[proposal.discoId];
             discoProposalMapper[serialId] = proposal;
             // notify to listener for status.
-            emit changeProposalStatus(id, status);
+            emit statusChanged(id, original, target);
         }
 
     }
@@ -215,7 +216,7 @@ contract Proposal is Base
         v.voteBt = block.timestamp;
         v.voter = msg.sender;
         votes[v.discoId].push(v);
-        emit voteAction(v);
+        emit voted(v);
     }
 
     //owner manage.
