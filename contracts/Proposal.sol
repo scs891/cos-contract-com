@@ -203,7 +203,7 @@ contract Proposal is Base
     * vote when proposal is voting.
     * lock into the fundPool.
     **/
-    function vote(Vote memory v) public payable {
+    function doVote(Vote memory v) public payable {
         ProposalDetail memory proposal = internalProposal(v.discoId, v.serialId);
         require(bytes(v.discoId).length != 0, "proposal missing, check first.");
         require(proposal.status == ProposalStatus.Voting, "the proposal could not be voted when status is not voting.");
@@ -215,8 +215,30 @@ contract Proposal is Base
         token.transferFrom(msg.sender, proposal.payment.pool.getAddress(), v.pos + v.neg);
         v.voteBt = block.timestamp;
         v.voter = msg.sender;
-        votes[v.discoId].push(v);
+        string memory poolId = getPoolId(v.discoId, v.serialId);
+        votes[poolId].push(v);
         emit voted(v);
+    }
+
+    /**
+  * release pool vote token when proposal is not Voting.
+  * release pool payment token when proposal is not Pass.
+  **/
+    function releaseProposal(string calldata discoId, string calldata serialId) external isOwner {
+        ProposalDetail memory proposal = internalProposal(discoId, serialId);
+        require(bytes(discoId).length != 0, "proposal missing, check first.");
+        require(proposal.status != ProposalStatus.Voting, "the proposal could not be released.");
+        IERC20 token = _discoBase.discoToken(proposal.discoId);
+        string memory poolId = getPoolId(discoId, serialId);
+        Vote[] memory vs = votes[poolId];
+        FundPool pool = proposal.payment.pool;
+        for (uint256 i = 0; i < vs.length; i++) {
+            Vote memory v = vs[i];
+            pool.transfer(token, v.voter, v.pos + v.neg);
+        }
+        if (proposal.status != ProposalStatus.Pass) {
+            pool.transfer(token, proposal.payment.payer, proposal.payment.totalMonths);
+        }
     }
 
     //owner manage.
