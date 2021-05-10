@@ -185,7 +185,7 @@ contract Proposal is Base
     /**
     * get proposal status.
     **/
-    function proposalStatus(string calldata id, string calldata serialId, ProposalStatus status) external returns (ProposalStatus){
+    function proposalStatus(string calldata id, string calldata serialId) external view returns (ProposalStatus){
         ProposalDetail memory proposal = internalProposal(id, serialId);
         require(bytes(proposal.discoId).length != 0, "proposal missing, check first.");
         return proposal.status;
