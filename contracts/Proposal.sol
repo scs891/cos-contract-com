@@ -237,7 +237,7 @@ contract Proposal is Base
             pool.transfer(token, v.voter, v.pos + v.neg);
         }
         if (proposal.status != ProposalStatus.Pass) {
-            pool.transfer(token, proposal.payment.payer, proposal.payment.totalMonths);
+            pool.transfer(token, proposal.payment.payer, proposal.payment.totalAmount);
         }
     }
 
