@@ -6,6 +6,123 @@
     "type": "constructor"
   },
   {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "string",
+        "name": "id",
+        "type": "string"
+      },
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "components": [
+              {
+                "internalType": "string",
+                "name": "tokenName",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "tokenSymbol",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "tokenAddr",
+                "type": "string"
+              },
+              {
+                "internalType": "address[]",
+                "name": "walletAddrs",
+                "type": "address[]"
+              }
+            ],
+            "internalType": "struct IRO.TokenSetting",
+            "name": "tokenSetting",
+            "type": "tuple"
+          },
+          {
+            "components": [
+              {
+                "internalType": "enum IRO.ProposerDriver",
+                "name": "driver",
+                "type": "uint8"
+              },
+              {
+                "internalType": "uint256",
+                "name": "tokenBalance",
+                "type": "uint256"
+              },
+              {
+                "internalType": "address[]",
+                "name": "assignAddresses",
+                "type": "address[]"
+              }
+            ],
+            "internalType": "struct IRO.ProposerSetting",
+            "name": "proposerSetting",
+            "type": "tuple"
+          },
+          {
+            "components": [
+              {
+                "internalType": "string",
+                "name": "voteType",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "voteTokenLimit",
+                "type": "string"
+              },
+              {
+                "internalType": "address[]",
+                "name": "voteAssignAddrs",
+                "type": "address[]"
+              },
+              {
+                "internalType": "string",
+                "name": "voteMSupportPercent",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "voteMinApprovalPercent",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "voteMinDurationHours",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "voteMaxDurationHours",
+                "type": "string"
+              }
+            ],
+            "internalType": "struct IRO.VoterSetting",
+            "name": "voterSetting",
+            "type": "tuple"
+          }
+        ],
+        "indexed": false,
+        "internalType": "struct IRO.Setting",
+        "name": "setting",
+        "type": "tuple"
+      }
+    ],
+    "name": "sendWhenHasChanges",
+    "type": "event"
+  },
+  {
     "constant": false,
     "inputs": [
       {
