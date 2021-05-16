@@ -20,6 +20,12 @@
     "anonymous": false,
     "inputs": [
       {
+        "indexed": true,
+        "internalType": "string",
+        "name": "id",
+        "type": "string"
+      },
+      {
         "components": [
           {
             "internalType": "string",
@@ -143,7 +149,7 @@
             "type": "uint256"
           }
         ],
-        "indexed": true,
+        "indexed": false,
         "internalType": "struct Proposal.ProposalDetail",
         "name": "proposal",
         "type": "tuple"
@@ -166,7 +172,7 @@
             "type": "string"
           }
         ],
-        "indexed": true,
+        "indexed": false,
         "internalType": "struct Proposal.PaymentDetail[]",
         "name": "paymentDetails",
         "type": "tuple[]"
@@ -185,13 +191,13 @@
         "type": "string"
       },
       {
-        "indexed": true,
+        "indexed": false,
         "internalType": "enum Proposal.ProposalStatus",
         "name": "original",
         "type": "uint8"
       },
       {
-        "indexed": true,
+        "indexed": false,
         "internalType": "enum Proposal.ProposalStatus",
         "name": "target",
         "type": "uint8"
@@ -203,6 +209,12 @@
   {
     "anonymous": false,
     "inputs": [
+      {
+        "indexed": true,
+        "internalType": "string",
+        "name": "id",
+        "type": "string"
+      },
       {
         "components": [
           {
@@ -236,7 +248,7 @@
             "type": "uint256"
           }
         ],
-        "indexed": true,
+        "indexed": false,
         "internalType": "struct Proposal.Vote",
         "name": "v",
         "type": "tuple"

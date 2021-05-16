@@ -89,11 +89,11 @@ contract Proposal is Base
     mapping(string => uint256) private countDiscoProposals;
     mapping(string => Vote[]) private votes;
 
-    event accepted(ProposalDetail indexed proposal, PaymentDetail[] indexed paymentDetails);
+    event accepted(string indexed id, ProposalDetail proposal, PaymentDetail[] paymentDetails);
 
-    event statusChanged(string indexed id, ProposalStatus indexed original, ProposalStatus indexed target);
+    event statusChanged(string indexed id, ProposalStatus original, ProposalStatus target);
 
-    event voted(Vote indexed v);
+    event voted(string indexed id, Vote v);
 
     function accept(ProposalDetail memory proposal, PaymentDetail[] memory paymentDetails) public payable returns (ProposalDetail memory) {
         require(bytes(proposal.serialId).length != 0, "proposal serialId is empty!");
@@ -141,7 +141,7 @@ contract Proposal is Base
         proposal.blockTime = bt;
         discoProposalMapper[proposal.serialId] = proposal;
         countDiscoProposals[proposal.discoId]++;
-        emit accepted(proposal, paymentDetails);
+        emit accepted(proposal.serialId, proposal, paymentDetails);
         return proposal;
     }
 
@@ -217,7 +217,7 @@ contract Proposal is Base
         v.voter = msg.sender;
         string memory poolId = getPoolId(v.discoId, v.serialId);
         votes[poolId].push(v);
-        emit voted(v);
+        emit voted(proposal.serialId, v);
     }
 
     /**
@@ -252,7 +252,7 @@ contract Proposal is Base
         for (uint256 i = 0; i < paymentDetailsSize; i++) {
             proposalPaymentDetails[poolId].push(paymentDetails[i]);
         }
-        emit accepted(proposal, paymentDetails);
+        emit accepted(proposal.serialId, proposal, paymentDetails);
         return proposal;
     }
 
