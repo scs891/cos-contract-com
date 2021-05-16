@@ -54,6 +54,8 @@ contract IRO
         _owner = msg.sender;
     }
 
+    event sendWhenHasChanges(string indexed id, Setting setting);
+
     // function newSetting(string memory id,
     //     string memory tokenName, string memory tokenSymbol, string memory tokenAddr,
     //     address[] memory walletAddrs,
@@ -70,6 +72,7 @@ contract IRO
     function fullSet(Setting memory setting) public isOwner {
         require(bytes(setting.id).length != 0, 'setting is empty, please check inputs.');
         IROs[setting.id] = setting;
+        emit sendWhenHasChanges(setting.id, setting);
     }
 
     function partialSet(Setting memory setting) public isOwner {
@@ -97,6 +100,7 @@ contract IRO
 
         if (hasChanges) {
             IROs[setting.id] = originSetting;
+            emit sendWhenHasChanges(setting.id, originSetting);
         }
     }
 
