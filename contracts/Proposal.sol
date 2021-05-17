@@ -68,7 +68,7 @@ contract Proposal is Base
     }
 
     struct VoterSetup {
-        string voteMSupportPercent;
+        uint256 voteMinSupporters;
         string voteMinApprovalPercent;
         uint256 voteDurationHours;
         uint256 voteEndTime;
@@ -121,7 +121,7 @@ contract Proposal is Base
             voteDurationHours = proposal.voteSetup.voteDurationHours;
         }
 
-        proposal.voteSetup = VoterSetup(voterSetting.voteMSupportPercent, voterSetting.voteMinApprovalPercent, voteDurationHours, bt + voteDurationHours * 3600);
+        proposal.voteSetup = VoterSetup(voterSetting.voteMinSupporters, voterSetting.voteMinApprovalPercent, voteDurationHours, bt + voteDurationHours * 3600);
 
         //lock init proposal token into a pool.
         IERC20 token = _discoBase.discoToken(proposal.discoId);
