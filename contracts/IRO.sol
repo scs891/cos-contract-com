@@ -117,7 +117,7 @@ contract IRO
     public
     view
     returns (string memory voteType, string memory voteTokenLimit, address[] memory voteAssignAddrs,
-        string memory voteMSupportPercent, string memory voteMinApprovalPercent,
+        uint256 voteMinSupporters, string memory voteMinApprovalPercent,
         string memory voteMinDurationHours, string memory voteMaxDurationHours){
         return (IROs[id].voterSetting.voteType, IROs[id].voterSetting.voteTokenLimit, IROs[id].voterSetting.voteAssignAddrs,
         IROs[id].voterSetting.voteMinSupporters, IROs[id].voterSetting.voteMinApprovalPercent,

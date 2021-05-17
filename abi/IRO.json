@@ -88,9 +88,9 @@
                 "type": "address[]"
               },
               {
-                "internalType": "string",
-                "name": "voteMSupportPercent",
-                "type": "string"
+                "internalType": "uint256",
+                "name": "voteMinSupporters",
+                "type": "uint256"
               },
               {
                 "internalType": "string",
@@ -199,9 +199,9 @@
                 "type": "address[]"
               },
               {
-                "internalType": "string",
-                "name": "voteMSupportPercent",
-                "type": "string"
+                "internalType": "uint256",
+                "name": "voteMinSupporters",
+                "type": "uint256"
               },
               {
                 "internalType": "string",
@@ -312,9 +312,9 @@
                 "type": "address[]"
               },
               {
-                "internalType": "string",
-                "name": "voteMSupportPercent",
-                "type": "string"
+                "internalType": "uint256",
+                "name": "voteMinSupporters",
+                "type": "uint256"
               },
               {
                 "internalType": "string",
@@ -411,9 +411,9 @@
         "type": "address[]"
       },
       {
-        "internalType": "string",
-        "name": "voteMSupportPercent",
-        "type": "string"
+        "internalType": "uint256",
+        "name": "voteMinSupporters",
+        "type": "uint256"
       },
       {
         "internalType": "string",
@@ -520,9 +520,9 @@
                 "type": "address[]"
               },
               {
-                "internalType": "string",
-                "name": "voteMSupportPercent",
-                "type": "string"
+                "internalType": "uint256",
+                "name": "voteMinSupporters",
+                "type": "uint256"
               },
               {
                 "internalType": "string",
