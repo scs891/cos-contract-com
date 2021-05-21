@@ -1,0 +1,104 @@
+[
+  {
+    "inputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "internalType": "address payable",
+        "name": "addr",
+        "type": "address"
+      }
+    ],
+    "name": "setConbise",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "id",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "startupName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "intro",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "paymentToken",
+        "type": "uint256[]"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "paymentValue",
+        "type": "uint256[]"
+      }
+    ],
+    "name": "newBounty",
+    "outputs": [],
+    "payable": true,
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "id",
+        "type": "string"
+      }
+    ],
+    "name": "getBounty",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "startupName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "intro",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "paymentToken",
+        "type": "uint256[]"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "paymentValue",
+        "type": "uint256[]"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  }
+]
