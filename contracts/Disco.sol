@@ -33,7 +33,7 @@ contract Disco {
     // disco 投资人信息
     struct DiscoInvestor {
         // 投资人地址
-        address investor;
+        address payable investor;
         // 投资金额, 可以多次投资
         uint256 value;
         // 时间
@@ -389,7 +389,7 @@ contract Disco {
     function investor(string memory id, uint256 time) public payable canInvest(id) {
         require(_coinbase != address(0));
         DiscoInvestor memory d = DiscoInvestor(
-            _owner,
+            msg.sender,
             msg.value,
             time,
             false
