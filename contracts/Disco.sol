@@ -33,7 +33,7 @@ contract Disco {
     // disco 投资人信息
     struct DiscoInvestor {
         // 投资人地址
-        address investor;
+        address payable investor;
         // 投资金额, 可以多次投资
         uint256 value;
         // 时间
@@ -186,7 +186,7 @@ contract Disco {
         DiscoStatus memory discoStatus = status[id];
         require(!discoStatus.isEnabled, 'the disco must has not been started');
 
-        DiscoInvestAddr memory investAddr = discoAddress[id];
+        DiscoInvestAddr storage investAddr = discoAddress[id];
         DiscoAddr discoAddr = investAddr.discoAddr;
         discoAddr.getPool().transfer(fee);
 
@@ -207,6 +207,19 @@ contract Disco {
     function discoToken(string calldata id) external view returns (IERC20){
         DiscoInvestAddr memory investAddr = discoAddress[id];
         return investAddr.token;
+    }
+
+    function poolEthBalance(string calldata id) external isOwner returns (uint256) {
+        DiscoInvestAddr memory investAddr = discoAddress[id];
+        DiscoAddr discoAddr = investAddr.discoAddr;
+        return discoAddr.ethBalance();
+    }
+
+    function poolTokenBalance(string calldata id) external isOwner returns (uint256){
+        DiscoInvestAddr memory investAddr = discoAddress[id];
+        DiscoAddr discoAddr = investAddr.discoAddr;
+        IERC20 token = investAddr.token;
+        return discoAddr.tokenBalance(token);
     }
 
     /**
@@ -361,21 +374,22 @@ contract Disco {
         // refund ether
         for (uint256 i = 0; i < investors[id].length; i++) {
             DiscoInvestor storage investor = investors[id][i];
-            discoAddr.getPool().transfer(investor.value);
+            discoAddr.ethTransfer(investor.investor, investor.value);
             investor.isDead = true;
         }
 
         //refund token
         DiscoInfo memory info = discos[id];
         IERC20 token = investAddr.token;
-        token.transfer(investAddr.depositAccount, info.totalDepositToken);
+        discoAddr.approve(token, address(this), info.totalDepositToken);
+        token.transferFrom(discoAddr.getPool(), investAddr.depositAccount, info.totalDepositToken);
     }
 
     // 发起募资, 记录募资的信息， 可能会多次募资
     function investor(string memory id, uint256 time) public payable canInvest(id) {
         require(_coinbase != address(0));
         DiscoInvestor memory d = DiscoInvestor(
-            _owner,
+            msg.sender,
             msg.value,
             time,
             false
@@ -417,8 +431,20 @@ contract DiscoAddr is FundPool {
         require(token.approve(to, amount));
     }
 
+    function transferFrom(IERC20 token, address to, uint256 amount) external {
+        require(token.transferFrom(address(this), to, amount));
+    }
+
     function transfer(IERC20 token, address to, uint256 amount) external {
         require(token.transfer(to, amount));
+    }
+
+    function ethBalance() external returns (uint256) {
+        return address(this).balance;
+    }
+
+    function tokenBalance(IERC20 token) external returns (uint256) {
+        return token.balanceOf(address(this));
     }
 
     function getPool() public view returns (address payable) {
