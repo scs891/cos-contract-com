@@ -305,21 +305,6 @@
     "constant": false,
     "inputs": [
       {
-        "internalType": "address payable",
-        "name": "addr",
-        "type": "address"
-      }
-    ],
-    "name": "setCoinBase",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
         "internalType": "address",
         "name": "swapAddr",
         "type": "address"
