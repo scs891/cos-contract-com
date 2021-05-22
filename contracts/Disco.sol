@@ -9,7 +9,6 @@ pragma experimental ABIEncoderV2;
 
 contract Disco {
     address private _owner;
-    address payable private _coinbase;
     using SafeMath for uint256;
     IUniswapV2Router01 uniswap;
     uint256 preFee;
@@ -116,12 +115,6 @@ contract Disco {
     constructor()
     public {
         _owner = msg.sender;
-    }
-
-    function setCoinBase(address payable addr)
-    isOwner
-    public {
-        _coinbase = addr;
     }
 
     function setSwap(address swapAddr)
@@ -394,7 +387,6 @@ contract Disco {
 
     // 发起募资, 记录募资的信息， 可能会多次募资
     function investor(string memory id, uint256 time) public payable canInvest(id) {
-        require(_coinbase != address(0));
         DiscoInvestor memory d = DiscoInvestor(
             msg.sender,
             msg.value,
