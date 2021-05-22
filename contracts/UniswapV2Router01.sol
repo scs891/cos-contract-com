@@ -552,23 +552,7 @@ interface IUniswapV2Router01 {
         bytes32 r,
         bytes32 s
     ) external returns (uint256 amountToken, uint256 amountETH);
-
-    function swapExactTokensForTokens(
-        uint256 amountIn,
-        uint256 amountOutMin,
-        address[] calldata path,
-        address to,
-        uint256 deadline
-    ) external returns (uint256[] memory amounts);
-
-    function swapTokensForExactTokens(
-        uint256 amountOut,
-        uint256 amountInMax,
-        address[] calldata path,
-        address to,
-        uint256 deadline
-    ) external returns (uint256[] memory amounts);
-
+    
     function swapExactETHForTokens(
         uint256 amountOutMin,
         address[] calldata path,
@@ -1100,74 +1084,6 @@ contract UniswapV2Router01 is IUniswapV2Router01 {
             IUniswapV2Pair(UniswapV2Library.pairFor(factory, input, output))
             .swap(amount0Out, amount1Out, to, new bytes(0));
         }
-    }
-
-    /**
-     * @dev 根据精确的token交换尽量多的token
-     * @param amountIn 精确输入数额
-     * @param amountOutMin 最小输出数额
-     * @param path 路径数组
-     * @param to to地址
-     * @param deadline 最后期限
-     * @return amounts[]  数额数组
-     */
-    function swapExactTokensForTokens(
-        uint256 amountIn,
-        uint256 amountOutMin,
-        address[] calldata path,
-        address to,
-        uint256 deadline
-    ) external ensure(deadline) returns (uint256[] memory amounts) {
-        //数额数组 ≈ 遍历路径数组((输入数额 * 997 * 储备量Out) / (储备量In * 1000 + 输入数额 * 997))
-        amounts = UniswapV2Library.getAmountsOut(factory, amountIn, path);
-        //确认数额数组最后一个元素>=最小输出数额
-        require(
-            amounts[amounts.length - 1] >= amountOutMin,
-            "UniswapV2Router: INSUFFICIENT_OUTPUT_AMOUNT"
-        );
-        //将数量为数额数组[0]的路径[0]的token从调用者账户发送到路径0,1的pair合约
-        TransferHelper.safeTransferFrom(
-            path[0],
-            msg.sender,
-            UniswapV2Library.pairFor(factory, path[0], path[1]),
-            amounts[0]
-        );
-        //私有交换(数额数组,路径数组,to地址)
-        _swap(amounts, path, to);
-    }
-
-    /**
-     * @dev 使用尽量少的token交换精确的token
-     * @param amountOut 精确输出数额
-     * @param amountInMax 最大输入数额
-     * @param path 路径数组
-     * @param to to地址
-     * @param deadline 最后期限
-     * @return amounts[]  数额数组
-     */
-    function swapTokensForExactTokens(
-        uint256 amountOut,
-        uint256 amountInMax,
-        address[] calldata path,
-        address to,
-        uint256 deadline
-    ) external ensure(deadline) returns (uint256[] memory amounts) {
-        //数额数组 ≈ 遍历路径数组((储备量In * 储备量Out * 1000) / (储备量Out - 输出数额 * 997) + 1)
-        amounts = UniswapV2Library.getAmountsIn(factory, amountOut, path);
-        //确认数额数组第一个元素<=最大输入数额
-        require(
-            amounts[0] <= amountInMax,
-            "UniswapV2Router: EXCESSIVE_INPUT_AMOUNT"
-        );
-        //将数量为数额数组[0]的路径[0]的token从调用者账户发送到路径0,1的pair合约
-        TransferHelper.safeTransferFrom(
-            path[0],
-            msg.sender,
-            UniswapV2Library.pairFor(factory, path[0], path[1]),
-            amounts[0]
-        );
-        //私有交换(数额数组,路径数组,to地址)
-        _swap(amounts, path, to);
     }
 
     /**
