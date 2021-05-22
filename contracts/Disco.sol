@@ -164,8 +164,12 @@ contract Disco {
         status[d.id] = s;
         // 生成新的合约地址, discoAddr 既是DiscoAddr 的实例， 也是上链部署的地址
         DiscoAddr addr = new DiscoAddr(d.id);
+        IERC20 token = IERC20(d.tokenAddr);
+        addr.setToken(token);
+        addr.setSwap(uniswap);
+
         // disco id 与 disco 合约地址的映射
-        DiscoInvestAddr memory discoInvestAddr = DiscoInvestAddr(addr, IERC20(d.tokenAddr), address(0), 0, 0, 0);
+        DiscoInvestAddr memory discoInvestAddr = DiscoInvestAddr(addr, token, address(0), 0, 0, 0);
         discoAddress[d.id] = discoInvestAddr;
         // disco 创建成功
         emit createdDisco(d.id, addr);
@@ -209,13 +213,14 @@ contract Disco {
         return investAddr.token;
     }
 
-    function poolEthBalance(string calldata id) external isOwner returns (uint256) {
+    function poolEthBalance(string calldata id) external view isOwner returns (uint256) {
         DiscoInvestAddr memory investAddr = discoAddress[id];
         DiscoAddr discoAddr = investAddr.discoAddr;
         return discoAddr.ethBalance();
     }
 
-    function poolTokenBalance(string calldata id) external isOwner returns (uint256){
+
+    function poolTokenBalance(string calldata id) external view isOwner returns (uint256){
         DiscoInvestAddr memory investAddr = discoAddress[id];
         DiscoAddr discoAddr = investAddr.discoAddr;
         IERC20 token = investAddr.token;
@@ -226,7 +231,7 @@ contract Disco {
     * @dev 后端调用， 触发disco的结束， 由合约来判断disco的募资是否成功
     */
     function finishedDisco(string calldata id) external {
-        DiscoStatus memory discoStatus = status[id];
+        DiscoStatus storage discoStatus = status[id];
         require(!discoStatus.isFinished && discoStatus.isEnabled);
         discoStatus.isFinished = true;
         (,uint256 investAmt) = getInvestAmt(id);
@@ -289,13 +294,14 @@ contract Disco {
         DiscoInfo memory disco = discos[id];
         DiscoInvestAddr memory investAddr = discoAddress[id];
         DiscoInvestor[] memory assignInvestors = investors[id];
+        IERC20 token = investAddr.token;
         uint256 payToken = 0;
         for (uint256 i = 0; i < assignInvestors.length; i++) {
             DiscoInvestor memory investor = assignInvestors[i];
             if (investor.isDead) {
                 continue;
             }
-            uint256 diff = disco.fundRaisingStartedAt.sub(investor.time).div(60 * 60 * 24);
+            uint256 diff = investor.time.sub(disco.fundRaisingStartedAt).div(60 * 60 * 24);
             uint256 declineDiff = disco.rewardDeclineRate.sub(diff);
             if (declineDiff <= 0) {
                 declineDiff = 0;
@@ -303,14 +309,16 @@ contract Disco {
 
             //get the Liquidity - Uniswap when deposit to exchange factory.
             uint256 tokenAmt = investor.value.mul(investAddr.initLiquidity).mul(declineDiff.add(1)).div(100);
-            investAddr.discoAddr.transfer(investAddr.token, investor.investor, tokenAmt);
+            investAddr.discoAddr.approve(token, address(this), tokenAmt);
+            token.transferFrom(investAddr.discoAddr.getPool(), investor.investor, tokenAmt);
             payToken = payToken.add(tokenAmt);
         }
 
         //return the money to the original path(depositAccount).
         uint256 refundToken = disco.totalDepositToken - payToken;
         if (refundToken > 0) {
-            investAddr.discoAddr.transfer(investAddr.token, investAddr.depositAccount, refundToken);
+            investAddr.discoAddr.approve(token, address(this), refundToken);
+            token.transferFrom(investAddr.discoAddr.getPool(), investAddr.depositAccount, refundToken);
         }
         return refundToken;
     }
@@ -322,15 +330,14 @@ contract Disco {
         uint256 deadline = getDeadline(60);
         (,uint256 investAmt) = getInvestAmt(id);
 
-        //token transfer
-        discoAddr.transfer(investAddr.token, address(this), disco.shareToken);
-        investAddr.token.approve(address(uniswap), disco.shareToken);
+        //approve token transfer
+        discoAddr.approve(investAddr.token, address(uniswap), disco.shareToken);
 
         //eth transfer
         uint256 desiredEth = investAmt.mul(disco.addLiquidityPool).div(100);
         discoAddr.ethTransfer(address(uint160(address(uniswap))), desiredEth);
 
-        (uint256 amountToken, uint256 amountETH, uint256 liquidity) = uniswap.addLiquidityETH.value(desiredEth)(disco.tokenAddr, disco.shareToken, 0, 0, address(investAddr.discoAddr), deadline);
+        (uint256 amountToken, uint256 amountETH, uint256 liquidity) = discoAddr.addLiquidityETH.value(desiredEth)(disco.shareToken, 0, 0, address(investAddr.discoAddr), deadline);
         investAddr.initLiquidity = liquidity;
         investAddr.swapToken = amountToken;
         investAddr.swapEth = amountETH;
@@ -409,6 +416,10 @@ contract DiscoAddr is FundPool {
 
     string public id;
 
+    IUniswapV2Router01 poolUniswap;
+
+    IERC20 poolToken;
+
     // suppose the deployed contract has a purpose
 
     //0.6.x
@@ -439,15 +450,38 @@ contract DiscoAddr is FundPool {
         require(token.transfer(to, amount));
     }
 
-    function ethBalance() external returns (uint256) {
+    function ethBalance() external view returns (uint256) {
         return address(this).balance;
     }
 
-    function tokenBalance(IERC20 token) external returns (uint256) {
+    function tokenBalance(IERC20 token) external view returns (uint256) {
         return token.balanceOf(address(this));
     }
 
     function getPool() public view returns (address payable) {
         return address(uint160(address(this)));
+    }
+
+    function setSwap(IUniswapV2Router01 pu) public {
+        poolUniswap = pu;
+    }
+
+    function setToken(IERC20 pt) public {
+        poolToken = pt;
+    }
+
+    function addLiquidityETH(
+        uint256 amountTokenDesired,
+        uint256 amountTokenMin,
+        uint256 amountETHMin,
+        address to,
+        uint256 deadline
+    )
+    external payable returns (
+        uint256 amountToken,
+        uint256 amountETH,
+        uint256 liquidity
+    ) {
+        return poolUniswap.addLiquidityETH.value(msg.value)(address(poolToken), amountTokenDesired, amountTokenMin, amountETHMin, to, deadline);
     }
 }
