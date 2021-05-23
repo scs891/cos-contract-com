@@ -110,7 +110,7 @@ contract Proposal is Base
         proposal.proposerSetup = ProposerSetup(proposerSetting.driver);
 
         IRO.VoterSetting memory voterSetting = baseSetting.voterSetting;
-        require(bytes(voterSetting.voteType).length != 0, "voter setting not exists.");
+        require(voterSetting.voteType != IRO.VoteType.None, "voter setting not exists.");
 
         uint256 bt = block.timestamp;
         uint256 voteDurationHours;
