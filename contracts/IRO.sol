@@ -17,6 +17,13 @@ contract IRO
         All
     }
 
+    enum VoteType{
+        None,
+        Founder_Assign,
+        POS,
+        All
+    }
+
     struct TokenSetting {
         string tokenName;
         string tokenSymbol;
@@ -31,7 +38,7 @@ contract IRO
     }
 
     struct VoterSetting {
-        string voteType;
+        VoteType voteType;
         string voteTokenLimit;
         address[] voteAssignAddrs;
         uint256 voteMinSupporters;
@@ -93,7 +100,7 @@ contract IRO
             hasChanges = true;
         }
 
-        if (bytes(setting.voterSetting.voteType).length != 0) {
+        if (setting.voterSetting.voteType != VoteType.None) {
             originSetting.voterSetting = setting.voterSetting;
             hasChanges = true;
         }
@@ -116,7 +123,7 @@ contract IRO
     function getVoterSetting(string memory id)
     public
     view
-    returns (string memory voteType, string memory voteTokenLimit, address[] memory voteAssignAddrs,
+    returns (VoteType voteType, string memory voteTokenLimit, address[] memory voteAssignAddrs,
         uint256 voteMinSupporters, string memory voteMinApprovalPercent,
         string memory voteMinDurationHours, string memory voteMaxDurationHours){
         return (IROs[id].voterSetting.voteType, IROs[id].voterSetting.voteTokenLimit, IROs[id].voterSetting.voteAssignAddrs,
