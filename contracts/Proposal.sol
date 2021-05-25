@@ -129,6 +129,7 @@ contract Proposal is Base
         //cal poolId
         string memory poolId = getPoolId(proposal);
         proposal.payment.pool = new FundPool(poolId);
+        proposal.payment.payer = msg.sender;
         if (proposal.payment.totalAmount > 0) {
             token.transferFrom(msg.sender, proposal.payment.pool.getAddress(), proposal.payment.totalAmount);
         }
