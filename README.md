@@ -1,7 +1,7 @@
 <!--
  * @Author: Zehui
  * @Date: 2020-07-11 23:56:36
- * @LastEditTime : 2021-05-26 22:28:07
+ * @LastEditTime : 2021-05-26 23:05:26
  * @LastEditors  : Please set LastEditors
  * @Description: readme
  * @FilePath: \cos-contract-com\README.md
@@ -36,19 +36,19 @@ comunion 合约
 # 合约的部署地址, 请部署后及时更新， 前端需要从此处获取地址信息来创建合约 
 1. comunion new start up 部署地址
    ```
-     VUE_APP_STARTUP_RECEIVER = '0xfC938765401224e62AfA26535ed07fb334d3e11c'
+     VUE_APP_STARTUP_RECEIVER = '0x2d065EBe8C310cE7c8d4169ab918261A5673b9E3'
    ```
 
 2. comunion setting 部署地址
 
    ```
-   VUE_APP_SETTING_RECEIVER = '0x378b1f5e7594527aaf56b68e9ba37cb636855439'
+   VUE_APP_SETTING_RECEIVER = '0xE758f697F6409C3783Ad19c35847eC91F17F71f2'
    ```
 
 3. comunion bounty 部署地址
 
    ```
-   VUE_APP_BOUNTY_RECEIVER = '0x52B82f2a4bE2F5861872B0Cf3c76D9447f94C731'
+   VUE_APP_BOUNTY_RECEIVER = '0x650996C9bb5EdE015B2876ace365F81a65884b20'
    ```
 
 4. hunter 向 comunion 部署地址
@@ -60,13 +60,13 @@ comunion 合约
 5. Disco 部署地址
 
    ```
-   VUE_APP_DISCO_RECEIVER= '0x2CfbdC9767Fd2fD5fF56e05Ee5286024919e7d08'
+   VUE_APP_DISCO_RECEIVER= '0xb3010A681B21167CfEcf1b47071b2D2154f25Fd9'
    ```
 
 6. IUniswapV2Factory的部署地址
 
    ```
-   VUE_APP_UNISWAPV2ROUTER01 = '0x813D70d51Af4fb5b62B5707Ee311147284F1fC44'
+   VUE_APP_UNISWAPV2ROUTER01 = '0x2317284187798D8d530cd51676807A5F170370C9'
    ```
 
 7. factory Address : 部署UniswapV2Router01前定义好的
@@ -79,5 +79,10 @@ comunion 合约
 
    ```
    VUE_APP_SWAPROUTER01_WETH = '0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6'
+   ```
+9. proposal 部署合约地址
+
+   ```
+   VUE_APP_PROPOSAL = '0x0A78f8EcF6eFB0070B0A8Ab5E849bd491874869a'
    ```
 
