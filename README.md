@@ -1,7 +1,7 @@
 <!--
  * @Author: Zehui
  * @Date: 2020-07-11 23:56:36
- * @LastEditTime : 2021-05-21 22:19:23
+ * @LastEditTime : 2021-05-26 22:28:07
  * @LastEditors  : Please set LastEditors
  * @Description: readme
  * @FilePath: \cos-contract-com\README.md
@@ -42,7 +42,7 @@ comunion 合约
 2. comunion setting 部署地址
 
    ```
-   VUE_APP_SETTING_RECEIVER = '0xFdE6dC94cE94a9b873977DdE385d33FcA99d8eA5'
+   VUE_APP_SETTING_RECEIVER = '0x378b1f5e7594527aaf56b68e9ba37cb636855439'
    ```
 
 3. comunion bounty 部署地址
