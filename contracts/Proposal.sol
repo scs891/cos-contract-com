@@ -52,8 +52,9 @@ contract Proposal is Base
         PaymentMode mode;
         uint256 totalMonths;
         string date;     //require text! Good luck for any external caller or user.
-        IERC20 token;
+        uint256 paymentAmount;
         uint256 totalAmount;
+        IERC20 token;
         FundPool pool;
     }
 
@@ -129,10 +130,11 @@ contract Proposal is Base
         //cal poolId
         string memory poolId = getPoolId(proposal);
         proposal.payment.pool = new FundPool(poolId);
-        proposal.payment.payer = msg.sender;
-        if (proposal.payment.totalAmount > 0) {
-            token.transferFrom(msg.sender, proposal.payment.pool.getAddress(), proposal.payment.totalAmount);
-        }
+        //        disable lock payment token in pool.
+        //        proposal.payment.payer = msg.sender;
+        //        if (proposal.payment.totalAmount > 0) {
+        //            token.transferFrom(msg.sender, proposal.payment.pool.getAddress(), proposal.payment.totalAmount);
+        //        }
 
         uint256 paymentDetailsSize = paymentDetails.length;
         for (uint256 i = 0; i < paymentDetailsSize; i++) {
@@ -237,9 +239,10 @@ contract Proposal is Base
             Vote memory v = vs[i];
             pool.transfer(token, v.voter, v.pos + v.neg);
         }
-        if (proposal.status != ProposalStatus.Pass) {
-            pool.transfer(token, proposal.payment.payer, proposal.payment.totalAmount);
-        }
+        //        disable lock payment token in pool.
+        //        if (proposal.status != ProposalStatus.Pass) {
+        //            pool.transfer(token, proposal.payment.payer, proposal.payment.totalAmount);
+        //        }
     }
 
     //owner manage.

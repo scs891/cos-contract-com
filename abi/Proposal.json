@@ -85,14 +85,19 @@
                 "type": "string"
               },
               {
-                "internalType": "contract IERC20",
-                "name": "token",
-                "type": "address"
+                "internalType": "uint256",
+                "name": "paymentAmount",
+                "type": "uint256"
               },
               {
                 "internalType": "uint256",
                 "name": "totalAmount",
                 "type": "uint256"
+              },
+              {
+                "internalType": "contract IERC20",
+                "name": "token",
+                "type": "address"
               },
               {
                 "internalType": "contract FundPool",
@@ -320,14 +325,19 @@
                 "type": "string"
               },
               {
-                "internalType": "contract IERC20",
-                "name": "token",
-                "type": "address"
+                "internalType": "uint256",
+                "name": "paymentAmount",
+                "type": "uint256"
               },
               {
                 "internalType": "uint256",
                 "name": "totalAmount",
                 "type": "uint256"
+              },
+              {
+                "internalType": "contract IERC20",
+                "name": "token",
+                "type": "address"
               },
               {
                 "internalType": "contract FundPool",
@@ -473,14 +483,19 @@
                 "type": "string"
               },
               {
-                "internalType": "contract IERC20",
-                "name": "token",
-                "type": "address"
+                "internalType": "uint256",
+                "name": "paymentAmount",
+                "type": "uint256"
               },
               {
                 "internalType": "uint256",
                 "name": "totalAmount",
                 "type": "uint256"
+              },
+              {
+                "internalType": "contract IERC20",
+                "name": "token",
+                "type": "address"
               },
               {
                 "internalType": "contract FundPool",
@@ -622,14 +637,19 @@
                 "type": "string"
               },
               {
-                "internalType": "contract IERC20",
-                "name": "token",
-                "type": "address"
+                "internalType": "uint256",
+                "name": "paymentAmount",
+                "type": "uint256"
               },
               {
                 "internalType": "uint256",
                 "name": "totalAmount",
                 "type": "uint256"
+              },
+              {
+                "internalType": "contract IERC20",
+                "name": "token",
+                "type": "address"
               },
               {
                 "internalType": "contract FundPool",
@@ -919,14 +939,19 @@
                 "type": "string"
               },
               {
-                "internalType": "contract IERC20",
-                "name": "token",
-                "type": "address"
+                "internalType": "uint256",
+                "name": "paymentAmount",
+                "type": "uint256"
               },
               {
                 "internalType": "uint256",
                 "name": "totalAmount",
                 "type": "uint256"
+              },
+              {
+                "internalType": "contract IERC20",
+                "name": "token",
+                "type": "address"
               },
               {
                 "internalType": "contract FundPool",
@@ -1072,14 +1097,19 @@
                 "type": "string"
               },
               {
-                "internalType": "contract IERC20",
-                "name": "token",
-                "type": "address"
+                "internalType": "uint256",
+                "name": "paymentAmount",
+                "type": "uint256"
               },
               {
                 "internalType": "uint256",
                 "name": "totalAmount",
                 "type": "uint256"
+              },
+              {
+                "internalType": "contract IERC20",
+                "name": "token",
+                "type": "address"
               },
               {
                 "internalType": "contract FundPool",
