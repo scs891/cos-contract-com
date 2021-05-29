@@ -152,6 +152,11 @@
             "internalType": "uint256",
             "name": "blockTime",
             "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "proposer",
+            "type": "address"
           }
         ],
         "indexed": false,
@@ -392,6 +397,11 @@
             "internalType": "uint256",
             "name": "blockTime",
             "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "proposer",
+            "type": "address"
           }
         ],
         "internalType": "struct Proposal.ProposalDetail",
@@ -550,6 +560,11 @@
             "internalType": "uint256",
             "name": "blockTime",
             "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "proposer",
+            "type": "address"
           }
         ],
         "internalType": "struct Proposal.ProposalDetail",
@@ -704,6 +719,11 @@
             "internalType": "uint256",
             "name": "blockTime",
             "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "proposer",
+            "type": "address"
           }
         ],
         "internalType": "struct Proposal.ProposalDetail",
@@ -1006,6 +1026,11 @@
             "internalType": "uint256",
             "name": "blockTime",
             "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "proposer",
+            "type": "address"
           }
         ],
         "internalType": "struct Proposal.ProposalDetail",
@@ -1164,6 +1189,11 @@
             "internalType": "uint256",
             "name": "blockTime",
             "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "proposer",
+            "type": "address"
           }
         ],
         "internalType": "struct Proposal.ProposalDetail",
