@@ -48,7 +48,7 @@ contract Proposal is Base
     }
 
     struct Payment {
-        address payer;
+        address payable payer;
         PaymentMode mode;
         uint256 totalMonths;
         string date;     //require text! Good luck for any external caller or user.
