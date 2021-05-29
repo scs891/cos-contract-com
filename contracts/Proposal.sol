@@ -45,6 +45,7 @@ contract Proposal is Base
         ProposerSetup proposerSetup;
         VoterSetup voteSetup;
         uint256 blockTime;
+        address proposer;
     }
 
     struct Payment {
@@ -140,7 +141,11 @@ contract Proposal is Base
         for (uint256 i = 0; i < paymentDetailsSize; i++) {
             proposalPaymentDetails[poolId].push(paymentDetails[i]);
         }
+
         //record block once
+        if (proposal.proposer == address(0)) {
+            proposal.proposer = msg.sender;
+        }
         proposal.blockTime = bt;
         discoProposalMapper[proposal.serialId] = proposal;
         countDiscoProposals[proposal.discoId]++;
@@ -224,9 +229,9 @@ contract Proposal is Base
     }
 
     /**
-  * release pool vote token when proposal is not Voting.
-  * release pool payment token when proposal is not Pass.
-  **/
+    * release pool vote token when proposal is not Voting.
+    * release pool payment token when proposal is not Pass.
+    **/
     function releaseProposal(string calldata discoId, string calldata serialId) external isOwner {
         ProposalDetail memory proposal = internalProposal(discoId, serialId);
         require(bytes(discoId).length != 0, "proposal missing, check first.");
