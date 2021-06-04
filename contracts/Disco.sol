@@ -5,6 +5,7 @@ import "./libraries/SafeMath.sol";
 import "./interfaces/IUniswapV2Router01.sol";
 import "./interfaces/IErc20.sol";
 import "./common/FundPool.sol";
+import "./interfaces/IWETH.sol";
 pragma experimental ABIEncoderV2;
 
 contract Disco {
@@ -155,6 +156,7 @@ contract Disco {
         );
         discos[d.id] = d;
         status[d.id] = s;
+
         // 生成新的合约地址, discoAddr 既是DiscoAddr 的实例， 也是上链部署的地址
         DiscoAddr addr = new DiscoAddr(d.id);
         IERC20 token = IERC20(d.tokenAddr);
@@ -212,8 +214,7 @@ contract Disco {
         return discoAddr.ethBalance();
     }
 
-
-    function poolTokenBalance(string calldata id) external view isOwner returns (uint256){
+    function poolTokenBalance(string calldata id) external view returns (uint256){
         DiscoInvestAddr memory investAddr = discoAddress[id];
         DiscoAddr discoAddr = investAddr.discoAddr;
         IERC20 token = investAddr.token;
@@ -294,23 +295,25 @@ contract Disco {
             if (investor.isDead) {
                 continue;
             }
-            uint256 diff = investor.time.sub(disco.fundRaisingStartedAt).div(60 * 60 * 24);
+            uint256 diff = investor.time.sub(investor.time).div(60 * 60 * 24);
             uint256 declineDiff = disco.rewardDeclineRate.sub(diff);
             if (declineDiff <= 0) {
                 declineDiff = 0;
             }
 
             //get the Liquidity - Uniswap when deposit to exchange factory.
-            uint256 tokenAmt = investor.value.mul(investAddr.initLiquidity).mul(declineDiff.add(1)).div(100);
-            investAddr.discoAddr.approve(token, address(this), tokenAmt);
-            token.transferFrom(investAddr.discoAddr.getPool(), investor.investor, tokenAmt);
+            //uint256 tokenAmt = investor.value.mul(investAddr.initLiquidity).mul(declineDiff.add(1)).div(100);
+            //the algorithm (need confirmed)
+            uint256 tokenAmt = 1;
+            investAddr.discoAddr.approve(token,address(this),tokenAmt);
+            token.transferFrom(investAddr.discoAddr.getPool(),investor.investor, tokenAmt);
             payToken = payToken.add(tokenAmt);
         }
 
         //return the money to the original path(depositAccount).
-        uint256 refundToken = disco.totalDepositToken - payToken;
+        uint256 refundToken = disco.totalDepositToken - investAddr.swapToken - payToken;
         if (refundToken > 0) {
-            investAddr.discoAddr.approve(token, address(this), refundToken);
+            investAddr.discoAddr.approve(token,address(this),refundToken);
             token.transferFrom(investAddr.discoAddr.getPool(), investAddr.depositAccount, refundToken);
         }
         return refundToken;
@@ -323,70 +326,46 @@ contract Disco {
         uint256 deadline = getDeadline(60);
         (,uint256 investAmt) = getInvestAmt(id);
 
-        //approve token transfer
-        discoAddr.approve(investAddr.token, address(uniswap), disco.shareToken);
-
-        //eth transfer
+        //deposit transfer
         uint256 desiredEth = investAmt.mul(disco.addLiquidityPool).div(100);
-        discoAddr.ethTransfer(address(uint160(address(uniswap))), desiredEth);
+        discoAddr.depositWETH(desiredEth);
 
-        (uint256 amountToken, uint256 amountETH, uint256 liquidity) = discoAddr.addLiquidityETH.value(desiredEth)(disco.shareToken, 0, 0, address(investAddr.discoAddr), deadline);
+        (uint256 amountToken, uint256 amountETH, uint256 liquidity) = discoAddr.addLiquidityETH(disco.shareToken, desiredEth, 0, 0, address(investAddr.discoAddr), deadline);
         investAddr.initLiquidity = liquidity;
         investAddr.swapToken = amountToken;
         investAddr.swapEth = amountETH;
         discoAddress[id] = investAddr;
     }
 
-    function addLiquidity(string calldata id, uint256 eth, uint256 token)
-    external payable returns (uint256, uint256, uint256)  {
-        require(address(uniswap) != address(0), 'Uniswap not initialized.');
-        DiscoInvestAddr memory investAddr = discoAddress[id];
-        require(investAddr.token.transferFrom(msg.sender, address(this), token));
-        DiscoInfo memory disco = discos[id];
-        investAddr.token.approve(address(uniswap), token);
-        uint256 deadline = getDeadline(120);
-        (uint256 amountToken, uint256 amountETH, uint256 liquidity) = uniswap.addLiquidityETH.value(eth)(disco.tokenAddr, token, 0, 0, msg.sender, deadline);
-        return (amountToken, amountETH, liquidity);
-    }
-
-    function removeLiquidity(string calldata id, uint256 token)
-    external payable returns (uint256, uint256)  {
-        require(address(uniswap) != address(0), 'Uniswap not initialized.');
-        DiscoInvestAddr memory investAddr = discoAddress[id];
-        investAddr.token.approve(address(uniswap), token);
-        DiscoInfo memory disco = discos[id];
-        uint256 deadline = getDeadline(120);
-        (uint256 amountToken, uint256 amountETH) = uniswap.removeLiquidityETH(disco.tokenAddr, token, 0, 0, msg.sender, deadline);
-        return (amountToken, amountETH);
-    }
-
     /**
      * refund-anti-pattern 适合的方案是外部控制执行批量一对一退款。
      */
     function refund(string memory id) public payable {
-        require(bytes(id).length != 0);
+        require(bytes(id).length != 0,'empty id');
         DiscoInvestAddr memory investAddr = discoAddress[id];
         DiscoAddr discoAddr = investAddr.discoAddr;
-        require(bytes(discoAddr.getDiscoId()).length != 0);
-        require(investAddr.depositAccount != address(0));
+        require(bytes(discoAddr.getDiscoId()).length != 0,'discoId lost');
+        require(investAddr.depositAccount != address(0),'depositAccount lost');
         // solidity > 0.6 address payable pool = payable(address(discoAddr)) ;
         // as follow is 0.5.x
         // refund ether
         for (uint256 i = 0; i < investors[id].length; i++) {
             DiscoInvestor storage investor = investors[id][i];
-            discoAddr.ethTransfer(investor.investor, investor.value);
+            discoAddr.ethTransfer(investor.investor,investor.value);
             investor.isDead = true;
         }
 
         //refund token
         DiscoInfo memory info = discos[id];
         IERC20 token = investAddr.token;
-        discoAddr.approve(token, address(this), info.totalDepositToken);
-        token.transferFrom(discoAddr.getPool(), investAddr.depositAccount, info.totalDepositToken);
+        discoAddr.approve(token,address(this),info.totalDepositToken);
+        token.transferFrom(discoAddr.getPool(),investAddr.depositAccount, info.totalDepositToken);
     }
+
 
     // 发起募资, 记录募资的信息， 可能会多次募资
     function investor(string memory id, uint256 time) public payable canInvest(id) {
+        require(msg.value > 0, 'invest amt must > 0.');
         DiscoInvestor memory d = DiscoInvestor(
             msg.sender,
             msg.value,
@@ -398,7 +377,7 @@ contract Disco {
         // as follow is 0.5.x
         discoAddr.getPool().transfer(msg.value);
         investors[id].push(d);
-        emit investToDisco(id, _owner, msg.value);
+        emit investToDisco(id, msg.sender, msg.value);
     }
 }
 
@@ -434,19 +413,24 @@ contract DiscoAddr is FundPool {
         require(token.approve(to, amount));
     }
 
+    function depositWETH(uint256 amount) external payable {
+        IWETH WETH = IWETH(poolUniswap.WETH());
+        WETH.deposit.value(amount)();
+    }
+
     function transferFrom(IERC20 token, address to, uint256 amount) external {
-        require(token.transferFrom(address(this), to, amount));
+        require(token.transferFrom(address(this),to, amount));
     }
 
     function transfer(IERC20 token, address to, uint256 amount) external {
         require(token.transfer(to, amount));
     }
 
-    function ethBalance() external view returns (uint256) {
+    function ethBalance() external view returns(uint256) {
         return address(this).balance;
     }
 
-    function tokenBalance(IERC20 token) external view returns (uint256) {
+    function tokenBalance(IERC20 token) external view returns(uint256) {
         return token.balanceOf(address(this));
     }
 
@@ -462,18 +446,19 @@ contract DiscoAddr is FundPool {
         poolToken = pt;
     }
 
-    function addLiquidityETH(
-        uint256 amountTokenDesired,
-        uint256 amountTokenMin,
-        uint256 amountETHMin,
-        address to,
-        uint256 deadline
-    )
+    function addLiquidityETH(uint256 amountTokenDesired,uint256 amountETHDesired,
+        uint256 amountTokenMin,uint256 amountETHMin,
+        address to,uint256 deadline)
     external payable returns (
         uint256 amountToken,
         uint256 amountETH,
         uint256 liquidity
     ) {
-        return poolUniswap.addLiquidityETH.value(msg.value)(address(poolToken), amountTokenDesired, amountTokenMin, amountETHMin, to, deadline);
+        require(poolToken.approve(address(poolUniswap), amountTokenDesired));
+        IERC20 WETH = IERC20(poolUniswap.WETH());
+        require(WETH.approve(address(poolUniswap), amountETHDesired));
+        return poolUniswap.addLiquidity(address(poolToken), poolUniswap.WETH(), amountTokenDesired, amountETHDesired, amountTokenMin, amountETHMin, to, deadline);
+
     }
+
 }
