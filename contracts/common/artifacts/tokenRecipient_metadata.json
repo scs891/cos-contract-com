@@ -1,0 +1,68 @@
+{
+	"compiler": {
+		"version": "0.5.16+commit.9c3226ce"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_from",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_value",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "_token",
+						"type": "address"
+					},
+					{
+						"internalType": "bytes",
+						"name": "_extraData",
+						"type": "bytes"
+					}
+				],
+				"name": "receiveApproval",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/common/ERC20.sol": "tokenRecipient"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/common/ERC20.sol": {
+			"keccak256": "0x196b29ec346c19bfcee5d819e5bbc222106bc0d719a15fa17a52d32efd199b84",
+			"urls": [
+				"bzz-raw://f5db6b5e8384ac40107de2386656f24c6f842501a4ac6bb0931168f2f4739343",
+				"dweb:/ipfs/QmUPcc1nQkFPsGu4rW6T9Wp2pioarBmDha8azwcL7yeT8S"
+			]
+		}
+	},
+	"version": 1
+}

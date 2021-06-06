@@ -1,7 +1,7 @@
 <!--
  * @Author: Zehui
  * @Date: 2020-07-11 23:56:36
- * @LastEditTime : 2021-05-26 23:05:26
+ * @LastEditTime : 2021-06-04 20:57:20
  * @LastEditors  : Please set LastEditors
  * @Description: readme
  * @FilePath: \cos-contract-com\README.md
@@ -63,10 +63,10 @@ comunion 合约
    VUE_APP_DISCO_RECEIVER= '0xb3010A681B21167CfEcf1b47071b2D2154f25Fd9'
    ```
 
-6. IUniswapV2Factory的部署地址
+6. UNISWAPV2ROUTER01 的部署地址
 
    ```
-   VUE_APP_UNISWAPV2ROUTER01 = '0x2317284187798D8d530cd51676807A5F170370C9'
+   VUE_APP_UNISWAPV2ROUTER01 = '0xed83bf668568835e2feca667a57bebb21515bc65'
    ```
 
 7. factory Address : 部署UniswapV2Router01前定义好的
