@@ -56,7 +56,7 @@ library UniswapV2Library {
                         keccak256(abi.encodePacked(token0, token1)),
                     // pair合约bytecode的keccak256
                     //hex"96e8ac4277198ff8b6f785478aa9a39f403cb768dd02cbee326c3e7da348845f"
-                        hex"8062edb6672844d2d7efbcf1a7ec23daab2b526c3ac13797f3030f7775c74986"
+                        hex"03248e3d6d2a978aeba9e893c1d37920896843dcc82fa4e12a3d4532d19f3c37"
                     )
                 )
             )

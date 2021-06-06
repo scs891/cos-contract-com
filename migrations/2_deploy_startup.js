@@ -6,7 +6,7 @@ const Proposal = artifacts.require('Proposal')
 const NumUtils = artifacts.require('libraries/NumUtils')
 
 const UniswapV2Router01 = artifacts.require('UniswapV2Router01')
-const factory = '0x87C91B6F127bEA8A5867B016334165749811831F' // prior to migrate the contract UniswapV2Factory on the network goerli
+const factory = '0xbb72d579466a3bcb8279b86dc58c660054e6397c' // prior to migrate the contract UniswapV2Factory on the network goerli
 const weth = {
     mainnet: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
     ropsten: '0xc778417E063141139Fce010982780140Aa0cD5Ab',

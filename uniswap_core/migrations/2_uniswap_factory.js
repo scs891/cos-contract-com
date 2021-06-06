@@ -1,5 +1,5 @@
 const UniswapV2Factory = artifacts.require("UniswapV2Factory");
-feeToSetter="0x49bF483874A9842eEa79819FC51E16e126445001";
+feeToSetter="0xF98A7F9E86DCE7298F3be4778ACd692D649c5228";
 module.exports = function (deployer) {
     deployer.deploy(UniswapV2Factory, feeToSetter);
  }
