@@ -123,47 +123,6 @@
 					},
 					{
 						"internalType": "uint256",
-						"name": "eth",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "token",
-						"type": "uint256"
-					}
-				],
-				"name": "addLiquidity",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"payable": true,
-				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"internalType": "string",
-						"name": "id",
-						"type": "string"
-					},
-					{
-						"internalType": "uint256",
 						"name": "investAmt",
 						"type": "uint256"
 					}
@@ -660,37 +619,6 @@
 				"constant": false,
 				"inputs": [
 					{
-						"internalType": "string",
-						"name": "id",
-						"type": "string"
-					},
-					{
-						"internalType": "uint256",
-						"name": "token",
-						"type": "uint256"
-					}
-				],
-				"name": "removeLiquidity",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"payable": true,
-				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
 						"internalType": "uint256",
 						"name": "pf",
 						"type": "uint256"
@@ -786,10 +714,10 @@
 	},
 	"sources": {
 		"contracts/Disco.sol": {
-			"keccak256": "0xab8e75347119bf2c040b47c540f92d8301899519bca894167802d9304d11ea48",
+			"keccak256": "0xa3ca902063f7f30a8c627d5a59f0108b335ba6800b74db65b66d2810f9c34a72",
 			"urls": [
-				"bzz-raw://c36697b0429e4c91219b66f99a5ecc82945aa7dc627b2efa09e7e6396c183ee0",
-				"dweb:/ipfs/QmPN3je6m4VK6Uf67GDTmkx5yV1KN5fWQ7js4azDqDUqUM"
+				"bzz-raw://6be6df0c268826868992a85e39944b787a80dff6d8067ee96759f67ec8653cf8",
+				"dweb:/ipfs/QmU9AdmEMkpQTfficpyTrZK4ck9PJx2SBWGa3Tujn8e1Xc"
 			]
 		},
 		"contracts/common/FundPool.sol": {
@@ -807,10 +735,17 @@
 			]
 		},
 		"contracts/interfaces/IUniswapV2Router01.sol": {
-			"keccak256": "0xc2bec2b1071737de866bd042430f4880348c352111827c7fbb72fc2d29bdfde9",
+			"keccak256": "0xc3d262dab384b8a8507990a618a1def0a8d2fb1f7ae69c8f365291353a320ab8",
 			"urls": [
-				"bzz-raw://4e3b90afd4e3954081ef444101eae041a92e530d4d8476469f81c49f1243ca3a",
-				"dweb:/ipfs/QmQ8BVxyPiHTEE9M1ajWr9vMiRTFegxZ2WWccX2owvnDZY"
+				"bzz-raw://e782b1367c0609c47c3b00a6a31c6ea5fd82205b51e2876c44835498abf1debb",
+				"dweb:/ipfs/QmdQdMvmbEGzZdndabY46ug47Mauk1pCy9J2sAjvzQ3szw"
+			]
+		},
+		"contracts/interfaces/IWETH.sol": {
+			"keccak256": "0x0c5f6716d15a30a0cc9162402cf5767d30c9ed111366fb610e49a2f924632192",
+			"urls": [
+				"bzz-raw://a0eb27d0794a25fe1f69f0fcf89b77d5bcd9bb0b0fdf065825b95078a38855a1",
+				"dweb:/ipfs/QmR78GAcd7Qp5dYkkmbYmWuNzUui7hgNdTEYdy5c2hyTe8"
 			]
 		},
 		"contracts/libraries/SafeMath.sol": {

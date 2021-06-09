@@ -1,12 +1,12 @@
 // File: @uniswap/v2-core/contracts/interfaces/IUniswapV2Factory.sol
 pragma solidity ^0.5.6;
-import "./interfaces/IUniswapV2Factory.sol";
-import "./interfaces/IUniswapV2Pair.sol";
+// import "./interfaces/IUniswapV2Factory.sol";
+// import "./interfaces/IUniswapV2Pair.sol";
 import "./interfaces/IUniswapV2Router01.sol";
-import "./interfaces/IErc20.sol";
+// import "./interfaces/IErc20.sol";
 import "./interfaces/IWETH.sol";
 import "./libraries/TransferHelper.sol";
-import "./libraries/SafeMath.sol";
+// import "./libraries/SafeMath.sol";
 import "./libraries/UniswapV2Library.sol";
 
 

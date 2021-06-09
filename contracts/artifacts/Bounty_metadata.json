@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.5.17+commit.d19bba13"
+		"version": "0.5.16+commit.9c3226ce"
 	},
 	"language": "Solidity",
 	"output": {
@@ -20,27 +20,32 @@
 						"type": "string"
 					}
 				],
-				"name": "getStartup",
+				"name": "getBounty",
 				"outputs": [
 					{
 						"internalType": "string",
-						"name": "name",
+						"name": "startupName",
 						"type": "string"
 					},
 					{
 						"internalType": "string",
-						"name": "categoryId",
+						"name": "title",
 						"type": "string"
 					},
 					{
 						"internalType": "string",
-						"name": "mission",
+						"name": "intro",
 						"type": "string"
 					},
 					{
-						"internalType": "string",
-						"name": "descriptionAddr",
-						"type": "string"
+						"internalType": "uint256[]",
+						"name": "paymentToken",
+						"type": "uint256[]"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "paymentValue",
+						"type": "uint256[]"
 					}
 				],
 				"payable": false,
@@ -51,39 +56,37 @@
 				"constant": false,
 				"inputs": [
 					{
-						"components": [
-							{
-								"internalType": "string",
-								"name": "id",
-								"type": "string"
-							},
-							{
-								"internalType": "string",
-								"name": "name",
-								"type": "string"
-							},
-							{
-								"internalType": "string",
-								"name": "categoryId",
-								"type": "string"
-							},
-							{
-								"internalType": "string",
-								"name": "mission",
-								"type": "string"
-							},
-							{
-								"internalType": "string",
-								"name": "descriptionAddr",
-								"type": "string"
-							}
-						],
-						"internalType": "struct Startup.Profile",
-						"name": "p",
-						"type": "tuple"
+						"internalType": "string",
+						"name": "id",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "startupName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "title",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "intro",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "paymentToken",
+						"type": "uint256[]"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "paymentValue",
+						"type": "uint256[]"
 					}
 				],
-				"name": "newStartup",
+				"name": "newBounty",
 				"outputs": [],
 				"payable": true,
 				"stateMutability": "payable",
@@ -98,7 +101,7 @@
 						"type": "address"
 					}
 				],
-				"name": "setCoinBase",
+				"name": "setConbise",
 				"outputs": [],
 				"payable": false,
 				"stateMutability": "nonpayable",
@@ -114,22 +117,22 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/Startup.sol": "Startup"
+			"contracts/Bounty.sol": "Bounty"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
 		"optimizer": {
-			"enabled": false,
+			"enabled": true,
 			"runs": 200
 		},
 		"remappings": []
 	},
 	"sources": {
-		"contracts/Startup.sol": {
-			"keccak256": "0x269e6e1aa52a3b6067ed3664e3d67820cb978574d67eef13f5ed28899dd61ec4",
+		"contracts/Bounty.sol": {
+			"keccak256": "0xc475fe665bf491628f2b4c266f5be5357f5316a21f4641ae6e96e4ab6410d4b1",
 			"urls": [
-				"bzz-raw://3caf0412541b0d65ab5b0f4254e060251d973db11a98994c76d0c9fcc9f2e84e",
-				"dweb:/ipfs/QmUpvdSxbv8PdBiukerEJA3sDVGMF563YnrR5vqcxXF3vw"
+				"bzz-raw://93336b6255404f397c7d14b337f7008c0a82acb382127ee298a0372956fe2934",
+				"dweb:/ipfs/QmPKSKSGGUnV9rnzNj9FPEFMe81QMEabCKRXmtvUdM1iss"
 			]
 		}
 	},
