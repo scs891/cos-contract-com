@@ -4,7 +4,23 @@
 	},
 	"language": "Solidity",
 	"output": {
-		"abi": [],
+		"abi": [
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "getPairHash",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"payable": false,
+				"stateMutability": "pure",
+				"type": "function"
+			}
+		],
 		"devdoc": {
 			"methods": {}
 		},
@@ -26,10 +42,10 @@
 	},
 	"sources": {
 		"contracts/libraries/UniswapV2Library.sol": {
-			"keccak256": "0x99735699ae8aed46a2491150bde9e0ab1eed062f5c979f0f985bf77a03bdadf7",
+			"keccak256": "0x225fa64c8b7622097b019bc57a1bb3e8eada49779de7f605b475f94059654f9d",
 			"urls": [
-				"bzz-raw://a1533dc37e1a32a0153a293f2c3c25c0de6bab6beaa22b2cd0e2a957e49f3c37",
-				"dweb:/ipfs/Qmc68Top2aBgjBRDsaR8K8oZ6YmK3fV5jNYcYY4mesCzKo"
+				"bzz-raw://2604be3b01a26dffaca1a8dc7643e149580d7afc33453d0b56960c570b62f52c",
+				"dweb:/ipfs/QmY89CudH15D2MWQjxmPn91VsnnTiKYFUeuUdu6CCQCUfq"
 			]
 		},
 		"uniswap_core/contracts/UniswapV2ERC20.sol": {

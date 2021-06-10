@@ -64,7 +64,7 @@ library UniswapV2Library {
             )
         );
     }
-    
+
     function getPairHash() public pure returns (bytes32) {
         // return keccak256(type(UniswapV2Pair).creationCode);
         return keccak256(abi.encodePacked(type(UniswapV2Pair).creationCode));

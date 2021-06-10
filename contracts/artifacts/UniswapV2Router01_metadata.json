@@ -909,10 +909,10 @@
 			]
 		},
 		"contracts/libraries/UniswapV2Library.sol": {
-			"keccak256": "0x1a5d512d149f5897feb8e63cb0b0ed5e2f698747500947167a6fdb15792492a3",
+			"keccak256": "0x225fa64c8b7622097b019bc57a1bb3e8eada49779de7f605b475f94059654f9d",
 			"urls": [
-				"bzz-raw://c054d85e2054875016762a4e69689bc74f7956443fac06851acee0975fa71fb8",
-				"dweb:/ipfs/QmYayrrT3hE58VjKk2RFpobLD2s1LvEbUXc2rRGYn8MnQ7"
+				"bzz-raw://2604be3b01a26dffaca1a8dc7643e149580d7afc33453d0b56960c570b62f52c",
+				"dweb:/ipfs/QmY89CudH15D2MWQjxmPn91VsnnTiKYFUeuUdu6CCQCUfq"
 			]
 		},
 		"uniswap_core/contracts/UniswapV2ERC20.sol": {
