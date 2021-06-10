@@ -1,7 +1,8 @@
-pragma solidity ^0.5.6;
+pragma solidity ^0.5.16;
 
-import "../interfaces/IUniswapV2Pair.sol";
-import "./SafeMath.sol";
+// import "../interfaces/IUniswapV2Pair.sol";
+// import "./SafeMath.sol";
+import "../../uniswap_core/contracts/UniswapV2Pair.sol";
 
 library UniswapV2Library {
     using SafeMath for uint256;
@@ -47,6 +48,7 @@ library UniswapV2Library {
         //排序token地址
         (address token0, address token1) = sortTokens(tokenA, tokenB);
         //根据排序的token地址计算create2的pair地址
+        bytes32 initHashCode = getPairHash();
         pair = address(
             uint256(
                 keccak256(
@@ -56,11 +58,16 @@ library UniswapV2Library {
                         keccak256(abi.encodePacked(token0, token1)),
                     // pair合约bytecode的keccak256
                     //hex"96e8ac4277198ff8b6f785478aa9a39f403cb768dd02cbee326c3e7da348845f"
-                        hex"03248e3d6d2a978aeba9e893c1d37920896843dcc82fa4e12a3d4532d19f3c37"
+                        initHashCode
                     )
                 )
             )
         );
+    }
+
+    function getPairHash() public pure returns (bytes32) {
+        // return keccak256(type(UniswapV2Pair).creationCode);
+        return keccak256(abi.encodePacked(type(UniswapV2Pair).creationCode));
     }
 
     /**

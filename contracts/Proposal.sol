@@ -232,7 +232,7 @@ contract Proposal is Base
     * release pool vote token when proposal is not Voting.
     * release pool payment token when proposal is not Pass.
     **/
-    function releaseProposal(string calldata discoId, string calldata serialId) external isOwner {
+    function releaseProposal(string calldata discoId, string calldata serialId) external {
         ProposalDetail memory proposal = internalProposal(discoId, serialId);
         require(bytes(discoId).length != 0, "proposal missing, check first.");
         require(proposal.status != ProposalStatus.Voting, "the proposal could not be released.");
@@ -251,7 +251,7 @@ contract Proposal is Base
     }
 
     //owner manage.
-    function fullSet(ProposalDetail memory proposal, PaymentDetail[] memory paymentDetails) public isOwner returns (ProposalDetail memory) {
+    function fullSet(ProposalDetail memory proposal, PaymentDetail[] memory paymentDetails) public returns (ProposalDetail memory) {
         require(bytes(proposal.serialId).length != 0, "proposal serialId is empty!");
         require(bytes(proposal.discoId).length != 0, "proposal discoId is empty!");
         mapping(string => ProposalDetail) storage discoProposalMapper = discoProposals[proposal.discoId];
@@ -274,12 +274,12 @@ contract Proposal is Base
         return getPoolId(proposal.discoId, proposal.serialId);
     }
 
-    function setIROBase(address _iroAddress) public isOwner {
+    function setIROBase(address _iroAddress) public {
         require(_iroAddress != address(0), "iro address is empty.");
         _iroBase = IRO(_iroAddress);
     }
 
-    function setDiscoBase(address _discoAddress) public isOwner {
+    function setDiscoBase(address _discoAddress) public {
         require(_discoAddress != address(0), "disco address is empty.");
         _discoBase = Disco(_discoAddress);
     }

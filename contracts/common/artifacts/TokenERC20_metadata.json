@@ -409,23 +409,23 @@
 		"userdoc": {
 			"methods": {
 				"approve(address,uint256)": {
-					"notice": "Set allowance for other address     * Allows `_spender` to spend no more than `_value` tokens on your behalf"
+					"notice": "Set allowance for other address      * Allows `_spender` to spend no more than `_value` tokens on your behalf "
 				},
 				"approveAndCall(address,uint256,bytes)": {
-					"notice": "Set allowance for other address and notify     * Allows `_spender` to spend no more than `_value` tokens on your behalf, and then ping the contract about it"
+					"notice": "Set allowance for other address and notify      * Allows `_spender` to spend no more than `_value` tokens on your behalf, and then ping the contract about it "
 				},
 				"burn(uint256)": {
-					"notice": "Destroy tokens     * Remove `_value` tokens from the system irreversibly"
+					"notice": "Destroy tokens      * Remove `_value` tokens from the system irreversibly "
 				},
 				"burnFrom(address,uint256)": {
-					"notice": "Destroy tokens from other account     * Remove `_value` tokens from the system irreversibly on behalf of `_from`."
+					"notice": "Destroy tokens from other account      * Remove `_value` tokens from the system irreversibly on behalf of `_from`. "
 				},
-				"constructor": "Constructor function     * Initializes contract with initial supply tokens to the creator of the contract",
+				"constructor": "Constructor function      * Initializes contract with initial supply tokens to the creator of the contract",
 				"transfer(address,uint256)": {
-					"notice": "Transfer tokens     * Send `_value` tokens to `_to` from your account"
+					"notice": "Transfer tokens      * Send `_value` tokens to `_to` from your account "
 				},
 				"transferFrom(address,address,uint256)": {
-					"notice": "Transfer tokens from other address     * Send `_value` tokens to `_to` on behalf of `_from`"
+					"notice": "Transfer tokens from other address      * Send `_value` tokens to `_to` on behalf of `_from` "
 				}
 			}
 		}
@@ -444,10 +444,10 @@
 	},
 	"sources": {
 		"contracts/common/ERC20.sol": {
-			"keccak256": "0x196b29ec346c19bfcee5d819e5bbc222106bc0d719a15fa17a52d32efd199b84",
+			"keccak256": "0xb2bc29736e44ad40793072ad637632b21b4e2b50d94a2b51db37c5e4b2210a32",
 			"urls": [
-				"bzz-raw://f5db6b5e8384ac40107de2386656f24c6f842501a4ac6bb0931168f2f4739343",
-				"dweb:/ipfs/QmUPcc1nQkFPsGu4rW6T9Wp2pioarBmDha8azwcL7yeT8S"
+				"bzz-raw://20a4d60c32eb7a1fbef32344904118fec7639c150bfd9fbc121a866c46344606",
+				"dweb:/ipfs/QmQW2htbcn7NoaL6B7mcWCAYMFqiFbqfMD7HGWQWiMNcRx"
 			]
 		}
 	},
