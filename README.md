@@ -1,12 +1,35 @@
 <!--
  * @Author: Zehui
  * @Date: 2020-07-11 23:56:36
- * @LastEditTime : 2021-06-04 20:57:20
+ * @LastEditTime : 2021-06-12 17:11:58
  * @LastEditors  : Please set LastEditors
  * @Description: readme
  * @FilePath: \cos-contract-com\README.md
 -->
 
+
+# 合约如何搭建本地环境
+1. 使用npm安装remixd工具，该工具会在本地建立一个websocket服务器，然后就可以使用网页remix端与其进行连接了， 运行命令
+    ```
+        cnpm install -g remixd
+    ```
+2. 打开remix (https://remix.ethereum.org)
+3. 启动,
+   ```
+    remixd -s  [你的源码目录] --remix-ide  https://remix.ethereum.org
+   ```
+   在当前项目中， 我已经为大家配置好了， 直接运行
+   ```
+    yarn remixed
+   ```
+
+4. 点击 Home -> file -> connect to local host;
+5. 可以看到左侧的侧边栏loading本地文件
+6. loading 后 happy coding
+7. 如果是本地调试， 没有必要部署测试网：
+    1. 在remix: Deploy -> environment -> javascript VM （浏览器内存有限， 部署多了会崩）
+    2. 本地安装gaanche,  Deploy -> environment -> web3 Provider (原理是利用本机内存搭建了一个私链，纵享丝滑吧)
+    3. 如果需要与后端调试， 需要部署在测试网
 # cos-contract-com
 
 comunion 合约
@@ -56,11 +79,11 @@ comunion 合约
 
 6. UNISWAPV2ROUTER01 的部署地址
 
-   >0xed83bf668568835e2feca667a57bebb21515bc65
+   >0xA836cD73cCaCb62027f352Af16Ea1d89148e6603
 
 7. factory Address : 部署UniswapV2Router01前定义好的
 
-   >0x87C91B6F127bEA8A5867B016334165749811831F
+   >0x464Ec628Ca640c95469F0fEd63244F195ab44a9f
 
 8. _WETH: 部署UniswapV2Router01前定义好的
 
