@@ -1,0 +1,59 @@
+{
+	"compiler": {
+		"version": "0.5.16+commit.9c3226ce"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "s",
+						"type": "string"
+					}
+				],
+				"name": "stringToUint",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "pure",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/libraries/NumUtils.sol": "NumUtils"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/libraries/NumUtils.sol": {
+			"keccak256": "0xaeb9138d0c1305d7b106b0d8dd914dab3de326da1e311717a9ce071bb5cf4473",
+			"urls": [
+				"bzz-raw://a45f71222669b65d80bae8f8a3079788c8e9bc96c4e56b704a89e419f93c9ae0",
+				"dweb:/ipfs/QmYFMbDGF1Gb2fccqe96VJ4PgmMwQNWk97235uWbJi8V7R"
+			]
+		}
+	},
+	"version": 1
+}
