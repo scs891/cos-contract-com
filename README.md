@@ -1,7 +1,7 @@
 <!--
  * @Author: Zehui
  * @Date: 2020-07-11 23:56:36
- * @LastEditTime : 2021-06-12 17:11:58
+ * @LastEditTime : 2021-06-17 22:23:38
  * @LastEditors  : Please set LastEditors
  * @Description: readme
  * @FilePath: \cos-contract-com\README.md
@@ -30,9 +30,16 @@
     1. 在remix: Deploy -> environment -> javascript VM （浏览器内存有限， 部署多了会崩）
     2. 本地安装gaanche,  Deploy -> environment -> web3 Provider (原理是利用本机内存搭建了一个私链，纵享丝滑吧)
     3. 如果需要与后端调试， 需要部署在测试网
-# cos-contract-com
+    
+# uniswap 部署过程
+1. 先部署factory 得到address1
+2. 在部署ERc20 合约， tokenzehu1（ 真实部署  _WETH  的地址）
+3. 再部署ERC20 合约， tokenzehui2
+4. 使用address1, 和 tokenzehui1 的地址部署 router01 得到 address2
+5. tokenzehu1 approval 给 address2;  tokenzehui2 approval 给  address2
+6. 调用 address2 的 addLiquidy 方法
 
-comunion 合约
+# cos-contract-com comunion 合约介绍
 
 - Startup.sol 对应 startup 的合约
 - IRO.sol 对应 Setting 的合约
@@ -79,11 +86,11 @@ comunion 合约
 
 6. UNISWAPV2ROUTER01 的部署地址
 
-   >0xA836cD73cCaCb62027f352Af16Ea1d89148e6603
+   >0xa37fB09aA7bc4c0f18C9503c397BdB255BD6daa2
 
 7. factory Address : 部署UniswapV2Router01前定义好的
 
-   >0x464Ec628Ca640c95469F0fEd63244F195ab44a9f
+   >0x1AB23C05C7Dfd5f11C4fB3dc497C1F57e1B14740
 
 8. _WETH: 部署UniswapV2Router01前定义好的
 
