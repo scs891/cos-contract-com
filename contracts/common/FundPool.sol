@@ -2,7 +2,11 @@ pragma solidity >=0.4.21 <0.7.0;
 pragma experimental ABIEncoderV2;
 
 import "../interfaces/IErc20.sol";
-
+/**
+* like uniswap pair.
+* owner original call(skip person auth).
+* [issue] mechanism optimization and improvement.
+**/
 contract FundPool
 {
     string private _id;
