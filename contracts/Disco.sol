@@ -6,15 +6,20 @@ import "./interfaces/IUniswapV2Router01.sol";
 import "./interfaces/IErc20.sol";
 import "./common/FundPool.sol";
 import "./interfaces/IWETH.sol";
+import "./UniswapV2Router01.sol";
 pragma experimental ABIEncoderV2;
 
+
 contract Disco {
+    // [issue]: payable call back
     address private _owner;
     using SafeMath for uint256;
     IUniswapV2Router01 uniswap;
     uint256 preFee;
 
-    // disco
+    /**
+    * disco
+    **/
     struct DiscoInfo {
         string id;
         address payable walletAddr;
@@ -149,6 +154,7 @@ contract Disco {
     **/
     function newDisco(DiscoInfo memory d) public payable {
         require(bytes(d.id).length != 0);
+        //[issue]: min liquidity check.
         DiscoStatus memory s = DiscoStatus(
             false,
             false,
@@ -158,6 +164,7 @@ contract Disco {
         status[d.id] = s;
 
         // 生成新的合约地址, discoAddr 既是DiscoAddr 的实例， 也是上链部署的地址
+        //  [issue]: DiscoAddr should follow the "create2" (as the IUniswapV2Pair Address).
         DiscoAddr addr = new DiscoAddr(d.id);
         IERC20 token = IERC20(d.tokenAddr);
         addr.setToken(token);
@@ -254,7 +261,12 @@ contract Disco {
         return (invCount, investAmt);
     }
 
-
+    /**
+    *  [issue]: too much work, expect 'Process Optimization and Improvement'.
+    *  1. add liquidity.
+    *  2. assign eth, plat fee and remain to wallet.
+    *  3. assign token, refund token
+    */
     function assign(string memory id, uint256 investAmt) public payable returns (uint256, uint256)  {
         //uniswap add liquidity.
         assignLiquidity(id);
@@ -275,6 +287,7 @@ contract Disco {
         //no chance to send another one except msg.sender. if need, use weth with uniswap.
         if (platFee > 0) {
             //the account for receiving platFee has not been confirmed.
+            //[issue]: which receiver.
             discoAddr.ethTransfer(address(0), platFee);
             investAmt -= platFee;
         }
@@ -295,6 +308,7 @@ contract Disco {
             if (investor.isDead) {
                 continue;
             }
+            //[issue]: precision?
             uint256 diff = investor.time.sub(investor.time).div(60 * 60 * 24);
             uint256 declineDiff = disco.rewardDeclineRate.sub(diff);
             if (declineDiff <= 0) {
@@ -303,17 +317,17 @@ contract Disco {
 
             //get the Liquidity - Uniswap when deposit to exchange factory.
             //uint256 tokenAmt = investor.value.mul(investAddr.initLiquidity).mul(declineDiff.add(1)).div(100);
-            //the algorithm (need confirmed)
+            //[issue]: the algorithm (need confirmed), the initLiquidity(from assignLiquidity) is too big.
             uint256 tokenAmt = 1;
-            investAddr.discoAddr.approve(token,address(this),tokenAmt);
-            token.transferFrom(investAddr.discoAddr.getPool(),investor.investor, tokenAmt);
+            investAddr.discoAddr.approve(token, address(this), tokenAmt);
+            token.transferFrom(investAddr.discoAddr.getPool(), investor.investor, tokenAmt);
             payToken = payToken.add(tokenAmt);
         }
 
         //return the money to the original path(depositAccount).
         uint256 refundToken = disco.totalDepositToken - investAddr.swapToken - payToken;
         if (refundToken > 0) {
-            investAddr.discoAddr.approve(token,address(this),refundToken);
+            investAddr.discoAddr.approve(token, address(this), refundToken);
             token.transferFrom(investAddr.discoAddr.getPool(), investAddr.depositAccount, refundToken);
         }
         return refundToken;
@@ -330,6 +344,7 @@ contract Disco {
         uint256 desiredEth = investAmt.mul(disco.addLiquidityPool).div(100);
         discoAddr.depositWETH(desiredEth);
 
+        //[issue]: min liquidity check, etc., reduce the possibility of failure.
         (uint256 amountToken, uint256 amountETH, uint256 liquidity) = discoAddr.addLiquidityETH(disco.shareToken, desiredEth, 0, 0, address(investAddr.discoAddr), deadline);
         investAddr.initLiquidity = liquidity;
         investAddr.swapToken = amountToken;
@@ -341,25 +356,25 @@ contract Disco {
      * refund-anti-pattern 适合的方案是外部控制执行批量一对一退款。
      */
     function refund(string memory id) public payable {
-        require(bytes(id).length != 0,'empty id');
+        require(bytes(id).length != 0, 'empty id');
         DiscoInvestAddr memory investAddr = discoAddress[id];
         DiscoAddr discoAddr = investAddr.discoAddr;
-        require(bytes(discoAddr.getDiscoId()).length != 0,'discoId lost');
-        require(investAddr.depositAccount != address(0),'depositAccount lost');
+        require(bytes(discoAddr.getDiscoId()).length != 0, 'discoId lost');
+        require(investAddr.depositAccount != address(0), 'depositAccount lost');
         // solidity > 0.6 address payable pool = payable(address(discoAddr)) ;
         // as follow is 0.5.x
         // refund ether
         for (uint256 i = 0; i < investors[id].length; i++) {
             DiscoInvestor storage investor = investors[id][i];
-            discoAddr.ethTransfer(investor.investor,investor.value);
+            discoAddr.ethTransfer(investor.investor, investor.value);
             investor.isDead = true;
         }
 
         //refund token
         DiscoInfo memory info = discos[id];
         IERC20 token = investAddr.token;
-        discoAddr.approve(token,address(this),info.totalDepositToken);
-        token.transferFrom(discoAddr.getPool(),investAddr.depositAccount, info.totalDepositToken);
+        discoAddr.approve(token, address(this), info.totalDepositToken);
+        token.transferFrom(discoAddr.getPool(), investAddr.depositAccount, info.totalDepositToken);
     }
 
 
@@ -419,18 +434,18 @@ contract DiscoAddr is FundPool {
     }
 
     function transferFrom(IERC20 token, address to, uint256 amount) external {
-        require(token.transferFrom(address(this),to, amount));
+        require(token.transferFrom(address(this), to, amount));
     }
 
     function transfer(IERC20 token, address to, uint256 amount) external {
         require(token.transfer(to, amount));
     }
 
-    function ethBalance() external view returns(uint256) {
+    function ethBalance() external view returns (uint256) {
         return address(this).balance;
     }
 
-    function tokenBalance(IERC20 token) external view returns(uint256) {
+    function tokenBalance(IERC20 token) external view returns (uint256) {
         return token.balanceOf(address(this));
     }
 
@@ -446,9 +461,9 @@ contract DiscoAddr is FundPool {
         poolToken = pt;
     }
 
-    function addLiquidityETH(uint256 amountTokenDesired,uint256 amountETHDesired,
-        uint256 amountTokenMin,uint256 amountETHMin,
-        address to,uint256 deadline)
+    function addLiquidityETH(uint256 amountTokenDesired, uint256 amountETHDesired,
+        uint256 amountTokenMin, uint256 amountETHMin,
+        address to, uint256 deadline)
     external payable returns (
         uint256 amountToken,
         uint256 amountETH,
