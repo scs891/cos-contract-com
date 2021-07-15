@@ -1,13 +1,12 @@
 {
 	"compiler": {
-		"version": "0.5.16+commit.9c3226ce"
+		"version": "0.6.12+commit.27d51765"
 	},
 	"language": "Solidity",
 	"output": {
 		"abi": [
 			{
 				"inputs": [],
-				"payable": false,
 				"stateMutability": "nonpayable",
 				"type": "constructor"
 			},
@@ -129,7 +128,6 @@
 				"type": "event"
 			},
 			{
-				"constant": false,
 				"inputs": [
 					{
 						"components": [
@@ -237,12 +235,10 @@
 				],
 				"name": "fullSet",
 				"outputs": [],
-				"payable": false,
 				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
-				"constant": true,
 				"inputs": [
 					{
 						"internalType": "string",
@@ -273,12 +269,10 @@
 						"type": "address[]"
 					}
 				],
-				"payable": false,
 				"stateMutability": "view",
 				"type": "function"
 			},
 			{
-				"constant": true,
 				"inputs": [
 					{
 						"internalType": "string",
@@ -324,12 +318,10 @@
 						"type": "string"
 					}
 				],
-				"payable": false,
 				"stateMutability": "view",
 				"type": "function"
 			},
 			{
-				"constant": false,
 				"inputs": [
 					{
 						"components": [
@@ -437,12 +429,10 @@
 				],
 				"name": "partialSet",
 				"outputs": [],
-				"payable": false,
 				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
-				"constant": true,
 				"inputs": [
 					{
 						"internalType": "string",
@@ -556,16 +546,19 @@
 						"type": "tuple"
 					}
 				],
-				"payable": false,
 				"stateMutability": "view",
 				"type": "function"
 			}
 		],
 		"devdoc": {
-			"methods": {}
+			"kind": "dev",
+			"methods": {},
+			"version": 1
 		},
 		"userdoc": {
-			"methods": {}
+			"kind": "user",
+			"methods": {},
+			"version": 1
 		}
 	},
 	"settings": {
@@ -574,6 +567,9 @@
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
 		"optimizer": {
 			"enabled": true,
 			"runs": 200
@@ -582,10 +578,10 @@
 	},
 	"sources": {
 		"contracts/IRO.sol": {
-			"keccak256": "0xb8020a7dee170a571a17760c4af07603ac96e156bb7680d1ac2e3ebde7fb59a7",
+			"keccak256": "0x01b1c2912960f80ac64dd4a68c7cd7524104cf3198f76e96156711cb71497a9d",
 			"urls": [
-				"bzz-raw://6dbe2f39d64d0b413d8de66780026fed4e1e4cd499ae8b0085012998d3aaf577",
-				"dweb:/ipfs/QmYNbsMV25vFenyhRqoAWa3tN7BfQu7A2rzcuXTvASs7jP"
+				"bzz-raw://0ca72a7fa88de7bb32cc70066e11c4fcc5248a6f8472bb77f8df313c83506eae",
+				"dweb:/ipfs/QmVs3J5bUrY1mzrcdkvh86FYxvBXJPV4RNKrsUgQNv1YiF"
 			]
 		}
 	},
