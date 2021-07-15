@@ -14,6 +14,7 @@ contract Startup
         string mission;
         string descriptionAddr;
     }
+    event createdStartup(string startupId, Profile startUp);
 
     mapping(string => Profile) startups;
 
@@ -42,6 +43,7 @@ contract Startup
         require(bytes(p.id).length != 0);
         startups[p.id] = p;
         _coinbase.transfer(msg.value);
+        emit createdStartup(p.id, p);
     }
 
     function getStartup(string calldata id)
