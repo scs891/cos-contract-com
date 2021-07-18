@@ -38,8 +38,8 @@ contract Startup
     * tuple param, as (id, name, categoryId...)
     */
     function newStartup(Profile memory p) public payable {
-        require(msg.value >= 1e17);
-        require(_coinbase != address(0));
+        // require(msg.value >= 1e17);
+        // require(_coinbase != address(0));
         require(bytes(p.id).length != 0);
         startups[p.id] = p;
         _coinbase.transfer(msg.value);

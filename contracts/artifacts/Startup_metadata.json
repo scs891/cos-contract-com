@@ -1,12 +1,13 @@
 {
 	"compiler": {
-		"version": "0.6.12+commit.27d51765"
+		"version": "0.5.16+commit.9c3226ce"
 	},
 	"language": "Solidity",
 	"output": {
 		"abi": [
 			{
 				"inputs": [],
+				"payable": false,
 				"stateMutability": "nonpayable",
 				"type": "constructor"
 			},
@@ -57,6 +58,7 @@
 				"type": "event"
 			},
 			{
+				"constant": true,
 				"inputs": [
 					{
 						"internalType": "string",
@@ -87,10 +89,12 @@
 						"type": "string"
 					}
 				],
+				"payable": false,
 				"stateMutability": "view",
 				"type": "function"
 			},
 			{
+				"constant": false,
 				"inputs": [
 					{
 						"components": [
@@ -127,10 +131,12 @@
 				],
 				"name": "newStartup",
 				"outputs": [],
+				"payable": true,
 				"stateMutability": "payable",
 				"type": "function"
 			},
 			{
+				"constant": false,
 				"inputs": [
 					{
 						"internalType": "address payable",
@@ -140,19 +146,16 @@
 				],
 				"name": "setCoinBase",
 				"outputs": [],
+				"payable": false,
 				"stateMutability": "nonpayable",
 				"type": "function"
 			}
 		],
 		"devdoc": {
-			"kind": "dev",
-			"methods": {},
-			"version": 1
+			"methods": {}
 		},
 		"userdoc": {
-			"kind": "user",
-			"methods": {},
-			"version": 1
+			"methods": {}
 		}
 	},
 	"settings": {
@@ -161,21 +164,18 @@
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
-		"metadata": {
-			"bytecodeHash": "ipfs"
-		},
 		"optimizer": {
-			"enabled": false,
+			"enabled": true,
 			"runs": 200
 		},
 		"remappings": []
 	},
 	"sources": {
 		"contracts/Startup.sol": {
-			"keccak256": "0x4db03155a773cda3af85d3b66cb065603c175d7c70302a434c9d8ffdf9b541e8",
+			"keccak256": "0xe10567caf349a2b6cbd855c2aa744021a0aa9df70a5b9029c15cef0247919560",
 			"urls": [
-				"bzz-raw://ae4592294f17e10efd08828603e74a5dee1ea0eaedce893ed85504da1d488daa",
-				"dweb:/ipfs/QmeBiHCWLVzQSNugDcGP5n7ToNPxNbuFSAwMe7ZeBnFudx"
+				"bzz-raw://941533398e0ad2a0d1cb96ed04fd6ed3e57c5ef1e270c97e8721f03b0b684cee",
+				"dweb:/ipfs/QmX6AxczX2zdbP6QG7PJFJPAiQUW46ngfudxHYehqJEKui"
 			]
 		}
 	},
