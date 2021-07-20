@@ -129,10 +129,10 @@
 	},
 	"sources": {
 		"contracts/Bounty.sol": {
-			"keccak256": "0xc475fe665bf491628f2b4c266f5be5357f5316a21f4641ae6e96e4ab6410d4b1",
+			"keccak256": "0x0daa4e16da269abe73a893cd6943db848f775d7f243fa8c3daae576740d2b2fc",
 			"urls": [
-				"bzz-raw://93336b6255404f397c7d14b337f7008c0a82acb382127ee298a0372956fe2934",
-				"dweb:/ipfs/QmPKSKSGGUnV9rnzNj9FPEFMe81QMEabCKRXmtvUdM1iss"
+				"bzz-raw://f77c90064ee7c3e056faa60c575d19ea19014679d8f7b0f28922d91ab5cf050f",
+				"dweb:/ipfs/Qma5kLuKvfbFBwaoJfQaK8etKDxjQhvAam3VMWg7o221Et"
 			]
 		}
 	},
