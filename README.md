@@ -74,7 +74,7 @@
 
 3. comunion bounty 部署地址
 
-   >0x650996C9bb5EdE015B2876ace365F81a65884b20
+   >0x07B5427f3D7c5c6CfbbD13816900bbd05B9f1c98
 
 4. hunter 向 comunion 部署地址
 
