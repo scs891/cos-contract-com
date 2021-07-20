@@ -66,7 +66,7 @@
 # 合约的部署地址, 请部署后及时更新， 前端需要从此处获取地址信息来创建合约 
 1. comunion new start up 部署地址
    
-   >  0x2d065EBe8C310cE7c8d4169ab918261A5673b9E3
+   >  0x865F46B2aF27f76D41FaBE8dE2495911E487c8cE
    
 2. comunion setting 部署地址
 
