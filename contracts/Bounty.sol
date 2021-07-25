@@ -51,8 +51,8 @@ struct Payment {
     uint256[] memory paymentToken,
     uint256[] memory paymentValue
   ) public payable{
-      require(msg.value >= 1e17);
-      require(_conbase != address(0));
+    //   require(msg.value >= 1e17);
+    //   require(_conbase != address(0));
       Profile memory p = Profile(startupName, title, intro, paymentToken, paymentValue);
       bounty[id] = p;
       _conbase.transfer(msg.value);
