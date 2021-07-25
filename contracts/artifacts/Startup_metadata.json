@@ -1,12 +1,13 @@
 {
 	"compiler": {
-		"version": "0.6.12+commit.27d51765"
+		"version": "0.5.16+commit.9c3226ce"
 	},
 	"language": "Solidity",
 	"output": {
 		"abi": [
 			{
 				"inputs": [],
+				"payable": false,
 				"stateMutability": "nonpayable",
 				"type": "constructor"
 			},
@@ -57,6 +58,7 @@
 				"type": "event"
 			},
 			{
+				"constant": true,
 				"inputs": [
 					{
 						"internalType": "string",
@@ -87,10 +89,12 @@
 						"type": "string"
 					}
 				],
+				"payable": false,
 				"stateMutability": "view",
 				"type": "function"
 			},
 			{
+				"constant": false,
 				"inputs": [
 					{
 						"components": [
@@ -127,10 +131,12 @@
 				],
 				"name": "newStartup",
 				"outputs": [],
+				"payable": true,
 				"stateMutability": "payable",
 				"type": "function"
 			},
 			{
+				"constant": false,
 				"inputs": [
 					{
 						"internalType": "address payable",
@@ -140,19 +146,16 @@
 				],
 				"name": "setCoinBase",
 				"outputs": [],
+				"payable": false,
 				"stateMutability": "nonpayable",
 				"type": "function"
 			}
 		],
 		"devdoc": {
-			"kind": "dev",
-			"methods": {},
-			"version": 1
+			"methods": {}
 		},
 		"userdoc": {
-			"kind": "user",
-			"methods": {},
-			"version": 1
+			"methods": {}
 		}
 	},
 	"settings": {
@@ -161,9 +164,6 @@
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
-		"metadata": {
-			"bytecodeHash": "ipfs"
-		},
 		"optimizer": {
 			"enabled": false,
 			"runs": 200
@@ -172,10 +172,10 @@
 	},
 	"sources": {
 		"contracts/Startup.sol": {
-			"keccak256": "0x4db03155a773cda3af85d3b66cb065603c175d7c70302a434c9d8ffdf9b541e8",
+			"keccak256": "0xf7ee39959593170ca6a52d4013db8fe4499f10c9d75287b64964a72f2e64e5eb",
 			"urls": [
-				"bzz-raw://ae4592294f17e10efd08828603e74a5dee1ea0eaedce893ed85504da1d488daa",
-				"dweb:/ipfs/QmeBiHCWLVzQSNugDcGP5n7ToNPxNbuFSAwMe7ZeBnFudx"
+				"bzz-raw://4b58c94d774f515eaaf05d1476e1e0558219c3a3fe5af5077978184d14707ee2",
+				"dweb:/ipfs/QmQoypYJvx81XS2fGfvS4otBu1E5zRhxmQftoK5v6tgVyw"
 			]
 		}
 	},

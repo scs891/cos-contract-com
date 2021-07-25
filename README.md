@@ -1,10 +1,8 @@
 <!--
  * @Author: Zehui
  * @Date: 2020-07-11 23:56:36
- * @LastEditTime : 2021-06-17 22:23:38
  * @LastEditors  : Please set LastEditors
  * @Description: readme
- * @FilePath: \cos-contract-com\README.md
 -->
 
 
@@ -30,7 +28,7 @@
     1. 在remix: Deploy -> environment -> javascript VM （浏览器内存有限， 部署多了会崩）
     2. 本地安装gaanche,  Deploy -> environment -> web3 Provider (原理是利用本机内存搭建了一个私链，纵享丝滑吧)
     3. 如果需要与后端调试， 需要部署在测试网
-    
+
 # uniswap 部署过程
 1. 先部署factory 得到address1
 2. 在部署ERc20 合约， tokenzehu1（ 真实部署  _WETH  的地址）
@@ -59,15 +57,15 @@
 - 部署： truffle migrate
 
 # Additional
-1. prior to migrate UniswapV2Factory 
+1. prior to migrate UniswapV2Factory
 2. UniswapV2Factory: https://github.com/Uniswap/uniswap-v2-core
 
 
-# 合约的部署地址, 请部署后及时更新， 前端需要从此处获取地址信息来创建合约 
+# 合约的部署地址, 请部署后及时更新， 前端需要从此处获取地址信息来创建合约
 1. comunion new start up 部署地址
-   
-   >  0x2d065EBe8C310cE7c8d4169ab918261A5673b9E3
-   
+
+   >  0x865F46B2aF27f76D41FaBE8dE2495911E487c8cE
+
 2. comunion setting 部署地址
 
    >0xEE7Ed784Bd68e992a0fF6F5f7DD8b5578d6e55b2
@@ -99,6 +97,3 @@
 9. proposal 部署合约地址
 
    >0x8690E581600A5924ce109Fc67669Fe8d3eaFd1F0
-
-   
-

@@ -12,6 +12,52 @@
 				"type": "constructor"
 			},
 			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "id",
+						"type": "string"
+					},
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "startupName",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "title",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "intro",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256[]",
+								"name": "paymentToken",
+								"type": "uint256[]"
+							},
+							{
+								"internalType": "uint256[]",
+								"name": "paymentValue",
+								"type": "uint256[]"
+							}
+						],
+						"indexed": false,
+						"internalType": "struct Bounty.Profile",
+						"name": "bounty",
+						"type": "tuple"
+					}
+				],
+				"name": "createdBounty",
+				"type": "event"
+			},
+			{
 				"constant": true,
 				"inputs": [
 					{
@@ -122,17 +168,17 @@
 		"evmVersion": "istanbul",
 		"libraries": {},
 		"optimizer": {
-			"enabled": true,
+			"enabled": false,
 			"runs": 200
 		},
 		"remappings": []
 	},
 	"sources": {
 		"contracts/Bounty.sol": {
-			"keccak256": "0xc475fe665bf491628f2b4c266f5be5357f5316a21f4641ae6e96e4ab6410d4b1",
+			"keccak256": "0xcd2cb4a7e2921950a26f7315a5f22edd6977426aabb9441ed95dfe347c77e621",
 			"urls": [
-				"bzz-raw://93336b6255404f397c7d14b337f7008c0a82acb382127ee298a0372956fe2934",
-				"dweb:/ipfs/QmPKSKSGGUnV9rnzNj9FPEFMe81QMEabCKRXmtvUdM1iss"
+				"bzz-raw://46183378c9c9756bdd4cab0b4b5c64f5049311f520ba7b9335f6594ea2614189",
+				"dweb:/ipfs/QmSdfdCmhQGfcmrYKuN4cz9hiqUCe5iQaSaPZpXdczjUdW"
 			]
 		}
 	},
