@@ -67,8 +67,8 @@
 
 # 合约的部署地址, 请部署后及时更新， 前端需要从此处获取地址信息来创建合约
 
-# 合约的部署地址, 请部署后及时更新， 前端需要从此处获取地址信息来创建合约 
-1. start up 
+# [Contract & Abi] 合约的部署地址, 请部署后及时更新， 前端需要从此处获取地址信息来创建合约 ，下划线开头的将忽略
+1. start-up 
    - address: 0x865F46B2aF27f76D41FaBE8dE2495911E487c8cE
    - abi: contracts/artifacts/Startup.json
 2. setting 
@@ -86,13 +86,15 @@
 6. hunter
    - address: 0x69EAB953C4a286Bb2216153EaA842d4c3e651aa2
    - abi: null
-7. UNISWAPV2ROUTER01 的部署地址
+7. UNISWAPV2ROUTER01
    - address: 0xa37fB09aA7bc4c0f18C9503c397BdB255BD6daa2
    - abi: null
-8. factory 部署UniswapV2Router01前定义好的
+8. factory
+   - comment: 部署UniswapV2Router01前定义好的
    - address: 0x1AB23C05C7Dfd5f11C4fB3dc497C1F57e1B14740
    - abi: null
-9. _WETH 部署UniswapV2Router01前定义好的
+9. _WETH
+   - comment: 部署UniswapV2Router01前定义好的
    - address: 0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6
    - abi: null
 
