@@ -38,11 +38,11 @@ contract Startup
     * tuple param, as (id, name, categoryId...)
     */
     function newStartup(Profile memory p) public payable {
-        // require(msg.value >= 1e17);
-        // require(_coinbase != address(0));
-        require(bytes(p.id).length != 0);
+        // require(msg.value >= 1e17, "your balance must more than 0.1 eth");
+        // require(_coinbase != address(0), "the address can not be the smart contract address");
+        require(bytes(p.id).length != 0, "id can not be null");
         startups[p.id] = p;
-        _coinbase.transfer(msg.value);
+        // _coinbase.transfer(msg.value);
         emit createdStartup(p.id, p);
     }
 

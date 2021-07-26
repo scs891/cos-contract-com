@@ -1,12 +1,13 @@
 {
 	"compiler": {
-		"version": "0.6.12+commit.27d51765"
+		"version": "0.5.17+commit.d19bba13"
 	},
 	"language": "Solidity",
 	"output": {
 		"abi": [
 			{
 				"inputs": [],
+				"payable": false,
 				"stateMutability": "nonpayable",
 				"type": "constructor"
 			},
@@ -128,6 +129,7 @@
 				"type": "event"
 			},
 			{
+				"constant": false,
 				"inputs": [
 					{
 						"components": [
@@ -235,10 +237,12 @@
 				],
 				"name": "fullSet",
 				"outputs": [],
+				"payable": false,
 				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
+				"constant": true,
 				"inputs": [
 					{
 						"internalType": "string",
@@ -269,10 +273,12 @@
 						"type": "address[]"
 					}
 				],
+				"payable": false,
 				"stateMutability": "view",
 				"type": "function"
 			},
 			{
+				"constant": true,
 				"inputs": [
 					{
 						"internalType": "string",
@@ -318,10 +324,12 @@
 						"type": "string"
 					}
 				],
+				"payable": false,
 				"stateMutability": "view",
 				"type": "function"
 			},
 			{
+				"constant": false,
 				"inputs": [
 					{
 						"components": [
@@ -429,10 +437,12 @@
 				],
 				"name": "partialSet",
 				"outputs": [],
+				"payable": false,
 				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
+				"constant": true,
 				"inputs": [
 					{
 						"internalType": "string",
@@ -546,19 +556,16 @@
 						"type": "tuple"
 					}
 				],
+				"payable": false,
 				"stateMutability": "view",
 				"type": "function"
 			}
 		],
 		"devdoc": {
-			"kind": "dev",
-			"methods": {},
-			"version": 1
+			"methods": {}
 		},
 		"userdoc": {
-			"kind": "user",
-			"methods": {},
-			"version": 1
+			"methods": {}
 		}
 	},
 	"settings": {
@@ -567,9 +574,6 @@
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
-		"metadata": {
-			"bytecodeHash": "ipfs"
-		},
 		"optimizer": {
 			"enabled": true,
 			"runs": 200

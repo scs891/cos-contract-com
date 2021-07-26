@@ -1,11 +1,13 @@
 // bounty 信息上链
 pragma solidity >=0.4.21 <0.7.0;
+pragma experimental ABIEncoderV2;
 
 contract Bounty {
   // 我的钱包地址
   address private _owner;
   // 收款地址
   address payable private _conbase;
+  
 
 // 声明bounty的结构体
 struct Profile {
@@ -29,6 +31,8 @@ struct Payment {
     require(msg.sender == _owner);
     _;
   }
+  
+  event createdBounty(string id, Profile bounty);
 
   constructor() public {
     _owner = msg.sender;
@@ -52,6 +56,7 @@ struct Payment {
       Profile memory p = Profile(startupName, title, intro, paymentToken, paymentValue);
       bounty[id] = p;
       _conbase.transfer(msg.value);
+      emit createdBounty(id, p);
 
   }
 

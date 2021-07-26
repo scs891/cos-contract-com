@@ -1,140 +1,177 @@
 {
-	"compiler": {
-		"version": "0.5.16+commit.9c3226ce"
-	},
-	"language": "Solidity",
-	"output": {
-		"abi": [
-			{
-				"inputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "constructor"
-			},
-			{
-				"constant": true,
-				"inputs": [
-					{
-						"internalType": "string",
-						"name": "id",
-						"type": "string"
-					}
-				],
-				"name": "getBounty",
-				"outputs": [
-					{
-						"internalType": "string",
-						"name": "startupName",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "title",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "intro",
-						"type": "string"
-					},
-					{
-						"internalType": "uint256[]",
-						"name": "paymentToken",
-						"type": "uint256[]"
-					},
-					{
-						"internalType": "uint256[]",
-						"name": "paymentValue",
-						"type": "uint256[]"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"internalType": "string",
-						"name": "id",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "startupName",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "title",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "intro",
-						"type": "string"
-					},
-					{
-						"internalType": "uint256[]",
-						"name": "paymentToken",
-						"type": "uint256[]"
-					},
-					{
-						"internalType": "uint256[]",
-						"name": "paymentValue",
-						"type": "uint256[]"
-					}
-				],
-				"name": "newBounty",
-				"outputs": [],
-				"payable": true,
-				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"internalType": "address payable",
-						"name": "addr",
-						"type": "address"
-					}
-				],
-				"name": "setConbise",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			}
-		],
-		"devdoc": {
-			"methods": {}
-		},
-		"userdoc": {
-			"methods": {}
-		}
-	},
-	"settings": {
-		"compilationTarget": {
-			"contracts/Bounty.sol": "Bounty"
-		},
-		"evmVersion": "istanbul",
-		"libraries": {},
-		"optimizer": {
-			"enabled": true,
-			"runs": 200
-		},
-		"remappings": []
-	},
-	"sources": {
-		"contracts/Bounty.sol": {
-			"keccak256": "0x0daa4e16da269abe73a893cd6943db848f775d7f243fa8c3daae576740d2b2fc",
-			"urls": [
-				"bzz-raw://f77c90064ee7c3e056faa60c575d19ea19014679d8f7b0f28922d91ab5cf050f",
-				"dweb:/ipfs/Qma5kLuKvfbFBwaoJfQaK8etKDxjQhvAam3VMWg7o221Et"
-			]
-		}
-	},
-	"version": 1
+  "compiler": {
+    "version": "0.5.16+commit.9c3226ce"
+  },
+  "language": "Solidity",
+  "output": {
+    "abi": [{
+        "inputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+      },
+      {
+        "anonymous": false,
+        "inputs": [{
+            "indexed": false,
+            "internalType": "string",
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "components": [{
+                "internalType": "string",
+                "name": "startupName",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "title",
+                "type": "string"
+              },
+              {
+                "internalType": "string",
+                "name": "intro",
+                "type": "string"
+              },
+              {
+                "internalType": "uint256[]",
+                "name": "paymentToken",
+                "type": "uint256[]"
+              },
+              {
+                "internalType": "uint256[]",
+                "name": "paymentValue",
+                "type": "uint256[]"
+              }
+            ],
+            "indexed": false,
+            "internalType": "struct Bounty.Profile",
+            "name": "bounty",
+            "type": "tuple"
+          }
+        ],
+        "name": "createdBounty",
+        "type": "event"
+      },
+      {
+        "constant": true,
+        "inputs": [{
+          "internalType": "string",
+          "name": "id",
+          "type": "string"
+        }],
+        "name": "getBounty",
+        "outputs": [{
+            "internalType": "string",
+            "name": "startupName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "intro",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "paymentToken",
+            "type": "uint256[]"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "paymentValue",
+            "type": "uint256[]"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [{
+            "internalType": "string",
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "startupName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "intro",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "paymentToken",
+            "type": "uint256[]"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "paymentValue",
+            "type": "uint256[]"
+          }
+        ],
+        "name": "newBounty",
+        "outputs": [],
+        "payable": true,
+        "stateMutability": "payable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [{
+          "internalType": "address payable",
+          "name": "addr",
+          "type": "address"
+        }],
+        "name": "setConbise",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      }
+    ],
+    "devdoc": {
+      "methods": {}
+    },
+    "userdoc": {
+      "methods": {}
+    }
+  },
+  "settings": {
+    "compilationTarget": {
+      "contracts/Bounty.sol": "Bounty"
+    },
+    "evmVersion": "istanbul",
+    "libraries": {},
+    "optimizer": {
+      "enabled": false,
+      "runs": 200
+    },
+    "remappings": []
+  },
+  "sources": {
+    "contracts/Bounty.sol": {
+      "keccak256": "0xcd2cb4a7e2921950a26f7315a5f22edd6977426aabb9441ed95dfe347c77e621",
+      "urls": [
+        "bzz-raw://46183378c9c9756bdd4cab0b4b5c64f5049311f520ba7b9335f6594ea2614189",
+        "dweb:/ipfs/QmSdfdCmhQGfcmrYKuN4cz9hiqUCe5iQaSaPZpXdczjUdW"
+      ]
+    }
+  },
+  "version": 1
 }

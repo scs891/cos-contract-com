@@ -3,39 +3,42 @@
  * @Date: 2020-07-11 23:56:36
  * @LastEditors  : Please set LastEditors
  * @Description: readme
- * @FilePath: \cos-contract-com\README.md
 -->
 
-
 # 合约如何搭建本地环境
-1. 使用npm安装remixd工具，该工具会在本地建立一个websocket服务器，然后就可以使用网页remix端与其进行连接了， 运行命令
-    ```
-        npm install -g @remix-project/remixd
-    ```
-2. 打开remix (https://remix.ethereum.org)
+
+1. 使用 npm 安装 remixd 工具，该工具会在本地建立一个 websocket 服务器，然后就可以使用网页 remix 端与其进行连接了， 运行命令
+   ```
+       npm install -g @remix-project/remixd
+   ```
+2. 打开 remix (https://remix.ethereum.org)
 3. 启动,
+
    ```
     remixd -s  [你的源码目录] --remix-ide  https://remix.ethereum.org
    ```
+
    在当前项目中， 我已经为大家配置好了， 直接运行
+
    ```
     yarn remixed
    ```
 
 4. 点击 Home -> file -> connect to local host;
-5. 可以看到左侧的侧边栏loading本地文件
+5. 可以看到左侧的侧边栏 loading 本地文件
 6. loading 后 happy coding
 7. 如果是本地调试， 没有必要部署测试网：
-    1. 在remix: Deploy -> environment -> javascript VM （浏览器内存有限， 部署多了会崩）
-    2. 本地安装gaanche,  Deploy -> environment -> web3 Provider (原理是利用本机内存搭建了一个私链，纵享丝滑吧)
-    3. 如果需要与后端调试， 需要部署在测试网
-    
+   1. 在 remix: Deploy -> environment -> javascript VM （浏览器内存有限， 部署多了会崩）
+   2. 本地安装 gaanche, Deploy -> environment -> web3 Provider (原理是利用本机内存搭建了一个私链，纵享丝滑吧)
+   3. 如果需要与后端调试， 需要部署在测试网
+
 # uniswap 部署过程
-1. 先部署factory 得到address1
-2. 在部署ERc20 合约， tokenzehu1（ 真实部署  _WETH  的地址）
-3. 再部署ERC20 合约， tokenzehui2
-4. 使用address1, 和 tokenzehui1 的地址部署 router01 得到 address2
-5. tokenzehu1 approval 给 address2;  tokenzehui2 approval 给  address2
+
+1. 先部署 factory 得到 address1
+2. 在部署 ERc20 合约， tokenzehu1（ 真实部署 \_WETH 的地址）
+3. 再部署 ERC20 合约， tokenzehui2
+4. 使用 address1, 和 tokenzehui1 的地址部署 router01 得到 address2
+5. tokenzehu1 approval 给 address2; tokenzehui2 approval 给 address2
 6. 调用 address2 的 addLiquidy 方法
 
 # cos-contract-com comunion 合约介绍
@@ -58,9 +61,11 @@
 - 部署： truffle migrate
 
 # Additional
-1. prior to migrate UniswapV2Factory 
+
+1. prior to migrate UniswapV2Factory
 2. UniswapV2Factory: https://github.com/Uniswap/uniswap-v2-core
 
+# 合约的部署地址, 请部署后及时更新， 前端需要从此处获取地址信息来创建合约
 
 # 合约的部署地址, 请部署后及时更新， 前端需要从此处获取地址信息来创建合约 
 1. start up 
