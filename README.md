@@ -1,7 +1,6 @@
 <!--
  * @Author: Zehui
  * @Date: 2020-07-11 23:56:36
- * @LastEditTime : 2021-06-17 22:23:38
  * @LastEditors  : Please set LastEditors
  * @Description: readme
  * @FilePath: \cos-contract-com\README.md
@@ -64,41 +63,33 @@
 
 
 # 合约的部署地址, 请部署后及时更新， 前端需要从此处获取地址信息来创建合约 
-1. comunion new start up 部署地址
-   
-   >  0x865F46B2aF27f76D41FaBE8dE2495911E487c8cE
-   
-2. comunion setting 部署地址
-
-   >0xEE7Ed784Bd68e992a0fF6F5f7DD8b5578d6e55b2
-
-3. comunion bounty 部署地址
-
-   >0x07B5427f3D7c5c6CfbbD13816900bbd05B9f1c98
-
-4. hunter 向 comunion 部署地址
-
-   >0x69EAB953C4a286Bb2216153EaA842d4c3e651aa2
-
-5. Disco 部署地址
-
-   >0xB39475E3077591c0f1E79b2BEdcbC9501F48E307
-
-6. UNISWAPV2ROUTER01 的部署地址
-
-   >0xa37fB09aA7bc4c0f18C9503c397BdB255BD6daa2
-
-7. factory Address : 部署UniswapV2Router01前定义好的
-
-   >0x1AB23C05C7Dfd5f11C4fB3dc497C1F57e1B14740
-
-8. _WETH: 部署UniswapV2Router01前定义好的
-
-   >0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6
-
-9. proposal 部署合约地址
-
-   >0x8690E581600A5924ce109Fc67669Fe8d3eaFd1F0
+1. start up 
+   - address: 0x865F46B2aF27f76D41FaBE8dE2495911E487c8cE
+   - abi: contracts/artifacts/Startup.json
+2. setting 
+   - address: 0xEE7Ed784Bd68e992a0fF6F5f7DD8b5578d6e55b2
+   - abi: contracts/artifacts/IRO.json
+3. bounty
+   - address: 0x07B5427f3D7c5c6CfbbD13816900bbd05B9f1c98
+   - abi: contracts/artifacts/Bounty.json
+4. disco
+   - address: 0xB39475E3077591c0f1E79b2BEdcbC9501F48E307
+   - abi: contracts/artifacts/Disco.json
+5. proposal
+   - address: 0x8690E581600A5924ce109Fc67669Fe8d3eaFd1F0
+   - abi: contracts/artifacts/Proposal.json
+6. hunter
+   - address: 0x69EAB953C4a286Bb2216153EaA842d4c3e651aa2
+   - abi: null
+7. UNISWAPV2ROUTER01 的部署地址
+   - address: 0xa37fB09aA7bc4c0f18C9503c397BdB255BD6daa2
+   - abi: null
+8. factory 部署UniswapV2Router01前定义好的
+   - address: 0x1AB23C05C7Dfd5f11C4fB3dc497C1F57e1B14740
+   - abi: null
+9. _WETH 部署UniswapV2Router01前定义好的
+   - address: 0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6
+   - abi: null
 
    
 
