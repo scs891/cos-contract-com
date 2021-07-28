@@ -244,7 +244,7 @@ contract Proposal is Base
         require(bt <= setup.voteEndTime, "vote is expired.");
         require(v.pos + v.neg > 0, "a invalid vote, vote num <= 0.");
         IRO.Setting memory baseSetting = _iroBase.setting(proposal.discoId);
-        IERC20 token = IERC20(parseAddr(baseSetting.tokenSetting.tokenAddr));
+        IERC20 token = proposal.payment.token;
         token.transferFrom(msg.sender, proposal.payment.pool.getAddress(), v.pos + v.neg);
         v.voteBt = block.timestamp;
         v.voter = msg.sender;
@@ -262,7 +262,7 @@ contract Proposal is Base
         require(bytes(discoId).length != 0, "proposal missing, check first.");
         require(proposal.status != ProposalStatus.Voting, "the proposal could not be released.");
         IRO.Setting memory baseSetting = _iroBase.setting(proposal.discoId);
-        IERC20 token = IERC20(parseAddr(baseSetting.tokenSetting.tokenAddr));
+        IERC20 token = proposal.payment.token;
         string memory poolId = getPoolId(discoId, serialId);
         Vote[] memory vs = votes[poolId];
         FundPool pool = proposal.payment.pool;
