@@ -6,7 +6,6 @@ import "./interfaces/IUniswapV2Router01.sol";
 import "./interfaces/IErc20.sol";
 import "./common/FundPool.sol";
 import "./interfaces/IWETH.sol";
-import "./UniswapV2Router01.sol";
 pragma experimental ABIEncoderV2;
 
 
