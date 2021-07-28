@@ -18,9 +18,10 @@
   },
   "scripts": {
     "compile": "truffle compile",
-    "goerli": "truffle migrate --network goerli",
+    "goerli": "truffle migrate --reset --network goerli",
     "develop": "truffle migrate",
     "cpjson": "sh cpjson.sh",
+    "remixed": "remixd -s   ./ --remix-ide  https://remix.ethereum.org",
     "test": "truffle test --network goerli"
   },
   "repository": {
@@ -36,5 +37,9 @@
   "bugs": {
     "url": "https://github.com/comunion-io/cos-contract-com/issues"
   },
-  "homepage": "https://github.com/comunion-io/cos-contract-com#readme"
+  "homepage": "https://github.com/comunion-io/cos-contract-com#readme",
+  "devDependencies": {
+    "@nomiclabs/buidler": "^1.4.8",
+    "hardhat": "^2.3.0"
+  }
 }
