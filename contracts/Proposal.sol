@@ -3,7 +3,6 @@ pragma experimental ABIEncoderV2;
 
 
 import "./IRO.sol";
-import "./Disco.sol";
 import "./common/Base.sol";
 import "./common/FundPool.sol";
 import "./interfaces/IErc20.sol";
@@ -13,8 +12,6 @@ contract Proposal is Base
 {
 
     IRO private _iroBase;
-
-    Disco private _discoBase;
 
     enum ProposalStatus{
         Voting, Pass, Defeated, Invalid
@@ -28,9 +25,8 @@ contract Proposal is Base
         MonthlyPay, OneTimePay
     }
 
-    constructor(address _iroAddress, address _discoAddress) Base() public {
+    constructor(address _iroAddress) Base() public {
         setIROBase(_iroAddress);
-        setDiscoBase(_discoAddress);
     }
 
     struct ProposalDetail {
@@ -126,7 +122,7 @@ contract Proposal is Base
         proposal.voteSetup = VoterSetup(voterSetting.voteMinSupporters, voterSetting.voteMinApprovalPercent, voteDurationHours, bt + voteDurationHours * 3600);
 
         //lock init proposal token into a pool.
-        IERC20 token = _discoBase.discoToken(proposal.discoId);
+        IERC20 token = IERC20(parseAddr(baseSetting.tokenSetting.tokenAddr));
         proposal.payment.token = token;
         //cal poolId
         string memory poolId = getPoolId(proposal);
@@ -151,6 +147,34 @@ contract Proposal is Base
         countDiscoProposals[proposal.discoId]++;
         emit accepted(proposal.serialId, proposal, paymentDetails);
         return proposal;
+    }
+
+    function parseAddr(string memory _a) internal pure returns (address _parsedAddress) {
+        bytes memory tmp = bytes(_a);
+        uint160 iaddr = 0;
+        uint160 b1;
+        uint160 b2;
+        for (uint i = 2; i < 2 + 2 * 20; i += 2) {
+            iaddr *= 256;
+            b1 = uint160(uint8(tmp[i]));
+            b2 = uint160(uint8(tmp[i + 1]));
+            if ((b1 >= 97) && (b1 <= 102)) {
+                b1 -= 87;
+            } else if ((b1 >= 65) && (b1 <= 70)) {
+                b1 -= 55;
+            } else if ((b1 >= 48) && (b1 <= 57)) {
+                b1 -= 48;
+            }
+            if ((b2 >= 97) && (b2 <= 102)) {
+                b2 -= 87;
+            } else if ((b2 >= 65) && (b2 <= 70)) {
+                b2 -= 55;
+            } else if ((b2 >= 48) && (b2 <= 57)) {
+                b2 -= 48;
+            }
+            iaddr += (b1 * 16 + b2);
+        }
+        return address(iaddr);
     }
 
     function proposalDetail(string calldata id, string calldata serialId) external view returns (ProposalDetail memory, PaymentDetail[] memory paymentDetails){
@@ -219,7 +243,8 @@ contract Proposal is Base
         uint256 bt = block.timestamp;
         require(bt <= setup.voteEndTime, "vote is expired.");
         require(v.pos + v.neg > 0, "a invalid vote, vote num <= 0.");
-        IERC20 token = _discoBase.discoToken(proposal.discoId);
+        IRO.Setting memory baseSetting = _iroBase.setting(proposal.discoId);
+        IERC20 token = proposal.payment.token;
         token.transferFrom(msg.sender, proposal.payment.pool.getAddress(), v.pos + v.neg);
         v.voteBt = block.timestamp;
         v.voter = msg.sender;
@@ -236,7 +261,8 @@ contract Proposal is Base
         ProposalDetail memory proposal = internalProposal(discoId, serialId);
         require(bytes(discoId).length != 0, "proposal missing, check first.");
         require(proposal.status != ProposalStatus.Voting, "the proposal could not be released.");
-        IERC20 token = _discoBase.discoToken(proposal.discoId);
+        IRO.Setting memory baseSetting = _iroBase.setting(proposal.discoId);
+        IERC20 token = proposal.payment.token;
         string memory poolId = getPoolId(discoId, serialId);
         Vote[] memory vs = votes[poolId];
         FundPool pool = proposal.payment.pool;
@@ -277,10 +303,5 @@ contract Proposal is Base
     function setIROBase(address _iroAddress) public {
         require(_iroAddress != address(0), "iro address is empty.");
         _iroBase = IRO(_iroAddress);
-    }
-
-    function setDiscoBase(address _discoAddress) public {
-        require(_discoAddress != address(0), "disco address is empty.");
-        _discoBase = Disco(_discoAddress);
     }
 }
