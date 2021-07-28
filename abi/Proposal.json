@@ -5,11 +5,6 @@
         "internalType": "address",
         "name": "_iroAddress",
         "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_discoAddress",
-        "type": "address"
       }
     ],
     "payable": false,
@@ -1215,21 +1210,6 @@
       }
     ],
     "name": "setIROBase",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_discoAddress",
-        "type": "address"
-      }
-    ],
-    "name": "setDiscoBase",
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
