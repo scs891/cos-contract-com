@@ -81,7 +81,7 @@
    - address: 0xB39475E3077591c0f1E79b2BEdcbC9501F48E307
    - abi: contracts/artifacts/Disco.json
 5. proposal
-   - address: 0x8690E581600A5924ce109Fc67669Fe8d3eaFd1F0
+   - address: 0x5446A7A5df5E5FC08BEa06E11A654CA2153D1834
    - abi: contracts/artifacts/Proposal.json
 6. hunter
    - address: 0x69EAB953C4a286Bb2216153EaA842d4c3e651aa2

@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.5.16+commit.9c3226ce"
+		"version": "0.5.17+commit.d19bba13"
 	},
 	"language": "Solidity",
 	"output": {
@@ -10,11 +10,6 @@
 					{
 						"internalType": "address",
 						"name": "_iroAddress",
-						"type": "address"
-					},
-					{
-						"internalType": "address",
-						"name": "_discoAddress",
 						"type": "address"
 					}
 				],
@@ -1216,21 +1211,6 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "_discoAddress",
-						"type": "address"
-					}
-				],
-				"name": "setDiscoBase",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"internalType": "address",
 						"name": "_iroAddress",
 						"type": "address"
 					}
@@ -1278,13 +1258,6 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/Disco.sol": {
-			"keccak256": "0xa3ca902063f7f30a8c627d5a59f0108b335ba6800b74db65b66d2810f9c34a72",
-			"urls": [
-				"bzz-raw://6be6df0c268826868992a85e39944b787a80dff6d8067ee96759f67ec8653cf8",
-				"dweb:/ipfs/QmU9AdmEMkpQTfficpyTrZK4ck9PJx2SBWGa3Tujn8e1Xc"
-			]
-		},
 		"contracts/IRO.sol": {
 			"keccak256": "0xb8020a7dee170a571a17760c4af07603ac96e156bb7680d1ac2e3ebde7fb59a7",
 			"urls": [
@@ -1293,10 +1266,10 @@
 			]
 		},
 		"contracts/Proposal.sol": {
-			"keccak256": "0xebfddb568a929418b20117d20adaf022225ec0b3a3126dfa2f1382016a48886b",
+			"keccak256": "0xd18be76c79ead6fde90958a094fcfeda0880ebd43f2ab05f70cda4689178daee",
 			"urls": [
-				"bzz-raw://85f9f2edc9a67b51c4b1316825592db1d8d9c8e220fdea0badf716e13f00c5ef",
-				"dweb:/ipfs/QmPS2cvV2KY5VsRmZcThwcr4medGYxghNqqHVFeRPdfkV6"
+				"bzz-raw://feeeba7dd61a9f4835a162d1bc134c7f222cc31e044231d82d95323a31c5ad11",
+				"dweb:/ipfs/QmUyAKK2r9DKyfPeqtqnQRpwgXCNRzFnADJZyRQibQnUTm"
 			]
 		},
 		"contracts/common/Base.sol": {
@@ -1307,10 +1280,10 @@
 			]
 		},
 		"contracts/common/FundPool.sol": {
-			"keccak256": "0xfe9c245cc8763501ad1f823e911e5a843c5763968a0d81f0fc1ea1e04c20270e",
+			"keccak256": "0x25d0295b9ea51465afcd397c611134f7bd2fbc0f357b5e589d827fb61abff804",
 			"urls": [
-				"bzz-raw://9815e15c77d5b5faae9be550a8258dd00bf9563a2d55c41db31cc3d541853b58",
-				"dweb:/ipfs/QmU9NocPA2613fARYRDhA558pCBfhXunc18tTsNPuZNrhS"
+				"bzz-raw://d1f5c6bb3cf0ec730d57959cff203b5a8b7761f6ef2670e9eb7cc4c4720af748",
+				"dweb:/ipfs/QmWajAg55vfPK1LqjyBLcw8mVfCpFrhkSy85wFghULhyuo"
 			]
 		},
 		"contracts/interfaces/IErc20.sol": {
@@ -1320,32 +1293,11 @@
 				"dweb:/ipfs/QmdyoYTMxwUBH1A9Njn5wbFK1g9wNKSbKJa9BD72eXk5g6"
 			]
 		},
-		"contracts/interfaces/IUniswapV2Router01.sol": {
-			"keccak256": "0xc3d262dab384b8a8507990a618a1def0a8d2fb1f7ae69c8f365291353a320ab8",
-			"urls": [
-				"bzz-raw://e782b1367c0609c47c3b00a6a31c6ea5fd82205b51e2876c44835498abf1debb",
-				"dweb:/ipfs/QmdQdMvmbEGzZdndabY46ug47Mauk1pCy9J2sAjvzQ3szw"
-			]
-		},
-		"contracts/interfaces/IWETH.sol": {
-			"keccak256": "0x0c5f6716d15a30a0cc9162402cf5767d30c9ed111366fb610e49a2f924632192",
-			"urls": [
-				"bzz-raw://a0eb27d0794a25fe1f69f0fcf89b77d5bcd9bb0b0fdf065825b95078a38855a1",
-				"dweb:/ipfs/QmR78GAcd7Qp5dYkkmbYmWuNzUui7hgNdTEYdy5c2hyTe8"
-			]
-		},
 		"contracts/libraries/NumUtils.sol": {
 			"keccak256": "0xaeb9138d0c1305d7b106b0d8dd914dab3de326da1e311717a9ce071bb5cf4473",
 			"urls": [
 				"bzz-raw://a45f71222669b65d80bae8f8a3079788c8e9bc96c4e56b704a89e419f93c9ae0",
 				"dweb:/ipfs/QmYFMbDGF1Gb2fccqe96VJ4PgmMwQNWk97235uWbJi8V7R"
-			]
-		},
-		"contracts/libraries/SafeMath.sol": {
-			"keccak256": "0xff29b14172d9f60cb55015c60685a975b114d62a492a858460b31cae8deee276",
-			"urls": [
-				"bzz-raw://daaf6ae680d5be1d880f91faf8ff8bb037ad25decbe50ff5d21aa0946d9779a7",
-				"dweb:/ipfs/QmfNQsrRBVKgGzC41ixvHxnNMpr9mDvu1ZsisMwyU5HChV"
 			]
 		}
 	},
