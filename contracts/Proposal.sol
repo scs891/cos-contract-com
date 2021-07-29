@@ -30,7 +30,7 @@ contract Proposal is Base
     }
 
     struct ProposalDetail {
-        string discoId;
+        string iroId;
         string serialId;
         string title;
         ProposalStatus status;
@@ -73,7 +73,7 @@ contract Proposal is Base
     }
 
     struct Vote {
-        string discoId;
+        string iroId;
         string serialId;
         address voter;
         uint256 pos;
@@ -81,10 +81,10 @@ contract Proposal is Base
         uint256 voteBt;
     }
 
-    mapping(string => mapping(string => ProposalDetail)) private discoProposals;
+    mapping(string => mapping(string => ProposalDetail)) private iroProposals;
     //unsupported copy struct memory xxx[] to xxx, so create mapping to save the payment details.
     mapping(string => PaymentDetail[]) private proposalPaymentDetails;
-    mapping(string => uint256) private countDiscoProposals;
+    mapping(string => uint256) private countIroProposals;
     mapping(string => Vote[]) private votes;
 
     event accepted(string indexed id, ProposalDetail proposal, PaymentDetail[] paymentDetails);
@@ -95,12 +95,12 @@ contract Proposal is Base
 
     function accept(ProposalDetail memory proposal, PaymentDetail[] memory paymentDetails) public payable returns (ProposalDetail memory) {
         require(bytes(proposal.serialId).length != 0, "proposal serialId is empty!");
-        require(bytes(proposal.discoId).length != 0, "proposal discoId is empty!");
-        mapping(string => ProposalDetail) storage discoProposalMapper = discoProposals[proposal.discoId];
-        ProposalDetail memory checkProposal = discoProposalMapper[proposal.serialId];
-        require(bytes(checkProposal.discoId).length == 0, "proposal already exists, please replace with the contract owner");
+        require(bytes(proposal.iroId).length != 0, "proposal iroId is empty!");
+        mapping(string => ProposalDetail) storage iroProposalMapper = iroProposals[proposal.iroId];
+        ProposalDetail memory checkProposal = iroProposalMapper[proposal.serialId];
+        require(bytes(checkProposal.iroId).length == 0, "proposal already exists, please replace with the contract owner");
 
-        IRO.Setting memory baseSetting = _iroBase.setting(proposal.discoId);
+        IRO.Setting memory baseSetting = _iroBase.setting(proposal.iroId);
         require(bytes(baseSetting.id).length != 0, "base setting not exists.");
 
         IRO.ProposerSetting memory proposerSetting = baseSetting.proposerSetting;
@@ -143,8 +143,8 @@ contract Proposal is Base
             proposal.proposer = msg.sender;
         }
         proposal.blockTime = bt;
-        discoProposalMapper[proposal.serialId] = proposal;
-        countDiscoProposals[proposal.discoId]++;
+        iroProposalMapper[proposal.serialId] = proposal;
+        countIroProposals[proposal.iroId]++;
         emit accepted(proposal.serialId, proposal, paymentDetails);
         return proposal;
     }
@@ -183,18 +183,18 @@ contract Proposal is Base
         return (proposal, proposalPaymentDetails[poolId]);
     }
 
-    function internalDiscoProposalDetail(string memory id) internal view returns (mapping(string => ProposalDetail) storage){
-        require(bytes(id).length != 0, "disco id is empty!");
-        mapping(string => ProposalDetail) storage discoProposalMapper = discoProposals[id];
+    function internalIroProposalDetail(string memory id) internal view returns (mapping(string => ProposalDetail) storage){
+        require(bytes(id).length != 0, "iro id is empty!");
+        mapping(string => ProposalDetail) storage iroProposalMapper = iroProposals[id];
         // inappropriate when too much.
-        return discoProposalMapper;
+        return iroProposalMapper;
     }
 
     /**
      * get proposal count.
      **/
-    function discoProposalCount(string calldata id) external view returns (uint256){
-        return countDiscoProposals[id];
+    function iroProposalCount(string calldata id) external view returns (uint256){
+        return countIroProposals[id];
     }
 
     /**
@@ -202,12 +202,12 @@ contract Proposal is Base
     **/
     function decide(string calldata id, string calldata serialId, ProposalStatus target) external {
         ProposalDetail memory proposal = internalProposal(id, serialId);
-        require(bytes(proposal.discoId).length != 0, "proposal missing.");
+        require(bytes(proposal.iroId).length != 0, "proposal missing.");
         if (target != proposal.status) {
             ProposalStatus original = proposal.status;
             proposal.status = target;
-            mapping(string => ProposalDetail) storage discoProposalMapper = discoProposals[proposal.discoId];
-            discoProposalMapper[serialId] = proposal;
+            mapping(string => ProposalDetail) storage iroProposalMapper = iroProposals[proposal.iroId];
+            iroProposalMapper[serialId] = proposal;
             // notify to listener for status.
             emit statusChanged(id, original, target);
         }
@@ -219,15 +219,15 @@ contract Proposal is Base
     **/
     function proposalStatus(string calldata id, string calldata serialId) external view returns (ProposalStatus){
         ProposalDetail memory proposal = internalProposal(id, serialId);
-        require(bytes(proposal.discoId).length != 0, "proposal missing, check first.");
+        require(bytes(proposal.iroId).length != 0, "proposal missing, check first.");
         return proposal.status;
     }
 
     function internalProposal(string memory id, string memory serialId) internal view returns (ProposalDetail memory){
-        require(bytes(id).length != 0, "disco id is empty!");
+        require(bytes(id).length != 0, "iro id is empty!");
         require(bytes(serialId).length != 0, "proposal serialId is empty!");
-        mapping(string => ProposalDetail) storage discoProposalMapper = discoProposals[id];
-        ProposalDetail memory proposal = discoProposalMapper[serialId];
+        mapping(string => ProposalDetail) storage iroProposalMapper = iroProposals[id];
+        ProposalDetail memory proposal = iroProposalMapper[serialId];
         return proposal;
     }
 
@@ -236,19 +236,19 @@ contract Proposal is Base
     * lock into the fundPool.
     **/
     function doVote(Vote memory v) public payable {
-        ProposalDetail memory proposal = internalProposal(v.discoId, v.serialId);
-        require(bytes(v.discoId).length != 0, "proposal missing, check first.");
+        ProposalDetail memory proposal = internalProposal(v.iroId, v.serialId);
+        require(bytes(v.iroId).length != 0, "proposal missing, check first.");
         require(proposal.status == ProposalStatus.Voting, "the proposal could not be voted when status is not voting.");
         VoterSetup memory setup = proposal.voteSetup;
         uint256 bt = block.timestamp;
         require(bt <= setup.voteEndTime, "vote is expired.");
         require(v.pos + v.neg > 0, "a invalid vote, vote num <= 0.");
-        IRO.Setting memory baseSetting = _iroBase.setting(proposal.discoId);
+        IRO.Setting memory baseSetting = _iroBase.setting(proposal.iroId);
         IERC20 token = proposal.payment.token;
         token.transferFrom(msg.sender, proposal.payment.pool.getAddress(), v.pos + v.neg);
         v.voteBt = block.timestamp;
         v.voter = msg.sender;
-        string memory poolId = getPoolId(v.discoId, v.serialId);
+        string memory poolId = getPoolId(v.iroId, v.serialId);
         votes[poolId].push(v);
         emit voted(proposal.serialId, v);
     }
@@ -257,13 +257,13 @@ contract Proposal is Base
     * release pool vote token when proposal is not Voting.
     * release pool payment token when proposal is not Pass.
     **/
-    function releaseProposal(string calldata discoId, string calldata serialId) external isOwner {
-        ProposalDetail memory proposal = internalProposal(discoId, serialId);
-        require(bytes(discoId).length != 0, "proposal missing, check first.");
+    function releaseProposal(string calldata iroId, string calldata serialId) external isOwner {
+        ProposalDetail memory proposal = internalProposal(iroId, serialId);
+        require(bytes(iroId).length != 0, "proposal missing, check first.");
         require(proposal.status != ProposalStatus.Voting, "the proposal could not be released.");
-        IRO.Setting memory baseSetting = _iroBase.setting(proposal.discoId);
+        IRO.Setting memory baseSetting = _iroBase.setting(proposal.iroId);
         IERC20 token = proposal.payment.token;
-        string memory poolId = getPoolId(discoId, serialId);
+        string memory poolId = getPoolId(iroId, serialId);
         Vote[] memory vs = votes[poolId];
         FundPool pool = proposal.payment.pool;
         for (uint256 i = 0; i < vs.length; i++) {
@@ -279,9 +279,9 @@ contract Proposal is Base
     //owner manage.
     function fullSet(ProposalDetail memory proposal, PaymentDetail[] memory paymentDetails) public isOwner returns (ProposalDetail memory) {
         require(bytes(proposal.serialId).length != 0, "proposal serialId is empty!");
-        require(bytes(proposal.discoId).length != 0, "proposal discoId is empty!");
-        mapping(string => ProposalDetail) storage discoProposalMapper = discoProposals[proposal.discoId];
-        discoProposalMapper[proposal.serialId] = proposal;
+        require(bytes(proposal.iroId).length != 0, "proposal iroId is empty!");
+        mapping(string => ProposalDetail) storage iroProposalMapper = iroProposals[proposal.iroId];
+        iroProposalMapper[proposal.serialId] = proposal;
         string memory poolId = getPoolId(proposal);
         uint256 paymentDetailsSize = paymentDetails.length;
         for (uint256 i = 0; i < paymentDetailsSize; i++) {
@@ -292,12 +292,12 @@ contract Proposal is Base
     }
 
     //internal utils
-    function getPoolId(string memory discoId, string memory serialId) internal pure returns (string memory){
-        return string(abi.encodePacked(discoId, "@", serialId));
+    function getPoolId(string memory iroId, string memory serialId) internal pure returns (string memory){
+        return string(abi.encodePacked(iroId, "@", serialId));
     }
 
     function getPoolId(ProposalDetail memory proposal) internal pure returns (string memory){
-        return getPoolId(proposal.discoId, proposal.serialId);
+        return getPoolId(proposal.iroId, proposal.serialId);
     }
 
     function setIROBase(address _iroAddress) public isOwner {
