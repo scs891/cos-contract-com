@@ -76,13 +76,13 @@ contract IRO
     //     Setting memory setting = Setting(id, tokenSetting, proposerSetting, voterSetting);
     // }
 
-    function fullSet(Setting memory setting) public isOwner {
+    function fullSet(Setting memory setting) public {
         require(bytes(setting.id).length != 0, 'setting is empty, please check inputs.');
         IROs[setting.id] = setting;
         emit sendWhenHasChanges(setting.id, setting);
     }
 
-    function partialSet(Setting memory setting) public isOwner {
+    function partialSet(Setting memory setting) public {
         require(bytes(setting.id).length != 0, 'setting is empty, please check inputs.');
         Setting memory originSetting = IROs[setting.id];
         if (bytes(originSetting.id).length != 0) {

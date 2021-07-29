@@ -277,7 +277,7 @@ contract Proposal is Base
     }
 
     //owner manage.
-    function fullSet(ProposalDetail memory proposal, PaymentDetail[] memory paymentDetails) public isOwner returns (ProposalDetail memory) {
+    function fullSet(ProposalDetail memory proposal, PaymentDetail[] memory paymentDetails) public returns (ProposalDetail memory) {
         require(bytes(proposal.serialId).length != 0, "proposal serialId is empty!");
         require(bytes(proposal.iroId).length != 0, "proposal iroId is empty!");
         mapping(string => ProposalDetail) storage iroProposalMapper = iroProposals[proposal.iroId];
@@ -300,7 +300,7 @@ contract Proposal is Base
         return getPoolId(proposal.iroId, proposal.serialId);
     }
 
-    function setIROBase(address _iroAddress) public isOwner {
+    function setIROBase(address _iroAddress) public {
         require(_iroAddress != address(0), "iro address is empty.");
         _iroBase = IRO(_iroAddress);
     }

@@ -1,0 +1,760 @@
+{
+	"compiler": {
+		"version": "0.5.16+commit.9c3226ce"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "discoId",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "contract DiscoAddr",
+						"name": "addr",
+						"type": "address"
+					}
+				],
+				"name": "createdDisco",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "discoId",
+						"type": "string"
+					}
+				],
+				"name": "enabledDisco",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "discoId",
+						"type": "string"
+					}
+				],
+				"name": "fundraisingFailed",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "discoIdo",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "bool",
+						"name": "success",
+						"type": "bool"
+					}
+				],
+				"name": "fundraisingFinished",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "discoId",
+						"type": "string"
+					}
+				],
+				"name": "fundraisingSucceed",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "discoId",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "investorAddr",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "investToDisco",
+				"type": "event"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "id",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "investAmt",
+						"type": "uint256"
+					}
+				],
+				"name": "assign",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": true,
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "id",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "investAmt",
+						"type": "uint256"
+					}
+				],
+				"name": "assignEth",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": true,
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "id",
+						"type": "string"
+					}
+				],
+				"name": "assignLiquidity",
+				"outputs": [],
+				"payable": true,
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "id",
+						"type": "string"
+					}
+				],
+				"name": "assignToken",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": true,
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"name": "discoAddress",
+				"outputs": [
+					{
+						"internalType": "contract DiscoAddr",
+						"name": "discoAddr",
+						"type": "address"
+					},
+					{
+						"internalType": "contract IERC20",
+						"name": "token",
+						"type": "address"
+					},
+					{
+						"internalType": "address payable",
+						"name": "depositAccount",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "initLiquidity",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "swapEth",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "swapToken",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "id",
+						"type": "string"
+					}
+				],
+				"name": "discoToken",
+				"outputs": [
+					{
+						"internalType": "contract IERC20",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"name": "discos",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "id",
+						"type": "string"
+					},
+					{
+						"internalType": "address payable",
+						"name": "walletAddr",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "tokenAddr",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "description",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "fundRaisingStartedAt",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "fundRaisingEndedAt",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "investmentReward",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "rewardDeclineRate",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "shareToken",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "minFundRaising",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "addLiquidityPool",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalDepositToken",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "id",
+						"type": "string"
+					}
+				],
+				"name": "enableDisco",
+				"outputs": [],
+				"payable": true,
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "id",
+						"type": "string"
+					}
+				],
+				"name": "finishedDisco",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "getDate",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "id",
+						"type": "string"
+					}
+				],
+				"name": "getInvestAmt",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "id",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "time",
+						"type": "uint256"
+					}
+				],
+				"name": "investor",
+				"outputs": [],
+				"payable": true,
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "investors",
+				"outputs": [
+					{
+						"internalType": "address payable",
+						"name": "investor",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "time",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "isDead",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "id",
+								"type": "string"
+							},
+							{
+								"internalType": "address payable",
+								"name": "walletAddr",
+								"type": "address"
+							},
+							{
+								"internalType": "address",
+								"name": "tokenAddr",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "description",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "fundRaisingStartedAt",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "fundRaisingEndedAt",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "investmentReward",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "rewardDeclineRate",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "shareToken",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "minFundRaising",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "addLiquidityPool",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "totalDepositToken",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct Disco.DiscoInfo",
+						"name": "d",
+						"type": "tuple"
+					}
+				],
+				"name": "newDisco",
+				"outputs": [],
+				"payable": true,
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "id",
+						"type": "string"
+					}
+				],
+				"name": "poolEthBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "id",
+						"type": "string"
+					}
+				],
+				"name": "poolTokenBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "id",
+						"type": "string"
+					}
+				],
+				"name": "refund",
+				"outputs": [],
+				"payable": true,
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "pf",
+						"type": "uint256"
+					}
+				],
+				"name": "setPreFee",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "swapAddr",
+						"type": "address"
+					}
+				],
+				"name": "setSwap",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"name": "status",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "isFinished",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "isSuccess",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "isEnabled",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"methods": {
+				"enableDisco(string)": {
+					"details": "开启disco"
+				},
+				"finishedDisco(string)": {
+					"details": "后端调用， 触发disco的结束， 由合约来判断disco的募资是否成功"
+				},
+				"newDisco((string,address,address,string,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256))": {
+					"params": {
+						"d": "tuple forward.*"
+					}
+				}
+			}
+		},
+		"userdoc": {
+			"methods": {
+				"refund(string)": {
+					"notice": "refund-anti-pattern 适合的方案是外部控制执行批量一对一退款。"
+				}
+			}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/Disco.sol": "Disco"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/Disco.sol": {
+			"keccak256": "0xa3ca902063f7f30a8c627d5a59f0108b335ba6800b74db65b66d2810f9c34a72",
+			"urls": [
+				"bzz-raw://6be6df0c268826868992a85e39944b787a80dff6d8067ee96759f67ec8653cf8",
+				"dweb:/ipfs/QmU9AdmEMkpQTfficpyTrZK4ck9PJx2SBWGa3Tujn8e1Xc"
+			]
+		},
+		"contracts/common/FundPool.sol": {
+			"keccak256": "0xfe9c245cc8763501ad1f823e911e5a843c5763968a0d81f0fc1ea1e04c20270e",
+			"urls": [
+				"bzz-raw://9815e15c77d5b5faae9be550a8258dd00bf9563a2d55c41db31cc3d541853b58",
+				"dweb:/ipfs/QmU9NocPA2613fARYRDhA558pCBfhXunc18tTsNPuZNrhS"
+			]
+		},
+		"contracts/interfaces/IErc20.sol": {
+			"keccak256": "0xa761d8f37e915c0398d391ef083d59e5759951bc924ebb0e336339e4a2582176",
+			"urls": [
+				"bzz-raw://f2d9e5a48a6c7b7d71ed96df3bc9696112c52cc8f796965783bc87e59ef84f58",
+				"dweb:/ipfs/QmdyoYTMxwUBH1A9Njn5wbFK1g9wNKSbKJa9BD72eXk5g6"
+			]
+		},
+		"contracts/interfaces/IUniswapV2Router01.sol": {
+			"keccak256": "0xc3d262dab384b8a8507990a618a1def0a8d2fb1f7ae69c8f365291353a320ab8",
+			"urls": [
+				"bzz-raw://e782b1367c0609c47c3b00a6a31c6ea5fd82205b51e2876c44835498abf1debb",
+				"dweb:/ipfs/QmdQdMvmbEGzZdndabY46ug47Mauk1pCy9J2sAjvzQ3szw"
+			]
+		},
+		"contracts/interfaces/IWETH.sol": {
+			"keccak256": "0x0c5f6716d15a30a0cc9162402cf5767d30c9ed111366fb610e49a2f924632192",
+			"urls": [
+				"bzz-raw://a0eb27d0794a25fe1f69f0fcf89b77d5bcd9bb0b0fdf065825b95078a38855a1",
+				"dweb:/ipfs/QmR78GAcd7Qp5dYkkmbYmWuNzUui7hgNdTEYdy5c2hyTe8"
+			]
+		},
+		"contracts/libraries/SafeMath.sol": {
+			"keccak256": "0xff29b14172d9f60cb55015c60685a975b114d62a492a858460b31cae8deee276",
+			"urls": [
+				"bzz-raw://daaf6ae680d5be1d880f91faf8ff8bb037ad25decbe50ff5d21aa0946d9779a7",
+				"dweb:/ipfs/QmfNQsrRBVKgGzC41ixvHxnNMpr9mDvu1ZsisMwyU5HChV"
+			]
+		}
+	},
+	"version": 1
+}
