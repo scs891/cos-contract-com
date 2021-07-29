@@ -243,7 +243,6 @@ contract Proposal is Base
         uint256 bt = block.timestamp;
         require(bt <= setup.voteEndTime, "vote is expired.");
         require(v.pos + v.neg > 0, "a invalid vote, vote num <= 0.");
-        IRO.Setting memory baseSetting = _iroBase.setting(proposal.iroId);
         IERC20 token = proposal.payment.token;
         token.transferFrom(msg.sender, proposal.payment.pool.getAddress(), v.pos + v.neg);
         v.voteBt = block.timestamp;
@@ -261,7 +260,6 @@ contract Proposal is Base
         ProposalDetail memory proposal = internalProposal(iroId, serialId);
         require(bytes(iroId).length != 0, "proposal missing, check first.");
         require(proposal.status != ProposalStatus.Voting, "the proposal could not be released.");
-        IRO.Setting memory baseSetting = _iroBase.setting(proposal.iroId);
         IERC20 token = proposal.payment.token;
         string memory poolId = getPoolId(iroId, serialId);
         Vote[] memory vs = votes[poolId];
