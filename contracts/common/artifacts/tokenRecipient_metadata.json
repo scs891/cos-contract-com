@@ -50,17 +50,17 @@
 		"evmVersion": "istanbul",
 		"libraries": {},
 		"optimizer": {
-			"enabled": false,
+			"enabled": true,
 			"runs": 200
 		},
 		"remappings": []
 	},
 	"sources": {
 		"contracts/common/ERC20.sol": {
-			"keccak256": "0xde5f852748afe6f04f5473791b8bdd7b6fc751dfc5edb64737bf3c825a0ca7f0",
+			"keccak256": "0xbde862f078644563be6f51135b48c423860ebe81dd90b3c2a3b6d9ddada1d5fa",
 			"urls": [
-				"bzz-raw://8eb6e9128152ab23d5740c89b0ef48480ada44e4eb9a562e9fff1f35bd47d6b9",
-				"dweb:/ipfs/QmPmhXLPHJZQrGDtLqwW7UPxVdDYCJoas3pPTXbdVMX6T5"
+				"bzz-raw://3599a857eefc2fbeea506e581863f03e820be1ee58d24b1d873757227589d676",
+				"dweb:/ipfs/QmVNsMuKTojqHsdvjrXrueEBTtiWGvguc114e37s7iAHrp"
 			]
 		}
 	},
