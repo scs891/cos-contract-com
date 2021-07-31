@@ -72,7 +72,7 @@
    - address: 0x865F46B2aF27f76D41FaBE8dE2495911E487c8cE
    - abi: contracts/artifacts/Startup.json
 2. setting 
-   - address: 0xEE7Ed784Bd68e992a0fF6F5f7DD8b5578d6e55b2
+   - address: 0x9aF69ed56499011eC8E440b7c2D7FD7fc79d7268
    - abi: contracts/artifacts/IRO.json
 3. bounty
    - address: 0x07B5427f3D7c5c6CfbbD13816900bbd05B9f1c98
@@ -81,7 +81,7 @@
    - address: 0xB39475E3077591c0f1E79b2BEdcbC9501F48E307
    - abi: contracts/artifacts/Disco.json
 5. proposal
-   - address: 0x5446A7A5df5E5FC08BEa06E11A654CA2153D1834
+   - address: 0xc712C20191f95eeA053350De574de46D88AD9F38
    - abi: contracts/artifacts/Proposal.json
 6. hunter
    - address: 0x69EAB953C4a286Bb2216153EaA842d4c3e651aa2
