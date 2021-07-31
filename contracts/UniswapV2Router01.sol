@@ -8,7 +8,6 @@ import "./interfaces/IWETH.sol";
 import "./libraries/TransferHelper.sol";
 // import "./libraries/SafeMath.sol";
 import "./libraries/UniswapV2Library.sol";
-import "hardhat/console.sol";
 
 
 contract UniswapV2Router01 is IUniswapV2Router01 {
