@@ -6,6 +6,52 @@
     "type": "constructor"
   },
   {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "startupId",
+        "type": "string"
+      },
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "categoryId",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "mission",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "descriptionAddr",
+            "type": "string"
+          }
+        ],
+        "indexed": false,
+        "internalType": "struct Startup.Profile",
+        "name": "startUp",
+        "type": "tuple"
+      }
+    ],
+    "name": "createdStartup",
+    "type": "event"
+  },
+  {
     "constant": false,
     "inputs": [
       {

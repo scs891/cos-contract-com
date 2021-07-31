@@ -24,7 +24,7 @@
         "components": [
           {
             "internalType": "string",
-            "name": "discoId",
+            "name": "iroId",
             "type": "string"
           },
           {
@@ -224,7 +224,7 @@
         "components": [
           {
             "internalType": "string",
-            "name": "discoId",
+            "name": "iroId",
             "type": "string"
           },
           {
@@ -269,7 +269,7 @@
         "components": [
           {
             "internalType": "string",
-            "name": "discoId",
+            "name": "iroId",
             "type": "string"
           },
           {
@@ -432,7 +432,7 @@
         "components": [
           {
             "internalType": "string",
-            "name": "discoId",
+            "name": "iroId",
             "type": "string"
           },
           {
@@ -591,7 +591,7 @@
         "components": [
           {
             "internalType": "string",
-            "name": "discoId",
+            "name": "iroId",
             "type": "string"
           },
           {
@@ -761,7 +761,7 @@
         "type": "string"
       }
     ],
-    "name": "discoProposalCount",
+    "name": "iroProposalCount",
     "outputs": [
       {
         "internalType": "uint256",
@@ -831,7 +831,7 @@
         "components": [
           {
             "internalType": "string",
-            "name": "discoId",
+            "name": "iroId",
             "type": "string"
           },
           {
@@ -876,7 +876,7 @@
     "inputs": [
       {
         "internalType": "string",
-        "name": "discoId",
+        "name": "iroId",
         "type": "string"
       },
       {
@@ -898,7 +898,7 @@
         "components": [
           {
             "internalType": "string",
-            "name": "discoId",
+            "name": "iroId",
             "type": "string"
           },
           {
@@ -1061,7 +1061,7 @@
         "components": [
           {
             "internalType": "string",
-            "name": "discoId",
+            "name": "iroId",
             "type": "string"
           },
           {

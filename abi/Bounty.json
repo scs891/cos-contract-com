@@ -6,6 +6,52 @@
     "type": "constructor"
   },
   {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "id",
+        "type": "string"
+      },
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "startupName",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "intro",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "paymentToken",
+            "type": "uint256[]"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "paymentValue",
+            "type": "uint256[]"
+          }
+        ],
+        "indexed": false,
+        "internalType": "struct Bounty.Profile",
+        "name": "bounty",
+        "type": "tuple"
+      }
+    ],
+    "name": "createdBounty",
+    "type": "event"
+  },
+  {
     "constant": false,
     "inputs": [
       {
