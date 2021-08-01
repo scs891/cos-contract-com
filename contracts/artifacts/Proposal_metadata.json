@@ -30,7 +30,7 @@
 						"components": [
 							{
 								"internalType": "string",
-								"name": "discoId",
+								"name": "iroId",
 								"type": "string"
 							},
 							{
@@ -230,7 +230,7 @@
 						"components": [
 							{
 								"internalType": "string",
-								"name": "discoId",
+								"name": "iroId",
 								"type": "string"
 							},
 							{
@@ -275,7 +275,7 @@
 						"components": [
 							{
 								"internalType": "string",
-								"name": "discoId",
+								"name": "iroId",
 								"type": "string"
 							},
 							{
@@ -438,7 +438,7 @@
 						"components": [
 							{
 								"internalType": "string",
-								"name": "discoId",
+								"name": "iroId",
 								"type": "string"
 							},
 							{
@@ -603,34 +603,13 @@
 				"type": "function"
 			},
 			{
-				"constant": true,
-				"inputs": [
-					{
-						"internalType": "string",
-						"name": "id",
-						"type": "string"
-					}
-				],
-				"name": "discoProposalCount",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
 				"constant": false,
 				"inputs": [
 					{
 						"components": [
 							{
 								"internalType": "string",
-								"name": "discoId",
+								"name": "iroId",
 								"type": "string"
 							},
 							{
@@ -677,7 +656,7 @@
 						"components": [
 							{
 								"internalType": "string",
-								"name": "discoId",
+								"name": "iroId",
 								"type": "string"
 							},
 							{
@@ -840,7 +819,7 @@
 						"components": [
 							{
 								"internalType": "string",
-								"name": "discoId",
+								"name": "iroId",
 								"type": "string"
 							},
 							{
@@ -986,6 +965,27 @@
 						"internalType": "string",
 						"name": "id",
 						"type": "string"
+					}
+				],
+				"name": "iroProposalCount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "id",
+						"type": "string"
 					},
 					{
 						"internalType": "string",
@@ -999,7 +999,7 @@
 						"components": [
 							{
 								"internalType": "string",
-								"name": "discoId",
+								"name": "iroId",
 								"type": "string"
 							},
 							{
@@ -1191,7 +1191,7 @@
 				"inputs": [
 					{
 						"internalType": "string",
-						"name": "discoId",
+						"name": "iroId",
 						"type": "string"
 					},
 					{
@@ -1230,11 +1230,11 @@
 				"decide(string,string,uint8)": {
 					"notice": "decide proposal status.*"
 				},
-				"discoProposalCount(string)": {
-					"notice": "get proposal count.*"
-				},
 				"doVote((string,string,address,uint256,uint256,uint256))": {
 					"notice": "vote when proposal is voting. lock into the fundPool.*"
+				},
+				"iroProposalCount(string)": {
+					"notice": "get proposal count.*"
 				},
 				"proposalStatus(string,string)": {
 					"notice": "get proposal status.*"
@@ -1266,10 +1266,10 @@
 			]
 		},
 		"contracts/Proposal.sol": {
-			"keccak256": "0xd18be76c79ead6fde90958a094fcfeda0880ebd43f2ab05f70cda4689178daee",
+			"keccak256": "0xe18e156a574dd7f7d63c931c57682db6abb8122194307e349553598f6a1ed016",
 			"urls": [
-				"bzz-raw://feeeba7dd61a9f4835a162d1bc134c7f222cc31e044231d82d95323a31c5ad11",
-				"dweb:/ipfs/QmUyAKK2r9DKyfPeqtqnQRpwgXCNRzFnADJZyRQibQnUTm"
+				"bzz-raw://96aa86a231693e5640f7212c65f0ec72336d1da1fbb704692b6e53eb49bb275b",
+				"dweb:/ipfs/QmcwoaN61hQ9jaFgYDUC7P19WN6NTmSi8Z1tDh4bKM9nej"
 			]
 		},
 		"contracts/common/Base.sol": {

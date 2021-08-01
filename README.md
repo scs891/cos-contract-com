@@ -24,7 +24,8 @@
     yarn remixed
    ```
 
-4. 点击 Home -> file -> connect to local host;
+4. 打开 “https://remix.ethereum.org/#optimize=true&runs=200”
+   点击 Home -> file -> connect to local host;
 5. 可以看到左侧的侧边栏 loading 本地文件
 6. loading 后 happy coding
 7. 如果是本地调试， 没有必要部署测试网：

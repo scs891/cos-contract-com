@@ -874,17 +874,17 @@
 		"evmVersion": "istanbul",
 		"libraries": {},
 		"optimizer": {
-			"enabled": false,
+			"enabled": true,
 			"runs": 200
 		},
 		"remappings": []
 	},
 	"sources": {
 		"contracts/UniswapV2Router01.sol": {
-			"keccak256": "0x0a94a500616bf0542e698bd3969cdbbe7c0fe2e140e34baed8889999ac9e612b",
+			"keccak256": "0x7de13c84807a88fcebfd5b0868d4a90d12055b3f237f86b932aea897feeba53c",
 			"urls": [
-				"bzz-raw://bedf50fc3cd8b87aae18115f5f02edbb904605167cefd6c88177071b33890e81",
-				"dweb:/ipfs/QmQGmksbMZFmp2AERxmcwpuCTvctNANnSTZqTQmxv5LGNw"
+				"bzz-raw://4b4a24b326cb0c98c22ba5b068ee487b3f5833e31cf8b00d21f7e195268abf6b",
+				"dweb:/ipfs/QmX6kXocHrnk6NjNXfKUF3cjsn22zJD1QS7SMnqmAfjVGa"
 			]
 		},
 		"contracts/interfaces/IUniswapV2Router01.sol": {
@@ -913,13 +913,6 @@
 			"urls": [
 				"bzz-raw://2604be3b01a26dffaca1a8dc7643e149580d7afc33453d0b56960c570b62f52c",
 				"dweb:/ipfs/QmY89CudH15D2MWQjxmPn91VsnnTiKYFUeuUdu6CCQCUfq"
-			]
-		},
-		"hardhat/console.sol": {
-			"keccak256": "0x72b6a1d297cd3b033d7c2e4a7e7864934bb767db6453623f1c3082c6534547f4",
-			"urls": [
-				"bzz-raw://a8cb8681076e765c214e0d51cac989325f6b98e315eaae06ee0cbd5a9f084763",
-				"dweb:/ipfs/QmNWGHi4zmjxQTYN3NMGnJd49jBT5dE4bxTdWEaDuJrC6N"
 			]
 		},
 		"uniswap_core/contracts/UniswapV2ERC20.sol": {
