@@ -42,7 +42,7 @@ contract IRO
         string voteTokenLimit;
         address[] voteAssignAddrs;
         uint256 voteMinSupporters;
-        string voteMinApprovalPercent;
+        uint256 voteMinApprovalPercent;
         string voteMinDurationHours;
         string voteMaxDurationHours;
     }
@@ -124,7 +124,7 @@ contract IRO
     public
     view
     returns (VoteType voteType, string memory voteTokenLimit, address[] memory voteAssignAddrs,
-        uint256 voteMinSupporters, string memory voteMinApprovalPercent,
+        uint256 voteMinSupporters, uint256 voteMinApprovalPercent,
         string memory voteMinDurationHours, string memory voteMaxDurationHours){
         return (IROs[id].voterSetting.voteType, IROs[id].voterSetting.voteTokenLimit, IROs[id].voterSetting.voteAssignAddrs,
         IROs[id].voterSetting.voteMinSupporters, IROs[id].voterSetting.voteMinApprovalPercent,
