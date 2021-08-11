@@ -99,9 +99,9 @@
 										"type": "uint256"
 									},
 									{
-										"internalType": "string",
+										"internalType": "uint256",
 										"name": "voteMinApprovalPercent",
-										"type": "string"
+										"type": "uint256"
 									},
 									{
 										"internalType": "string",
@@ -210,9 +210,9 @@
 										"type": "uint256"
 									},
 									{
-										"internalType": "string",
+										"internalType": "uint256",
 										"name": "voteMinApprovalPercent",
-										"type": "string"
+										"type": "uint256"
 									},
 									{
 										"internalType": "string",
@@ -309,9 +309,9 @@
 						"type": "uint256"
 					},
 					{
-						"internalType": "string",
+						"internalType": "uint256",
 						"name": "voteMinApprovalPercent",
-						"type": "string"
+						"type": "uint256"
 					},
 					{
 						"internalType": "string",
@@ -410,9 +410,9 @@
 										"type": "uint256"
 									},
 									{
-										"internalType": "string",
+										"internalType": "uint256",
 										"name": "voteMinApprovalPercent",
-										"type": "string"
+										"type": "uint256"
 									},
 									{
 										"internalType": "string",
@@ -531,9 +531,9 @@
 										"type": "uint256"
 									},
 									{
-										"internalType": "string",
+										"internalType": "uint256",
 										"name": "voteMinApprovalPercent",
-										"type": "string"
+										"type": "uint256"
 									},
 									{
 										"internalType": "string",
@@ -582,10 +582,10 @@
 	},
 	"sources": {
 		"contracts/IRO.sol": {
-			"keccak256": "0xb8020a7dee170a571a17760c4af07603ac96e156bb7680d1ac2e3ebde7fb59a7",
+			"keccak256": "0xae19f8031c273839343d0de50545c3672181f65a61df211e9595d6109caac34f",
 			"urls": [
-				"bzz-raw://6dbe2f39d64d0b413d8de66780026fed4e1e4cd499ae8b0085012998d3aaf577",
-				"dweb:/ipfs/QmYNbsMV25vFenyhRqoAWa3tN7BfQu7A2rzcuXTvASs7jP"
+				"bzz-raw://044eaf8798bba0bc0a751f3c8ab595d9171f1adfd601a8c14149e1d1b2f6f0bf",
+				"dweb:/ipfs/QmSuxdJRMP39KwXnNH3qZssRN67Md3ULBxdiqrXQXvFKK7"
 			]
 		}
 	},

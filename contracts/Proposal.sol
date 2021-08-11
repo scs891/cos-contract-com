@@ -67,7 +67,7 @@ contract Proposal is Base
 
     struct VoterSetup {
         uint256 voteMinSupporters;
-        string voteMinApprovalPercent;
+        uint256 voteMinApprovalPercent;
         uint256 voteDurationHours;
         uint256 voteEndTime;
     }
@@ -200,7 +200,7 @@ contract Proposal is Base
     /**
     * decide proposal status.
     **/
-    function decide(string calldata id, string calldata serialId, ProposalStatus target) external {
+    function decide(string memory id, string memory serialId, ProposalStatus target) public {
         ProposalDetail memory proposal = internalProposal(id, serialId);
         require(bytes(proposal.iroId).length != 0, "proposal missing.");
         if (target != proposal.status) {
@@ -259,11 +259,45 @@ contract Proposal is Base
     function releaseProposal(string calldata iroId, string calldata serialId) external isOwner {
         ProposalDetail memory proposal = internalProposal(iroId, serialId);
         require(bytes(iroId).length != 0, "proposal missing, check first.");
-        require(proposal.status != ProposalStatus.Voting, "the proposal could not be released.");
         IERC20 token = proposal.payment.token;
         string memory poolId = getPoolId(iroId, serialId);
         Vote[] memory vs = votes[poolId];
         FundPool pool = proposal.payment.pool;
+
+        // 先改状态再退款
+        uint256 sumPos = 0; // 赞成票投票总数
+        uint256 sumNeg = 0; // 反对票总数
+        ProposalStatus finalStatus = ProposalStatus.Voting;
+
+        for (uint256 i = 0; i < vs.length; i++) {
+            Vote memory v = vs[i];
+            sumPos = sumPos + v.pos;
+            sumNeg = sumNeg + v.neg;
+        }
+
+        // 投票人数少于设定最小人数， 投票无效
+        if (vs.length < proposal.voteSetup.voteMinSupporters) {
+            finalStatus =  ProposalStatus.Invalid;
+        } else {
+            if (sumPos > 0 && sumNeg == 0) {
+                //  全部是赞成票
+                finalStatus = ProposalStatus.Pass;
+            } else if (sumPos == 0 && sumNeg > 0) {
+                // 全部是反对票
+                finalStatus = ProposalStatus.Defeated;
+            } else {
+                finalStatus = (sumPos / sumNeg) * 100 >= proposal.voteSetup.voteMinApprovalPercent ? ProposalStatus.Pass : ProposalStatus.Defeated;
+            }
+        }
+
+        decide(iroId, serialId, finalStatus);
+
+        // 退款
+        // require(
+        //     proposal.status != ProposalStatus.Voting,
+        //     "the proposal could not be released."
+        // );
+
         for (uint256 i = 0; i < vs.length; i++) {
             Vote memory v = vs[i];
             pool.transfer(token, v.voter, v.pos + v.neg);
