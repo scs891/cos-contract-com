@@ -89,7 +89,7 @@ contract Proposal is Base
 
     event accepted(string indexed id, ProposalDetail proposal, PaymentDetail[] paymentDetails);
 
-    event statusChanged(string indexed id, ProposalStatus original, ProposalStatus target);
+    event statusChanged(string indexed id, string serialId,  ProposalStatus original, ProposalStatus target);
 
     event voted(string indexed id, Vote v);
 
@@ -209,7 +209,7 @@ contract Proposal is Base
             mapping(string => ProposalDetail) storage iroProposalMapper = iroProposals[proposal.iroId];
             iroProposalMapper[serialId] = proposal;
             // notify to listener for status.
-            emit statusChanged(id, original, target);
+            emit statusChanged(id, serialId, original, target);
         }
 
     }

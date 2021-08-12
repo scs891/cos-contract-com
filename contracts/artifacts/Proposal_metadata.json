@@ -203,6 +203,12 @@
 					},
 					{
 						"indexed": false,
+						"internalType": "string",
+						"name": "serialId",
+						"type": "string"
+					},
+					{
+						"indexed": false,
 						"internalType": "enum Proposal.ProposalStatus",
 						"name": "original",
 						"type": "uint8"
@@ -1266,10 +1272,10 @@
 			]
 		},
 		"contracts/Proposal.sol": {
-			"keccak256": "0x04d8638235ea8003ebbc29b8eadf2da1b6fb82b679f03c3ec3cac833ae4f0196",
+			"keccak256": "0x5288d2e2865c41a9b5c5c116bef0492d7c72c51d284f3a891e4eb3536807a8e8",
 			"urls": [
-				"bzz-raw://5b7d1e970b9e620bb0e147782e6c917dd2caca318f1b6e83dd11d8334a022ec0",
-				"dweb:/ipfs/QmVuTsCWkYphcbbLcVDwaSc7Rz83WyCQfWM3xKse5WuNmY"
+				"bzz-raw://1aba3b9737f44cd68a48e7cdc128402bdb0b638d4062abd4fd4039fbdc499232",
+				"dweb:/ipfs/QmPD55N5LbRHgSrKqXtuJrL5kvpB85rTb51XU2PoAgLUDH"
 			]
 		},
 		"contracts/common/Base.sol": {
