@@ -774,31 +774,6 @@
     "type": "function"
   },
   {
-    "constant": false,
-    "inputs": [
-      {
-        "internalType": "string",
-        "name": "id",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "serialId",
-        "type": "string"
-      },
-      {
-        "internalType": "enum Proposal.ProposalStatus",
-        "name": "target",
-        "type": "uint8"
-      }
-    ],
-    "name": "decide",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
     "constant": true,
     "inputs": [
       {

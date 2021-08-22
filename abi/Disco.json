@@ -669,5 +669,35 @@
     "payable": true,
     "stateMutability": "payable",
     "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "id",
+        "type": "string"
+      },
+      {
+        "internalType": "address payable",
+        "name": "oriSender",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "oriVal",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "time",
+        "type": "uint256"
+      }
+    ],
+    "name": "internalInvest",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
   }
 ]

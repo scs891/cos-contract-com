@@ -200,7 +200,7 @@ contract Proposal is Base
     /**
     * decide proposal status.
     **/
-    function decide(string calldata id, string calldata serialId, ProposalStatus target) external {
+    function decide(string memory id, string memory serialId, ProposalStatus target) internal {
         ProposalDetail memory proposal = internalProposal(id, serialId);
         require(bytes(proposal.iroId).length != 0, "proposal missing.");
         if (target != proposal.status) {

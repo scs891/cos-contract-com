@@ -164,7 +164,7 @@ contract Disco {
 
         // 生成新的合约地址, discoAddr 既是DiscoAddr 的实例， 也是上链部署的地址
         //  [issue]: DiscoAddr should follow the "create2" (as the IUniswapV2Pair Address).
-        DiscoAddr addr = new DiscoAddr(d.id);
+        DiscoAddr addr = new DiscoAddr(d.id, address(this));
         IERC20 token = IERC20(d.tokenAddr);
         addr.setToken(token);
         addr.setSwap(uniswap);
@@ -393,11 +393,32 @@ contract Disco {
         investors[id].push(d);
         emit investToDisco(id, msg.sender, msg.value);
     }
+
+    function internalInvest(string memory id, address payable oriSender, uint256 oriVal, uint256 time) public canInvest(id) {
+        require(bytes(id).length != 0, 'empty id');
+        require(oriVal > 0, 'invest amt must > 0.');
+        DiscoAddr discoAddr = discoAddress[id].discoAddr;
+        require(address(discoAddr) == msg.sender, 'illegal call');
+        DiscoInvestor memory d = DiscoInvestor(
+            oriSender,
+            oriVal,
+            time,
+            false
+        );
+        // solidity > 0.6 address payable pool = payable(address(discoAddr)) ;
+        // as follow is 0.5.x
+        investors[id].push(d);
+        emit investToDisco(id, oriSender, oriVal);
+    }
 }
+
+
 
 // 生成募资合约
 //Fund-Raising Contract
 contract DiscoAddr is FundPool {
+
+    address _discoBase;
 
     string public id;
 
@@ -409,10 +430,17 @@ contract DiscoAddr is FundPool {
 
     //0.6.x
     //receive() external payable {}
-    function() external payable {}
+    function() external payable {
+        require(address(_discoBase) != address(0), 'need init disco');
+        if (msg.value > 0) {
+            Disco disco = Disco(_discoBase);
+            disco.internalInvest(id, msg.sender, msg.value, block.timestamp);
+        }
+    }
 
-    constructor(string memory discoId) FundPool(discoId) public {
+    constructor(string memory discoId, address discoBase) FundPool(discoId) public {
         id = discoId;
+        _discoBase = discoBase;
     }
 
     function getDiscoId() public view returns (string memory) {

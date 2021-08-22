@@ -5,6 +5,11 @@
         "internalType": "string",
         "name": "discoId",
         "type": "string"
+      },
+      {
+        "internalType": "address",
+        "name": "discoBase",
+        "type": "address"
       }
     ],
     "payable": false,
