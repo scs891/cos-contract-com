@@ -225,10 +225,10 @@
 			]
 		},
 		"uniswap_core/contracts/UniswapV2Factory.sol": {
-			"keccak256": "0x7c08d9f4843d9c6d553e07279106bd26ca9dc3d77d6a42f11143a2a79bfed90f",
+			"keccak256": "0xef250a74c059b6ce997457b1b2eb9a46c081d8a6f00fe2ea227ac8a82938712e",
 			"urls": [
-				"bzz-raw://15ec91139795f8074f4a13e58b0e65dd123b655803fd5960ff3da1413a120552",
-				"dweb:/ipfs/QmNxprgtsEnbsDGrDeUh3QmXncEd9rJrVNb1kUfc1vSGLE"
+				"bzz-raw://913b65a43bfe0abd8fe9eace8c1e37b3dd5a8d83412ea2a3bcad3b37012d3669",
+				"dweb:/ipfs/QmXQmh8mmmB49h1MGj1GHqE51dEeSBhnhH9Q3XYX82ji8p"
 			]
 		},
 		"uniswap_core/contracts/UniswapV2Pair.sol": {

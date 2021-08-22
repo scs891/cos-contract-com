@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.5.17+commit.d19bba13"
+		"version": "0.5.16+commit.9c3226ce"
 	},
 	"language": "Solidity",
 	"output": {
@@ -99,9 +99,9 @@
 										"type": "uint256"
 									},
 									{
-										"internalType": "string",
+										"internalType": "uint256",
 										"name": "voteMinApprovalPercent",
-										"type": "string"
+										"type": "uint256"
 									},
 									{
 										"internalType": "string",
@@ -210,9 +210,9 @@
 										"type": "uint256"
 									},
 									{
-										"internalType": "string",
+										"internalType": "uint256",
 										"name": "voteMinApprovalPercent",
-										"type": "string"
+										"type": "uint256"
 									},
 									{
 										"internalType": "string",
@@ -309,9 +309,9 @@
 						"type": "uint256"
 					},
 					{
-						"internalType": "string",
+						"internalType": "uint256",
 						"name": "voteMinApprovalPercent",
-						"type": "string"
+						"type": "uint256"
 					},
 					{
 						"internalType": "string",
@@ -410,9 +410,9 @@
 										"type": "uint256"
 									},
 									{
-										"internalType": "string",
+										"internalType": "uint256",
 										"name": "voteMinApprovalPercent",
-										"type": "string"
+										"type": "uint256"
 									},
 									{
 										"internalType": "string",
@@ -531,9 +531,9 @@
 										"type": "uint256"
 									},
 									{
-										"internalType": "string",
+										"internalType": "uint256",
 										"name": "voteMinApprovalPercent",
-										"type": "string"
+										"type": "uint256"
 									},
 									{
 										"internalType": "string",
@@ -582,10 +582,10 @@
 	},
 	"sources": {
 		"contracts/IRO.sol": {
-			"keccak256": "0x01b1c2912960f80ac64dd4a68c7cd7524104cf3198f76e96156711cb71497a9d",
+			"keccak256": "0xae19f8031c273839343d0de50545c3672181f65a61df211e9595d6109caac34f",
 			"urls": [
-				"bzz-raw://0ca72a7fa88de7bb32cc70066e11c4fcc5248a6f8472bb77f8df313c83506eae",
-				"dweb:/ipfs/QmVs3J5bUrY1mzrcdkvh86FYxvBXJPV4RNKrsUgQNv1YiF"
+				"bzz-raw://044eaf8798bba0bc0a751f3c8ab595d9171f1adfd601a8c14149e1d1b2f6f0bf",
+				"dweb:/ipfs/QmSuxdJRMP39KwXnNH3qZssRN67Md3ULBxdiqrXQXvFKK7"
 			]
 		}
 	},
