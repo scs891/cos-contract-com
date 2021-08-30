@@ -336,17 +336,17 @@
 	},
 	"sources": {
 		"contracts/Disco.sol": {
-			"keccak256": "0xa3ca902063f7f30a8c627d5a59f0108b335ba6800b74db65b66d2810f9c34a72",
+			"keccak256": "0xda596d89f52642e3375c72798346c99c3cb87d50f9ffe891d5baec2016aab45b",
 			"urls": [
-				"bzz-raw://6be6df0c268826868992a85e39944b787a80dff6d8067ee96759f67ec8653cf8",
-				"dweb:/ipfs/QmU9AdmEMkpQTfficpyTrZK4ck9PJx2SBWGa3Tujn8e1Xc"
+				"bzz-raw://e2e4b423c7354f678eaccbc58c9b6f6d01ce1f40e4be491f2ccc13c85eb66dd8",
+				"dweb:/ipfs/QmRSmsw5zGyhzK7GBeRhien8mmbDotmQMs9wm1Sp8hy71Q"
 			]
 		},
 		"contracts/common/FundPool.sol": {
-			"keccak256": "0xfe9c245cc8763501ad1f823e911e5a843c5763968a0d81f0fc1ea1e04c20270e",
+			"keccak256": "0x25d0295b9ea51465afcd397c611134f7bd2fbc0f357b5e589d827fb61abff804",
 			"urls": [
-				"bzz-raw://9815e15c77d5b5faae9be550a8258dd00bf9563a2d55c41db31cc3d541853b58",
-				"dweb:/ipfs/QmU9NocPA2613fARYRDhA558pCBfhXunc18tTsNPuZNrhS"
+				"bzz-raw://d1f5c6bb3cf0ec730d57959cff203b5a8b7761f6ef2670e9eb7cc4c4720af748",
+				"dweb:/ipfs/QmWajAg55vfPK1LqjyBLcw8mVfCpFrhkSy85wFghULhyuo"
 			]
 		},
 		"contracts/interfaces/IErc20.sol": {

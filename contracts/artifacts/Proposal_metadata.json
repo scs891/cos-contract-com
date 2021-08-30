@@ -11,11 +11,6 @@
 						"internalType": "address",
 						"name": "_iroAddress",
 						"type": "address"
-					},
-					{
-						"internalType": "address",
-						"name": "_discoAddress",
-						"type": "address"
 					}
 				],
 				"payable": false,
@@ -35,7 +30,7 @@
 						"components": [
 							{
 								"internalType": "string",
-								"name": "discoId",
+								"name": "iroId",
 								"type": "string"
 							},
 							{
@@ -135,9 +130,9 @@
 										"type": "uint256"
 									},
 									{
-										"internalType": "string",
+										"internalType": "uint256",
 										"name": "voteMinApprovalPercent",
-										"type": "string"
+										"type": "uint256"
 									},
 									{
 										"internalType": "uint256",
@@ -208,6 +203,12 @@
 					},
 					{
 						"indexed": false,
+						"internalType": "string",
+						"name": "serialId",
+						"type": "string"
+					},
+					{
+						"indexed": false,
 						"internalType": "enum Proposal.ProposalStatus",
 						"name": "original",
 						"type": "uint8"
@@ -235,7 +236,7 @@
 						"components": [
 							{
 								"internalType": "string",
-								"name": "discoId",
+								"name": "iroId",
 								"type": "string"
 							},
 							{
@@ -280,7 +281,7 @@
 						"components": [
 							{
 								"internalType": "string",
-								"name": "discoId",
+								"name": "iroId",
 								"type": "string"
 							},
 							{
@@ -380,9 +381,9 @@
 										"type": "uint256"
 									},
 									{
-										"internalType": "string",
+										"internalType": "uint256",
 										"name": "voteMinApprovalPercent",
-										"type": "string"
+										"type": "uint256"
 									},
 									{
 										"internalType": "uint256",
@@ -443,7 +444,7 @@
 						"components": [
 							{
 								"internalType": "string",
-								"name": "discoId",
+								"name": "iroId",
 								"type": "string"
 							},
 							{
@@ -543,9 +544,9 @@
 										"type": "uint256"
 									},
 									{
-										"internalType": "string",
+										"internalType": "uint256",
 										"name": "voteMinApprovalPercent",
-										"type": "string"
+										"type": "uint256"
 									},
 									{
 										"internalType": "uint256",
@@ -608,34 +609,13 @@
 				"type": "function"
 			},
 			{
-				"constant": true,
-				"inputs": [
-					{
-						"internalType": "string",
-						"name": "id",
-						"type": "string"
-					}
-				],
-				"name": "discoProposalCount",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
 				"constant": false,
 				"inputs": [
 					{
 						"components": [
 							{
 								"internalType": "string",
-								"name": "discoId",
+								"name": "iroId",
 								"type": "string"
 							},
 							{
@@ -682,7 +662,7 @@
 						"components": [
 							{
 								"internalType": "string",
-								"name": "discoId",
+								"name": "iroId",
 								"type": "string"
 							},
 							{
@@ -782,9 +762,9 @@
 										"type": "uint256"
 									},
 									{
-										"internalType": "string",
+										"internalType": "uint256",
 										"name": "voteMinApprovalPercent",
-										"type": "string"
+										"type": "uint256"
 									},
 									{
 										"internalType": "uint256",
@@ -845,7 +825,7 @@
 						"components": [
 							{
 								"internalType": "string",
-								"name": "discoId",
+								"name": "iroId",
 								"type": "string"
 							},
 							{
@@ -945,9 +925,9 @@
 										"type": "uint256"
 									},
 									{
-										"internalType": "string",
+										"internalType": "uint256",
 										"name": "voteMinApprovalPercent",
-										"type": "string"
+										"type": "uint256"
 									},
 									{
 										"internalType": "uint256",
@@ -991,6 +971,27 @@
 						"internalType": "string",
 						"name": "id",
 						"type": "string"
+					}
+				],
+				"name": "iroProposalCount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "id",
+						"type": "string"
 					},
 					{
 						"internalType": "string",
@@ -1004,7 +1005,7 @@
 						"components": [
 							{
 								"internalType": "string",
-								"name": "discoId",
+								"name": "iroId",
 								"type": "string"
 							},
 							{
@@ -1104,9 +1105,9 @@
 										"type": "uint256"
 									},
 									{
-										"internalType": "string",
+										"internalType": "uint256",
 										"name": "voteMinApprovalPercent",
-										"type": "string"
+										"type": "uint256"
 									},
 									{
 										"internalType": "uint256",
@@ -1196,7 +1197,7 @@
 				"inputs": [
 					{
 						"internalType": "string",
-						"name": "discoId",
+						"name": "iroId",
 						"type": "string"
 					},
 					{
@@ -1206,21 +1207,6 @@
 					}
 				],
 				"name": "releaseProposal",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "_discoAddress",
-						"type": "address"
-					}
-				],
-				"name": "setDiscoBase",
 				"outputs": [],
 				"payable": false,
 				"stateMutability": "nonpayable",
@@ -1250,11 +1236,11 @@
 				"decide(string,string,uint8)": {
 					"notice": "decide proposal status.*"
 				},
-				"discoProposalCount(string)": {
-					"notice": "get proposal count.*"
-				},
 				"doVote((string,string,address,uint256,uint256,uint256))": {
 					"notice": "vote when proposal is voting. lock into the fundPool.*"
+				},
+				"iroProposalCount(string)": {
+					"notice": "get proposal count.*"
 				},
 				"proposalStatus(string,string)": {
 					"notice": "get proposal status.*"
@@ -1278,25 +1264,18 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/Disco.sol": {
-			"keccak256": "0xa3ca902063f7f30a8c627d5a59f0108b335ba6800b74db65b66d2810f9c34a72",
-			"urls": [
-				"bzz-raw://6be6df0c268826868992a85e39944b787a80dff6d8067ee96759f67ec8653cf8",
-				"dweb:/ipfs/QmU9AdmEMkpQTfficpyTrZK4ck9PJx2SBWGa3Tujn8e1Xc"
-			]
-		},
 		"contracts/IRO.sol": {
-			"keccak256": "0xb8020a7dee170a571a17760c4af07603ac96e156bb7680d1ac2e3ebde7fb59a7",
+			"keccak256": "0xae19f8031c273839343d0de50545c3672181f65a61df211e9595d6109caac34f",
 			"urls": [
-				"bzz-raw://6dbe2f39d64d0b413d8de66780026fed4e1e4cd499ae8b0085012998d3aaf577",
-				"dweb:/ipfs/QmYNbsMV25vFenyhRqoAWa3tN7BfQu7A2rzcuXTvASs7jP"
+				"bzz-raw://044eaf8798bba0bc0a751f3c8ab595d9171f1adfd601a8c14149e1d1b2f6f0bf",
+				"dweb:/ipfs/QmSuxdJRMP39KwXnNH3qZssRN67Md3ULBxdiqrXQXvFKK7"
 			]
 		},
 		"contracts/Proposal.sol": {
-			"keccak256": "0xebfddb568a929418b20117d20adaf022225ec0b3a3126dfa2f1382016a48886b",
+			"keccak256": "0x5288d2e2865c41a9b5c5c116bef0492d7c72c51d284f3a891e4eb3536807a8e8",
 			"urls": [
-				"bzz-raw://85f9f2edc9a67b51c4b1316825592db1d8d9c8e220fdea0badf716e13f00c5ef",
-				"dweb:/ipfs/QmPS2cvV2KY5VsRmZcThwcr4medGYxghNqqHVFeRPdfkV6"
+				"bzz-raw://1aba3b9737f44cd68a48e7cdc128402bdb0b638d4062abd4fd4039fbdc499232",
+				"dweb:/ipfs/QmPD55N5LbRHgSrKqXtuJrL5kvpB85rTb51XU2PoAgLUDH"
 			]
 		},
 		"contracts/common/Base.sol": {
@@ -1307,10 +1286,10 @@
 			]
 		},
 		"contracts/common/FundPool.sol": {
-			"keccak256": "0xfe9c245cc8763501ad1f823e911e5a843c5763968a0d81f0fc1ea1e04c20270e",
+			"keccak256": "0x25d0295b9ea51465afcd397c611134f7bd2fbc0f357b5e589d827fb61abff804",
 			"urls": [
-				"bzz-raw://9815e15c77d5b5faae9be550a8258dd00bf9563a2d55c41db31cc3d541853b58",
-				"dweb:/ipfs/QmU9NocPA2613fARYRDhA558pCBfhXunc18tTsNPuZNrhS"
+				"bzz-raw://d1f5c6bb3cf0ec730d57959cff203b5a8b7761f6ef2670e9eb7cc4c4720af748",
+				"dweb:/ipfs/QmWajAg55vfPK1LqjyBLcw8mVfCpFrhkSy85wFghULhyuo"
 			]
 		},
 		"contracts/interfaces/IErc20.sol": {
@@ -1320,32 +1299,11 @@
 				"dweb:/ipfs/QmdyoYTMxwUBH1A9Njn5wbFK1g9wNKSbKJa9BD72eXk5g6"
 			]
 		},
-		"contracts/interfaces/IUniswapV2Router01.sol": {
-			"keccak256": "0xc3d262dab384b8a8507990a618a1def0a8d2fb1f7ae69c8f365291353a320ab8",
-			"urls": [
-				"bzz-raw://e782b1367c0609c47c3b00a6a31c6ea5fd82205b51e2876c44835498abf1debb",
-				"dweb:/ipfs/QmdQdMvmbEGzZdndabY46ug47Mauk1pCy9J2sAjvzQ3szw"
-			]
-		},
-		"contracts/interfaces/IWETH.sol": {
-			"keccak256": "0x0c5f6716d15a30a0cc9162402cf5767d30c9ed111366fb610e49a2f924632192",
-			"urls": [
-				"bzz-raw://a0eb27d0794a25fe1f69f0fcf89b77d5bcd9bb0b0fdf065825b95078a38855a1",
-				"dweb:/ipfs/QmR78GAcd7Qp5dYkkmbYmWuNzUui7hgNdTEYdy5c2hyTe8"
-			]
-		},
 		"contracts/libraries/NumUtils.sol": {
 			"keccak256": "0xaeb9138d0c1305d7b106b0d8dd914dab3de326da1e311717a9ce071bb5cf4473",
 			"urls": [
 				"bzz-raw://a45f71222669b65d80bae8f8a3079788c8e9bc96c4e56b704a89e419f93c9ae0",
 				"dweb:/ipfs/QmYFMbDGF1Gb2fccqe96VJ4PgmMwQNWk97235uWbJi8V7R"
-			]
-		},
-		"contracts/libraries/SafeMath.sol": {
-			"keccak256": "0xff29b14172d9f60cb55015c60685a975b114d62a492a858460b31cae8deee276",
-			"urls": [
-				"bzz-raw://daaf6ae680d5be1d880f91faf8ff8bb037ad25decbe50ff5d21aa0946d9779a7",
-				"dweb:/ipfs/QmfNQsrRBVKgGzC41ixvHxnNMpr9mDvu1ZsisMwyU5HChV"
 			]
 		}
 	},
