@@ -1,4 +1,4 @@
-pragma solidity ^0.4.24;
+pragma solidity ^0.5.16;
 
 //for private-chain
 contract WETH {
@@ -14,8 +14,10 @@ contract WETH {
     mapping(address => uint) public  balanceOf;
     mapping(address => mapping(address => uint)) public  allowance;
 
-    function() public payable {
-        deposit();
+    function() external payable {
+        if (msg.value > 0) {
+            deposit();
+        }
     }
 
     function deposit() public payable {
