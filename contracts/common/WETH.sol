@@ -1,6 +1,7 @@
 pragma solidity ^0.5.16;
 
 //for private-chain
+//WETH9 (<0.6.x)
 contract WETH {
     string public name = "Wrapped Ether";
     string public symbol = "WETH";
