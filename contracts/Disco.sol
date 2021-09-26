@@ -193,7 +193,7 @@ contract Disco {
 
         DiscoInvestAddr storage investAddr = discoAddress[id];
         DiscoAddr discoAddr = investAddr.discoAddr;
-        discoAddr.getPool().transfer(fee);
+        discoAddr.deposit(fee);
 
         IERC20 token = investAddr.token;
         token.transferFrom(msg.sender, discoAddr.getPool(), disco.totalDepositToken);
@@ -453,6 +453,10 @@ contract DiscoAddr is FundPool {
 
     function approve(IERC20 token, address to, uint256 amount) external {
         require(token.approve(to, amount));
+    }
+
+    function deposit(uint256 amount) external payable {
+         // skip fallback func.
     }
 
     function depositWETH(uint256 amount) external payable {
