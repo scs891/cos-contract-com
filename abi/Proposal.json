@@ -124,9 +124,9 @@
                 "type": "uint256"
               },
               {
-                "internalType": "string",
+                "internalType": "uint256",
                 "name": "voteMinApprovalPercent",
-                "type": "string"
+                "type": "uint256"
               },
               {
                 "internalType": "uint256",
@@ -193,6 +193,12 @@
         "indexed": true,
         "internalType": "string",
         "name": "id",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "serialId",
         "type": "string"
       },
       {
@@ -369,9 +375,9 @@
                 "type": "uint256"
               },
               {
-                "internalType": "string",
+                "internalType": "uint256",
                 "name": "voteMinApprovalPercent",
-                "type": "string"
+                "type": "uint256"
               },
               {
                 "internalType": "uint256",
@@ -532,9 +538,9 @@
                 "type": "uint256"
               },
               {
-                "internalType": "string",
+                "internalType": "uint256",
                 "name": "voteMinApprovalPercent",
-                "type": "string"
+                "type": "uint256"
               },
               {
                 "internalType": "uint256",
@@ -691,9 +697,9 @@
                 "type": "uint256"
               },
               {
-                "internalType": "string",
+                "internalType": "uint256",
                 "name": "voteMinApprovalPercent",
-                "type": "string"
+                "type": "uint256"
               },
               {
                 "internalType": "uint256",
@@ -973,9 +979,9 @@
                 "type": "uint256"
               },
               {
-                "internalType": "string",
+                "internalType": "uint256",
                 "name": "voteMinApprovalPercent",
-                "type": "string"
+                "type": "uint256"
               },
               {
                 "internalType": "uint256",
@@ -1136,9 +1142,9 @@
                 "type": "uint256"
               },
               {
-                "internalType": "string",
+                "internalType": "uint256",
                 "name": "voteMinApprovalPercent",
-                "type": "string"
+                "type": "uint256"
               },
               {
                 "internalType": "uint256",

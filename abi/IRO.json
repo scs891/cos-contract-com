@@ -93,9 +93,9 @@
                 "type": "uint256"
               },
               {
-                "internalType": "string",
+                "internalType": "uint256",
                 "name": "voteMinApprovalPercent",
-                "type": "string"
+                "type": "uint256"
               },
               {
                 "internalType": "string",
@@ -204,9 +204,9 @@
                 "type": "uint256"
               },
               {
-                "internalType": "string",
+                "internalType": "uint256",
                 "name": "voteMinApprovalPercent",
-                "type": "string"
+                "type": "uint256"
               },
               {
                 "internalType": "string",
@@ -317,9 +317,9 @@
                 "type": "uint256"
               },
               {
-                "internalType": "string",
+                "internalType": "uint256",
                 "name": "voteMinApprovalPercent",
-                "type": "string"
+                "type": "uint256"
               },
               {
                 "internalType": "string",
@@ -416,9 +416,9 @@
         "type": "uint256"
       },
       {
-        "internalType": "string",
+        "internalType": "uint256",
         "name": "voteMinApprovalPercent",
-        "type": "string"
+        "type": "uint256"
       },
       {
         "internalType": "string",
@@ -525,9 +525,9 @@
                 "type": "uint256"
               },
               {
-                "internalType": "string",
+                "internalType": "uint256",
                 "name": "voteMinApprovalPercent",
-                "type": "string"
+                "type": "uint256"
               },
               {
                 "internalType": "string",
